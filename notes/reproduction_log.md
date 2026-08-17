@@ -90,3 +90,36 @@ For each observation:
 - the `0.99` set contains the 99th-percentile reference scores.
 
 This verifies that the original COPOD implementation can execute in the current environment after addressing the class-name inconsistency. It does not yet reproduce the paper's complete benchmark results.
+
+## BreastW benchmark smoke test
+
+A reduced benchmark was performed on `breastw.mat` to verify that the released benchmarking pipeline works in the current environment.
+
+For this smoke test:
+
+- dataset: `breastw.mat`;
+- samples: 683;
+- dimensions: 9;
+- outlier percentage: 34.9927%;
+- iterations: 1 rather than the paper’s full 10 iterations;
+- compared methods: ABOD, CBLOF, HBOS, IForest, KNN, LODA, LOF, OCSVM, PCA, and COPOD.
+
+The released benchmark script required several compatibility changes:
+
+1. `COD` was replaced with `COPOD as COD` because the released model class is named `COPOD`.
+2. The dataset path was changed to point to `original_code/COPOD/data/`.
+3. The unavailable `cover.mat` dataset was excluded.
+4. The test was temporarily restricted to `breastw.mat` and one iteration.
+
+COPOD produced the following smoke-test results:
+
+- ROC AUC: 0.9925
+- Precision at rank n: 0.93
+- Average precision: 0.9862
+- Execution time: 0.0137 seconds
+
+Among the ten evaluated methods, COPOD achieved the highest ROC AUC, precision at rank n, and average precision in this run. This confirms that the benchmark pipeline works, but this single-dataset, single-iteration smoke test is not yet a complete reproduction of the paper.
+
+The output files were saved in:
+
+`results/smoke_test_breastw/`
