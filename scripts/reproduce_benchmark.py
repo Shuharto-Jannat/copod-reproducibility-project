@@ -49,7 +49,7 @@ n_classifiers = 10
 
 df_columns = ['Data', '# Samples', '# Dimensions', 'Outlier Perc',
               'ABOD', 'CBLOF', 'HBOS', 'IForest', 'KNN', 'LODA',
-              'LOF', 'OCSVM', 'PCA', 'COD']
+              'LOF', 'OCSVM', 'FB', 'COD']
 
 
 # initialize the container for saving the results
@@ -109,7 +109,7 @@ for j in range(len(mat_file_list)):
             'Local Outlier Factor (LOF)': LOF(
                 contamination=outliers_fraction),
             'One-class SVM (OCSVM)': OCSVM(contamination=outliers_fraction),
-            'Principal Component Analysis (PCA)': PCA(
+            'Feature Bagging (FB)': FeatureBagging(
                 contamination=outliers_fraction, random_state=random_state),
             'COD': COD(contamination=outliers_fraction)
         }
@@ -122,7 +122,7 @@ for j in range(len(mat_file_list)):
             'Lightweight on-line detector of anomalies (LODA)': 5,
             'Local Outlier Factor (LOF)': 6,
             'One-class SVM (OCSVM)': 7,
-            'Principal Component Analysis (PCA)': 8,
+            'Feature Bagging (FB)': 8,
             'COD': 9
         }
 
