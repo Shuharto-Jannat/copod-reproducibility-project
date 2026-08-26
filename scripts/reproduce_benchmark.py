@@ -44,7 +44,7 @@ from models.cod import COPOD as COD
 mat_file_list = ['arrhythmia.mat', 'breastw.mat', 'cardio.mat', 'ionosphere.mat', 'lympho.mat', 'mammography.mat', 'optdigits.mat', 'pima.mat', 'satellite.mat', 'satimage-2.mat', 'shuttle.mat', 'speech.mat', 'wbc.mat', 'wine.mat']
 
 # define the number of iterations
-n_ite = 1
+n_ite = 10
 n_classifiers = 10
 
 df_columns = ['Data', '# Samples', '# Dimensions', 'Outlier Perc',
