@@ -122,7 +122,7 @@ arff_list = [
                                  'data', 'literature', 'WPBC', 'WPBC_withoutdupl_norm.arff'))
 ]
 
-n_ite = 1
+n_ite = 10
 n_classifiers = 10
 
 df_columns = ['Data', '# Samples', '# Dimensions', 'Outlier Perc',
