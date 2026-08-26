@@ -223,3 +223,46 @@ The ARFF compatibility run successfully evaluated all 16 published ARFF datasets
 `results/compatibility_arff_16_one_trial/`
 
 Overall, all 30 of the paper's datasets completed successfully without runtime errors. This establishes that the complete 30-dataset experiment is technically feasible in the current environment after applying the documented corrections. These results use one trial and are compatibility evidence rather than the final 10-trial reproduction.
+
+## Complete 10-trial reproduction and comparison
+
+The corrected benchmark scripts were run using the experimental procedure described in the paper:
+
+- 30 datasets;
+- 14 MAT datasets and 16 ARFF datasets;
+- 60% training and 40% testing;
+- 10 independent trials;
+- 10 anomaly-detection methods;
+- ROC AUC and average precision evaluation.
+
+All 30 datasets completed successfully. The final result tables were saved in:
+
+- `results/reproduction_mat_14_10_trials/`
+- `results/reproduction_arff_16_10_trials/`
+
+The reproduced COPOD results were compared with Tables I and II of the paper using:
+
+`scripts/compare_published_results.py`
+
+The comparison outputs were saved in:
+
+- `results/comparison/copod_published_vs_reproduced.csv`
+- `results/comparison/copod_comparison_summary.csv`
+
+### Overall comparison
+
+The paper reported a mean COPOD ROC AUC of 0.8247, while the reproduction obtained 0.8132. The difference in the overall means was -0.0115, and the mean absolute dataset-level ROC AUC difference was 0.0177.
+
+The paper reported a mean COPOD average precision of 0.5649, while the reproduction obtained 0.5475. The difference in the overall means was -0.0174, while the mean absolute dataset-level average precision difference was 0.0922.
+
+The ROC AUC results reproduced closely overall. Average precision was close at the aggregate level but showed substantial dataset-level discrepancies, particularly for several ARFF datasets.
+
+The five largest ROC AUC differences occurred for Waveform ARFF, Wine MAT, Optdigits MAT, Shuttle ARFF, and Ionosphere ARFF.
+
+The five largest average precision differences occurred for Lymphography ARFF, SpamBase ARFF, Stamps ARFF, KDDCup99 ARFF, and Pima ARFF.
+
+### Feasibility conclusion
+
+The complete experiment is technically reproducible after applying documented corrections to the released scripts. The ROC AUC findings are strongly reproducible overall. The average precision findings are only partially reproducible at the individual-dataset level, despite similar overall averages.
+
+Possible explanations include differences in software versions, dataset preprocessing or label handling, unavailable original environment details, and inconsistencies between the released scripts and published tables. These discrepancies require further investigation during the semester project but do not prevent the project from proceeding.

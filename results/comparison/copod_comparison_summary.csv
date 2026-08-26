@@ -1,0 +1,7 @@
+Metric,Paper,Reproduced,Value
+Mean ROC-AUC,0.8247000000000002,0.813238,
+Mean Average Precision,0.5649200000000001,0.5474999999999999,
+Mean absolute ROC-AUC difference,,,0.017683333333333304
+Mean absolute Average Precision difference,,,0.09215666666666666
+Maximum absolute ROC-AUC difference,,,0.06311
+Maximum absolute Average Precision difference,,,0.52297
