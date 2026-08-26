@@ -135,7 +135,7 @@ prn_df = pd.DataFrame(columns=df_columns)
 ap_df = pd.DataFrame(columns=df_columns)
 time_df = pd.DataFrame(columns=df_columns)
 
-for j in range(1):
+for j in range(len(arff_list)):
     mat_file = file_names[j]
     mat_file_path = arff_list[j]
     X, y, attributes = read_arff(mat_file_path, misplaced_list)

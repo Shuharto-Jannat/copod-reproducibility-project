@@ -41,7 +41,7 @@ sys.path.append(
 from models.cod import COPOD as COD
 
 # Define data file and read X and y
-mat_file_list = ['breastw.mat']
+mat_file_list = ['arrhythmia.mat', 'breastw.mat', 'cardio.mat', 'ionosphere.mat', 'lympho.mat', 'mammography.mat', 'optdigits.mat', 'pima.mat', 'satellite.mat', 'satimage-2.mat', 'shuttle.mat', 'speech.mat', 'wbc.mat', 'wine.mat']
 
 # define the number of iterations
 n_ite = 1

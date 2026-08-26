@@ -209,3 +209,17 @@ The output was saved in:
 `results/smoke_test_arrhythmia_arff/`
 
 These tests indicate that reproducing the complete 30-dataset experiment is feasible after transparently correcting the released scripts. Full 10-trial reproduction has not yet been performed.
+
+## Complete one-trial compatibility assessment
+
+The corrected benchmark scripts were expanded to cover all datasets reported in the paper while retaining one iteration as a compatibility test.
+
+The MAT compatibility run successfully evaluated all 14 published MAT datasets with all ten methods. The results and complete terminal log were saved in:
+
+`results/compatibility_mat_14_one_trial/`
+
+The ARFF compatibility run successfully evaluated all 16 published ARFF datasets with all ten methods. The results and complete terminal log were saved in:
+
+`results/compatibility_arff_16_one_trial/`
+
+Overall, all 30 of the paper's datasets completed successfully without runtime errors. This establishes that the complete 30-dataset experiment is technically feasible in the current environment after applying the documented corrections. These results use one trial and are compatibility evidence rather than the final 10-trial reproduction.
