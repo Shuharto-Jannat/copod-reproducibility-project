@@ -435,3 +435,143 @@ PhiUSIIL should be retained as a strong candidate because:
 - it provides a recent malicious-website domain not included in the original COPOD evaluation.
 
 Its main limitations are the artificially controlled 10% phishing rate and the possibility that specialised engineered features make the task unusually easy. Both issues can be addressed through transparent sampling and sensitivity analysis.
+
+## Candidate 5: NATICUSdroid Android Permissions
+
+### Dataset identity and source
+
+NATICUSdroid is a labelled Android malware dataset containing permission profiles extracted from benign and malicious Android applications released between 2010 and 2019.
+
+Official source:
+
+- UCI Machine Learning Repository: https://archive.ics.uci.edu/dataset/722/naticusdroid+android+permissions+dataset
+- Introductory paper: Akshay Mathur, L. M. Podila, K. Kulkarni, Q. Niyaz, and A. Y. Javaid, *NATICUSdroid: A Malware Detection Framework for Android Using Native and Custom Permissions* (2021).
+
+The official UCI archive is directly downloadable and contains one CSV file. The UCI page provides the required licensing and citation information.
+
+### Domain and anomaly definition
+
+Each observation represents an Android application. The 86 predictors indicate whether the application requests particular native or vendor-specific Android permissions.
+
+Examples include permission to:
+
+- access the Internet or network state;
+- read contacts, SMS messages or call information;
+- access location, camera or microphone data;
+- write external storage;
+- install packages;
+- receive device-start events;
+- display system-alert windows;
+- access vendor-specific launcher or billing services.
+
+Every predictor is binary:
+
+- 0 means the permission is not present;
+- 1 means the permission is present.
+
+The target column is `Result`:
+
+- `Result = 0` represents a benign application;
+- `Result = 1` represents malware.
+
+For COPOD, malware is therefore treated as the anomalous class.
+
+### Initial inspection
+
+The downloaded CSV contains:
+
+- 29,332 actual rows;
+- 86 binary permission predictors;
+- one target column;
+- 14,632 benign rows;
+- 14,700 malware rows;
+- no missing values;
+- no non-binary predictor values;
+- no constant predictors after cleaning.
+
+The UCI summary reports 29,333 instances, while the downloaded CSV contains 29,332 data rows. The evaluation will report the count observed in the downloaded file.
+
+### Duplicate and contradictory profiles
+
+The dataset contains substantial repetition:
+
+- 21,841 exact duplicate rows;
+- only 7,395 unique permission profiles;
+- 96 permission profiles associated with both benign and malware labels;
+- 5,624 original rows belonging to contradictory profiles.
+
+An ordinary random row split would be inappropriate because identical permission profiles could occur in both training and testing data. This could produce information leakage and artificially optimistic performance. Furthermore, profiles assigned both labels cannot be distinguished using the available permission predictors.
+
+The proposed cleaning procedure therefore:
+
+1. groups applications by their complete set of 86 permission indicators;
+2. identifies profiles associated with more than one target label;
+3. removes all 96 contradictory profiles;
+4. retains one observation for each remaining unique profile;
+5. performs the train-test split only after this cleaning.
+
+This leaves 7,299 unique and unambiguous profiles:
+
+- 4,771 benign profiles;
+- 2,528 malware profiles.
+
+This cleaning improves evaluation validity, but it changes the population being evaluated. Results will therefore apply only to unique, unambiguous permission profiles and not to every application in the original file.
+
+### Evaluation construction
+
+Malware constitutes 34.63% of the cleaned profiles, which remains high for an anomaly-detection setting. The feasibility test constructs a controlled 10% malware sample by:
+
+1. retaining all 4,771 benign profiles;
+2. randomly sampling 530 malware profiles using seed 42;
+3. combining and shuffling the selected profiles;
+4. applying a stratified 60% training and 40% testing split;
+5. standardising the 86 binary predictors using training-set statistics;
+6. fitting COPOD using the observed training contamination.
+
+The resulting evaluation sample contains 5,301 unique profiles.
+
+### COPOD smoke test
+
+The preliminary smoke test used:
+
+- 5,301 observations;
+- 86 binary permission predictors;
+- 3,180 training observations;
+- 2,121 testing observations;
+- 318 malware profiles in training;
+- 212 malware profiles in testing;
+- 10% training contamination.
+
+Results:
+
+- ROC AUC: 0.5796;
+- average precision: 0.1072;
+- execution time: 0.6012 seconds.
+
+With a 10% malware rate, random ranking would have an expected average precision of approximately 0.10. The observed average precision of 0.1072 is therefore only marginally better than random. The ROC AUC is also weak.
+
+These results suggest that malicious applications are not consistently marginal outliers based solely on permission presence. Malware may use combinations of common permissions rather than unusually extreme values in individual predictors, which is a difficult setting for COPOD.
+
+### Novelty assessment
+
+NATICUSdroid was published after the 2020 COPOD paper and could not have appeared in its original evaluation. A targeted search did not identify a published or publicly documented COPOD evaluation using NATICUSdroid. This is reported cautiously rather than as an absolute claim.
+
+### Feasibility conclusion
+
+NATICUSdroid is technically feasible because:
+
+- it is available from an official and citable repository;
+- it has explicit benign and malware labels;
+- all 86 predictors are numeric and binary;
+- it has no missing values;
+- COPOD runs quickly.
+
+However, it should be ranked as a low-priority candidate because:
+
+- most original rows duplicate other permission profiles;
+- some identical profiles have conflicting labels;
+- substantial cleaning is necessary to prevent leakage;
+- cleaning changes the evaluated population;
+- preliminary discrimination is only slightly better than random.
+
+NATICUSdroid is useful as negative evidence about COPOD's limitations, but it is not recommended as the primary new dataset. If retained in the final experiment, all cleaning decisions and the resulting scope limitation must be reported explicitly.
