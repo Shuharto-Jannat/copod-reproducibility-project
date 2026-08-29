@@ -306,3 +306,132 @@ RT-IoT2022 should be retained as a candidate because:
 - its modest preliminary performance creates a meaningful generalisability question.
 
 The main limitation is that the released dataset is dominated by attacks. Consequently, the controlled 10% attack sample and its construction must be disclosed clearly in the proposal and final report.
+
+## Candidate 4: PhiUSIIL Phishing URL (Website)
+
+### Dataset identity and source
+
+PhiUSIIL is a labelled tabular dataset containing legitimate and phishing URLs together with characteristics extracted from each URL and its corresponding webpage.
+
+Official source:
+
+- UCI Machine Learning Repository: https://archive.ics.uci.edu/dataset/967/phiusiil+phishing+url+dataset
+- Introductory paper: Arvind Prasad and Shalini Chandra, *PhiUSIIL: A Diverse Security Profile Empowered Phishing URL Detection Framework Based on Similarity Index and Incremental Learning*, published in *Computers & Security*.
+
+The official UCI archive is directly downloadable and contains one CSV file. The repository page provides the required licensing and citation information.
+
+### Domain and anomaly definition
+
+Phishing websites imitate legitimate services to obtain passwords, payment information, or other sensitive data. Each observation represents one URL and its corresponding webpage.
+
+The dataset contains:
+
+- 134,850 legitimate websites, labelled 1;
+- 100,945 phishing websites, labelled 0.
+
+For COPOD evaluation, the labels are converted so that:
+
+- legitimate website = 0, representing a normal observation;
+- phishing website = 1, representing an anomaly.
+
+The engineered features describe properties including:
+
+- URL and domain length;
+- character, digit and special-character ratios;
+- URL obfuscation;
+- HTTPS use;
+- webpage source-code length;
+- title and domain matching;
+- redirects and pop-ups;
+- forms, hidden fields and password fields;
+- social-network and copyright information;
+- counts of images, CSS, JavaScript and references.
+
+### Inspection results
+
+The downloaded CSV contains:
+
+- 235,795 rows;
+- 56 total columns;
+- 54 reported features after excluding the identifier and target;
+- no missing values;
+- no infinite numeric values;
+- no constant numeric predictors;
+- no duplicate feature-and-label rows.
+
+Five non-numeric fields have high cardinality:
+
+- `FILENAME`: 235,795 unique values;
+- `URL`: 235,370 unique values;
+- `Domain`: 220,086 unique values;
+- `TLD`: 695 unique values;
+- `Title`: 197,874 unique values.
+
+`FILENAME` is only an identifier. Directly one-hot encoding the other raw text fields would create a very large and sparse feature space that is unsuitable for this COPOD evaluation. These five columns are therefore removed. The dataset still provides 50 engineered numeric predictors capturing relevant properties of each URL and webpage.
+
+### Proposed preprocessing and evaluation construction
+
+Phishing websites form 42.8105% of the released dataset. This is useful for supervised classification but does not resemble the minority-anomaly setting assumed by COPOD.
+
+The feasibility test therefore constructs a reproducible 20,000-observation sample containing:
+
+- 18,000 legitimate websites;
+- 2,000 phishing websites;
+- a controlled phishing contamination rate of 10%.
+
+The preprocessing procedure is:
+
+1. randomly sample both classes using seed 42;
+2. remove `FILENAME`, `URL`, `Domain`, `TLD`, and `Title`;
+3. convert the original label so phishing observations equal 1;
+4. retain the 50 engineered numeric predictors;
+5. perform a stratified 60% training and 40% testing split;
+6. standardise all predictors using training-set statistics;
+7. fit COPOD using the training contamination rate.
+
+The sampling method and modified class distribution will be disclosed explicitly. The constructed 10% rate is an experimental anomaly-detection setting and is not presented as the real prevalence of phishing websites.
+
+### COPOD smoke test
+
+The preliminary smoke test used:
+
+- 20,000 observations;
+- 50 numeric predictors;
+- 12,000 training observations;
+- 8,000 testing observations;
+- 1,200 phishing cases in training;
+- 800 phishing cases in testing;
+- 10% training contamination.
+
+Results:
+
+- ROC AUC: 0.9452;
+- average precision: 0.7369;
+- execution time: 0.6424 seconds.
+
+These preliminary results show that COPOD strongly separates phishing websites from legitimate websites in the constructed sample. They demonstrate feasibility but are not treated as final experimental findings.
+
+### Proposed sensitivity analysis
+
+Two engineered variables, `URLSimilarityIndex` and `TLDLegitimateProb`, may be especially informative. A later sensitivity analysis should repeat the evaluation without these variables. This will determine whether COPOD's performance reflects broader distributional differences or relies disproportionately on features designed specifically for phishing detection.
+
+The final experiment should also evaluate multiple random samples and contamination levels so that the conclusion does not depend on a single constructed sample.
+
+### Novelty assessment
+
+PhiUSIIL was released after the 2020 COPOD paper and could not have appeared in its original evaluation. A targeted search did not identify a published or publicly documented COPOD evaluation using PhiUSIIL. This is stated cautiously and does not claim that no private or inaccessible application exists.
+
+### Feasibility conclusion
+
+PhiUSIIL should be retained as a strong candidate because:
+
+- it is available from an official and citable repository;
+- it has explicit legitimate and phishing labels;
+- it contains a large number of observations;
+- its 50 engineered numeric predictors are directly compatible with COPOD;
+- it has no missing, infinite, constant or duplicate numeric data problems;
+- the smoke test runs in less than one second;
+- preliminary ROC AUC and average precision are strong;
+- it provides a recent malicious-website domain not included in the original COPOD evaluation.
+
+Its main limitations are the artificially controlled 10% phishing rate and the possibility that specialised engineered features make the task unusually easy. Both issues can be addressed through transparent sampling and sensitivity analysis.
