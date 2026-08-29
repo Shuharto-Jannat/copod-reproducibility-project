@@ -1,0 +1,164 @@
+\documentclass[11pt,a4paper,twocolumn]{article}
+
+\newif\ifofficialacl
+\IfFileExists{acl.sty}{\officialacltrue}{\officialaclfalse}
+\ifofficialacl
+  \usepackage{acl}
+\else
+  \usepackage[a4paper,margin=24mm,columnsep=6mm]{geometry}
+\fi
+\usepackage{times}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage{natbib}
+\usepackage{xurl}
+
+\usepackage{balance}
+
+\setlength{\parindent}{1em}
+\setlength{\parskip}{0pt}
+\setlist{nosep,leftmargin=*}
+\newcommand{\dataset}[1]{\textsc{#1}}
+\newcommand{\repo}{\url{https://github.com/Shuharto-Jannat/copod-reproducibility-project}}
+
+\title{\vspace{-1.2em}\textbf{Evaluating the Reproducibility and Generalisability of COPOD}\\
+\textbf{for Unsupervised Outlier Detection}}
+\author{Shuharto Jannat\\
+Student ID: 60778431\\
+Master of Data Science, Macquarie University\\
+COMP8240 Project Proposal}
+\date{}
+
+\begin{document}
+\maketitle
+\vspace{-1.5em}
+
+\begin{abstract}
+This project will investigate the replicability and generalisability of COPOD, a parameter-free unsupervised outlier detector based on empirical copulas. The published experiment compares COPOD with nine baselines on 30 tabular datasets using ROC AUC and average precision. A preliminary replication has already executed the complete 30-dataset, 10-trial protocol using transparently corrected copies of the released scripts. Mean ROC AUC was 0.8132, compared with 0.8247 in the paper, while mean average precision was 0.5475, compared with 0.5649; dataset-level average-precision differences were larger. The proposed work will audit these discrepancies, evaluate COPOD on five verified public datasets from fraud, predictive maintenance and cybersecurity, and construct controlled synthetic data varying marginal shape, dependence, contamination and anomaly mechanism. Deterministic metrics remain primary. An LLM-as-judge will be explored only as an evidence-grounded assessment of whether each published claim has been reproduced. The outcome will be a transparent account of where COPOD's claims hold, where they weaken, and why.
+\end{abstract}
+
+\section{Description of the Paper}
+\subsection{Problem and motivation}
+
+An outlier is an observation whose behaviour differs substantially from the pattern of most data. Examples include a fraudulent bank application, a truck with a failing component, or a network flow produced by an attack. In \emph{unsupervised} outlier detection, reliable anomaly labels are unavailable during model fitting. The detector must therefore assign each observation an anomaly score from the structure of the measured features alone. This is difficult because anomalies are rare, data distributions differ, and an observation may be unusual in one feature but ordinary in another \citep{aggarwal2017}.
+
+\citet{li2020copod} propose Copula-Based Outlier Detection (COPOD) to address three recurring limitations: computational cost, hyperparameter tuning, and limited explanation of individual predictions. Their central idea is that an observation is suspicious when one or more feature values lie in unlikely distributional tails. COPOD estimates tail probabilities from ranks, combines feature-level evidence, and returns both an overall score and feature contributions.
+
+\subsection{Core idea for a general CS reader}
+
+A copula separates each feature's marginal distribution from dependence between features. COPOD uses empirical cumulative distribution functions, so it does not require a normal or another fixed parametric distribution. For observation $i$ and feature $j$, its rank estimates a left-tail probability $U_{ij}$; reversing the ranks estimates the right tail. Applying $-\log(\cdot)$ converts small tail probabilities into large anomaly evidence. Sample skewness selects a corrected tail, and evidence is aggregated across features.
+
+For example, consider transaction amounts \$10, \$12, \$15, \$18 and \$500. The \$500 transaction has the most extreme upper-tail rank and therefore receives much greater right-tail evidence. COPOD repeats this process for every feature. Retained feature contributions can indicate whether amount, frequency, location or another variable caused a high score. The claimed advantages are parameter freedom, no iterative optimisation, computational efficiency, competitive detection and interpretable contributions \citep{li2020copod}. This project tests those empirical claims; it does not attempt to re-prove the derivation.
+
+\section{Justification for Paper Choice}
+
+This is a novel project, justified by quality, relevance, openness and demonstrated feasibility. The paper appeared at the 2020 IEEE International Conference on Data Mining (ICDM), a major peer-reviewed data-mining venue, and makes explicit claims about effectiveness, speed, parameter freedom and interpretability. COPOD is also implemented in PyOD, a widely used Python anomaly-detection library \citep{zhao2019pyod}. As of 29 August 2026, the authors' repository had 61 stars and 9 forks; these indicate community interest, not scientific validation.
+
+The paper and code links are \url{https://doi.org/10.1109/ICDM50108.2020.00135} and \url{https://github.com/winstonll/COPOD}. The project preserves the authors' repository as a Git submodule at exact commit \href{https://github.com/winstonll/COPOD/commit/3ca17400016386546d2c199886e81bdcc859b36b}{\texttt{3ca1740}}; corrected scripts, logs and results are published separately at \repo. This prevents modified code from being misrepresented as the untouched release.
+
+Feasibility has been established by execution. All 30 datasets completed under the reported 60/40 split, ten trials and ten detectors. Mean COPOD ROC AUC was 0.8132 versus 0.8247 reported, and mean AP was 0.5475 versus 0.5649. Mean absolute dataset-level differences were 0.0177 for ROC AUC and 0.0922 for AP. Thus ROC AUC reproduces closely overall, while AP discrepancies provide a substantive investigation.
+
+The released scripts required disclosed corrections: \texttt{COD} versus \texttt{COPOD}; unavailable \texttt{cover.mat} versus reported \texttt{shuttle.mat}; missing ARFF \texttt{norm} paths; explicit modern numeric conversion; and PCA in code where the paper reports Feature Bagging. Original code remains unchanged. Exact historical dependency versions are unavailable, so the modern environment is frozen and this limitation will be reported.
+
+\section{Explanation of the Original Evaluation}
+\subsection{Protocol, datasets and baselines}
+
+The paper evaluates COPOD on 30 labelled benchmarks: 14 MAT datasets distributed by the Outlier Detection DataSets repository (ODDS) and 16 ARFF benchmarks curated by \citet{campos2016}. Labels score predictions but do not train the anomaly rule, so fitting remains unsupervised. Each dataset is randomly split into 60\% training and 40\% testing data, with results averaged over ten trials.
+
+The MAT group is Arrhythmia, BreastW, Cardio, Ionosphere, Lympho, Mammography, Optdigits, Pima, Satellite, Satimage-2, Shuttle, Speech, WBC and Wine. The ARFF group is Arrhythmia, Cardiotocography, HeartDisease, Hepatitis, InternetAds, Ionosphere, KDDCup99, Lymphography, Pima, Shuttle, SpamBase, Stamps, Waveform, WBC, WDBC and WPBC. They span clinical measurements, image/OCR features, speech, web content, network traffic, industrial signals and spacecraft-control data. Released versions range from 80 to 60,839 observations, 6 to 1,555 features, and approximately 0.16\% to 45.78\% anomalies. Names repeated across MAT and ARFF refer to separately processed versions and will not be merged.
+
+ODDS repackages established datasets into a common MAT schema; the ARFF collection was assembled specifically to study evaluation choices in unsupervised outlier detection \citep{campos2016}. Many benchmarks originate as classification data, with one or more classes designated anomalous and duplicates or features sometimes modified. Therefore, they support repeatable scoring but do not perfectly model naturally occurring anomalies. The project will record the source collection, file checksum, dimensions, anomaly definition and transformations for every version, referring to original dataset releases where available rather than treating the COPOD repository as the original source.
+
+COPOD is compared with ABOD, CBLOF, HBOS, Isolation Forest, k-nearest neighbours, LODA, LOF, One-Class SVM and Feature Bagging. These represent angle-, cluster-, histogram-, isolation-, proximity-, density-, kernel- and ensemble-based approaches. Runtime and precision at rank $n$ are supporting measures; ROC AUC and AP are the paper's primary tables.
+
+\subsection{ROC AUC}
+
+The receiver operating characteristic curve plots true-positive rate against false-positive rate as the score threshold changes. ROC AUC equals the probability that a randomly selected anomaly receives a higher score than a randomly selected normal observation \citep{hanley1982}. A value of 0.5 represents random ranking and 1.0 perfect ranking.
+
+As a worked example, suppose three anomalies have scores 0.90, 0.80 and 0.40, and two normal cases have scores 0.70 and 0.10. Among $3\times2=6$ anomaly-normal pairs, five are correctly ordered; only anomaly 0.40 ranks below normal 0.70. ROC AUC is $5/6=0.833$. ROC AUC is threshold-independent, but can appear optimistic under severe imbalance because many normal rankings dominate \citep{saito2015}.
+
+\subsection{Average precision and precision at n}
+
+Precision is $TP/(TP+FP)$ and recall is $TP/(TP+FN)$. Average precision summarises a precision-recall ranking as
+\begin{equation}
+\mathrm{AP}=\sum_k (R_k-R_{k-1})P_k .
+\end{equation}
+For ranking A, N, A, A, N, anomalies occur at ranks 1, 3 and 4. Precision at those ranks is $1/1$, $2/3$ and $3/4$, so $\mathrm{AP}=(1+2/3+3/4)/3=0.806$. AP focuses on the rare positive class and its random baseline equals prevalence, so prevalence must be reported \citep{davis2006,saito2015}.
+
+Precision@$n$ predicts the top $n$ scores as anomalous, where $n$ is the known number of test anomalies. If two anomalies exist and the top two scores contain one, precision@$n=1/2$. The reproduction will report per-dataset metrics, runtime, uncertainty over splits, absolute paper differences and sensitivity to software versions; close aggregate means alone will not establish reproduction because signed errors can cancel.
+
+\section{New Data}
+\subsection{Five verified public datasets}
+
+Five post-paper or previously unused public datasets were downloaded from official sources, inspected, and smoke-tested with COPOD (Table~\ref{tab:newdata}). A targeted literature and code search found no published or publicly documented COPOD evaluation for these exact datasets; this is not an absolute claim about private or inaccessible work. Smoke-test scores establish feasibility, not final findings.
+
+\begin{table*}[t]
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\textwidth}{@{}lrrrrX@{}}
+\toprule
+Dataset & Raw $N$ & Used $d$ & Constructed rate & ROC/AP & Feasibility decision \\
+\midrule
+BAF & 1,000,000 & 51 & 1.105\% & .547/.015 & Feasible, difficult fraud test; five categorical fields encoded and documented $-1$ sentinels retained. \\
+APS Failure & 60,000+16,000 & 169 & 1.67/2.34\% & .978/.502 & Strong; official train/test split, median imputation fitted on training data, one all-missing/constant field removed. \\
+RT-IoT2022 & 123,117 & 92 & 10\% & .689/.136 & Moderate; remove ID, duplicates and constant field, encode protocol/service, sample every attack type reproducibly. \\
+PhiUSIIL & 235,795 & 50 & 10\% & .945/.737 & Strong; remove identifier and high-cardinality URL/domain/TLD/title text; retain engineered numeric webpage features. \\
+NATICUSdroid & 29,332 & 86 & 10\% & .580/.107 & Low priority; remove duplicates and contradictory permission profiles before sampling unique profiles. \\
+\bottomrule
+\end{tabularx}
+\caption{Verified new-data candidates. Rates for RT-IoT2022, PhiUSIIL and NATICUSdroid are disclosed experimental constructions. ROC/AP are single-seed feasibility smoke tests, not final claims.}
+\label{tab:newdata}
+\end{table*}
+
+\paragraph{Bank Account Fraud (BAF).}
+The Feedzai suite contains six privacy-preserving synthetic bank-account fraud variants derived from a real fraud setting \citep{jesus2022}. The Base file has one million applications, 31 raw predictors and 1.1029\% fraud. Five categorical variables become 51 predictors after one-hot encoding. Preliminary ROC AUC/AP were 0.5467/0.0149. Weak performance is scientifically useful: fraud may involve conditional relationships rather than marginal extremes. Source: \url{https://github.com/feedzai/bank-account-fraud}.
+
+\paragraph{APS Failure at Scania Trucks.}
+This UCI dataset contains operational measurements from heavy trucks: 60,000 supplied training rows (1,000 APS failures) and 16,000 test rows (375 failures), with 170 anonymised predictors \citep{scania2016}. Missingness is widespread across columns but approximately 8.3\% overall. Median imputation uses training data only; the unusable \texttt{cd\_000} field is removed. Preliminary ROC AUC/AP were 0.9780/0.5016. Source DOI: \url{https://doi.org/10.24432/C51S51}.
+
+\paragraph{RT-IoT2022.}
+The dataset contains 123,117 real-time IoT network flows with benign device activity and nine attack types \citep{sarmila2023}. After removing 5,195 duplicate rows, benign activity is only 10.19\%; attacks dominate the released file. To create a conventional anomaly setting, all 12,015 unique benign flows and 1,335 attacks are used, guaranteeing every attack type and a disclosed 10\% contamination. Preliminary ROC AUC/AP were 0.6891/0.1360. Source DOI: \url{https://doi.org/10.24432/C5P338}.
+
+\paragraph{PhiUSIIL.}
+PhiUSIIL contains 134,850 legitimate and 100,945 phishing webpages with 54 reported features \citep{prasad2024}. Raw filename, URL, domain, TLD and title fields are removed to prevent high-cardinality identifiers from becoming a huge sparse representation; 50 engineered numerical properties remain. A seed-42 sample of 18,000 legitimate and 2,000 phishing pages produced preliminary ROC AUC/AP of 0.9452/0.7369. Ablation of \texttt{URLSimilarityIndex} and \texttt{TLDLegitimateProb} will test dependence on specialised features. Source: \url{https://archive.ics.uci.edu/dataset/967/phiusiil+phishing+url+dataset}.
+
+\paragraph{NATICUSdroid.}
+This dataset represents Android applications using 86 binary permission indicators \citep{mathur2021}. Inspection found 21,841 exact duplicates, only 7,395 unique profiles, and 96 profiles assigned both labels. Removing ambiguous profiles and retaining one copy leaves 4,771 benign and 2,528 malware profiles. A 10\% malware construction yielded ROC AUC/AP of 0.5796/0.1072, barely above the AP baseline of 0.10. It remains a useful negative test but is not the primary candidate. Source: \url{https://archive.ics.uci.edu/dataset/722/naticusdroid+android+permissions+dataset}.
+
+The final comparison will use repeated seeds, ROC AUC, AP, precision@$n$, runtime and confidence intervals. Constructed class rates will never be presented as natural prevalence. For RT-IoT2022 and PhiUSIIL, 5\%, 10\% and 20\% contamination will test sensitivity. No difficult dataset will be excluded because of poor preliminary performance.
+
+\subsection{Newly constructed stress-test data}
+
+A fixed-seed Python generator will create normal observations with symmetric, positively skewed and heavy-tailed marginals, under independent and correlated-block dependence. It will insert four labelled anomaly mechanisms: (1) global marginal-tail values; (2) local anomalies plausible globally but unlikely within a cluster; (3) dependence anomalies with ordinary marginal values in unusual combinations; and (4) small coherent anomaly clusters.
+
+The factorial design varies dimensionality $d\in\{5,20,100\}$, contamination $\{1\%,5\%,10\%\}$, dependence (independent, moderate, strong), marginal shape and anomaly mechanism, with multiple seeds. Labels are exact because the generator records inserted anomalies. This directly tests COPOD's mechanism: success on marginal tails would support its intended behaviour, while weakness on dependence anomalies would identify a boundary of feature-wise aggregation. Generator code, configurations, seeds and metadata will be published.
+
+\section{Initial Plan for LLM-as-Judge}
+
+An LLM should not replace ROC AUC or AP because predictions and binary labels permit deterministic scoring. Instead, it will address: ``To what extent is each empirical claim reproduced by the supplied evidence?'' For predictive competitiveness, speed, parameter freedom and interpretability, the judge receives a fixed packet containing the paper's claim, protocol, reproduced tables, confidence intervals and code-change log. A rubric requires one of \emph{reproduced}, \emph{partially reproduced}, \emph{not reproduced}, or \emph{insufficient evidence}, with cited table cells and uncertainty.
+
+Prompt order will be varied, judgments repeated, and a sample checked by a human or second model. Agreement and evidence-citation accuracy, not eloquence, determine usefulness. Position, verbosity, self-preference and nondeterminism are known risks \citep{zheng2023}; therefore LLM judgments remain supplementary qualitative evidence.
+
+\section{Plan, Risks and Expected Outcome}
+
+Stage 1 finalises the clean 30-dataset reproduction and provenance audit. Stage 2 investigates AP discrepancies, especially Lymphography, SpamBase, Stamps, KDDCup99 and Pima, through label, metric, preprocessing and version checks. Stage 3 runs repeated public-data and constructed-data experiments with identical saved configurations. Stage 4 integrates deterministic results, claim-level LLM auditing, code and limitations into the final report.
+
+Risks include unavailable historical dependencies, benchmark provenance ambiguity, high variance for rare anomalies, constructed prevalence, leakage from duplicates or engineered features, and full-baseline cost. Mitigations are a frozen environment, checksums, train-only preprocessing, duplicate/profile checks before splitting, repeated seeds, sensitivity analyses and resumable outputs. The expected outcome is not predetermined confirmation, but a defensible map of which COPOD claims reproduce across domains and anomaly mechanisms.
+
+\section*{AI-use acknowledgement}
+Generative AI tools assisted with planning, language editing and debugging feasibility scripts. The student remains responsible for the research design, execution, verification, citations and submitted text.
+
+\balance
+\ifofficialacl
+\else
+  \bibliographystyle{plainnat}
+\fi
+\bibliography{references}
+
+\end{document}
