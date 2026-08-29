@@ -193,3 +193,116 @@ APS Failure is feasible and should be retained as a strong candidate because:
 - it creates an informative contrast with COPOD’s weak preliminary BAF results.
 
 The dataset should be retained as a candidate for the final project.
+
+## Candidate 3: RT-IoT2022
+
+### Dataset identity and source
+
+RT-IoT2022 is a labelled network-traffic dataset collected from a real-time Internet of Things infrastructure. It combines benign activity from IoT devices with traffic generated using several network-attack techniques.
+
+Official source:
+
+- UCI Machine Learning Repository: https://archive.ics.uci.edu/dataset/942/rt-iot2022
+- Dataset DOI: https://doi.org/10.24432/C5P338
+- Introductory paper: *Quantized Autoencoder (QAE) Intrusion Detection System for Anomaly Detection in Resource-Constrained IoT Devices Using RT-IoT2022 Dataset* (Cybersecurity, 2023)
+
+The dataset is distributed through the UCI Machine Learning Repository and is directly downloadable as a CSV file. The UCI repository page provides its licensing and citation information.
+
+### Domain and anomaly definition
+
+Each row describes a network flow using information such as:
+
+- transport protocol and network service;
+- source and destination ports;
+- packet and payload counts;
+- packet rates;
+- header sizes;
+- TCP flag counts;
+- inter-arrival times;
+- active and idle durations;
+- network-window sizes.
+
+The original `Attack_type` field contains twelve activity labels. The following three labels describe benign IoT-device activity:
+
+- `MQTT_Publish`;
+- `Thing_Speak`;
+- `Wipro_bulb`.
+
+The remaining nine labels represent attacks, including denial-of-service, ARP poisoning, network scanning, Slowloris, and SSH brute-force activity. For COPOD evaluation, benign activity is assigned label 0 and every attack category is assigned label 1.
+
+### Inspection results
+
+The downloaded CSV contains:
+
+- 123,117 rows;
+- 85 total columns;
+- 83 predictive features after excluding `id` and `Attack_type`;
+- two categorical predictors: `proto` and `service`;
+- no missing values;
+- no infinite numeric values;
+- one constant predictor, `bwd_URG_flag_count`;
+- 5,195 duplicate feature-and-label rows.
+
+After removing the row identifier and duplicate records, 117,922 unique observations remain:
+
+- 12,015 benign observations;
+- 105,907 attack observations;
+- an original attack rate of 89.8111%.
+
+The released dataset is intentionally attack-heavy. Applying COPOD directly with nearly 90% contamination would conflict with the usual unsupervised anomaly-detection assumption that anomalies form a minority.
+
+### Proposed preprocessing and evaluation construction
+
+The feasibility test therefore constructs a reproducible evaluation sample by:
+
+1. removing the non-predictive `id` column;
+2. removing duplicate feature-and-label rows before splitting;
+3. retaining all 12,015 unique benign observations;
+4. sampling 1,335 attack observations using random seed 42;
+5. guaranteeing at least one observation from each of the nine attack categories;
+6. producing a controlled attack contamination rate of 10%;
+7. one-hot encoding `proto` and `service`;
+8. removing the constant predictor;
+9. applying a stratified 60% training and 40% testing split;
+10. standardising predictors using training-set statistics.
+
+This construction is necessary to create an anomaly-detection setting while retaining diversity across all attack categories. The sampling procedure and random seed will be reported explicitly so the evaluation remains reproducible.
+
+### COPOD smoke test
+
+The preliminary COPOD smoke test used:
+
+- 13,350 observations;
+- 12,015 benign observations;
+- 1,335 attack observations;
+- 92 predictors after categorical encoding and constant-feature removal;
+- 8,010 training observations;
+- 5,340 testing observations;
+- 10% training contamination.
+
+Results:
+
+- ROC AUC: 0.6891;
+- average precision: 0.1360;
+- execution time: 0.8727 seconds.
+
+These values are preliminary feasibility evidence rather than final experimental results. COPOD completed without technical difficulty, although its modest performance suggests that the network-attack patterns are not always identifiable as marginal distributional outliers.
+
+### Novelty assessment
+
+RT-IoT2022 was released after the 2020 COPOD paper and therefore could not have appeared in its original evaluation. A targeted search did not identify a published or publicly documented COPOD evaluation on RT-IoT2022. This is reported cautiously rather than as proof that COPOD has never been applied privately or in inaccessible work.
+
+### Feasibility conclusion
+
+RT-IoT2022 should be retained as a candidate because:
+
+- it is available from an official and citable repository;
+- it contains labelled benign and attack observations;
+- its features are compatible with COPOD after minimal categorical encoding;
+- it has no missing or infinite values;
+- COPOD runs in less than one second on the constructed sample;
+- all nine attack categories can be represented;
+- its cybersecurity domain differs substantially from the original COPOD benchmarks;
+- its modest preliminary performance creates a meaningful generalisability question.
+
+The main limitation is that the released dataset is dominated by attacks. Consequently, the controlled 10% attack sample and its construction must be disclosed clearly in the proposal and final report.
