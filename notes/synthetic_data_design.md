@@ -112,16 +112,62 @@ For each pilot dataset this gives:
 - Training: 6,000 observations, including 300 anomalies.
 - Testing: 4,000 observations, including 200 anomalies.
 
-Fit COPOD using training predictors only. Use held-out labels to calculate
-ROC AUC and average precision.
+Fit PyOD COPOD using training predictors only, with n_jobs=1.
 
-Any preprocessing requiring fitted parameters must use training data only.
+Score the complete test set in one call to decision_function.
+The inspected implementation combines training and test feature values
+when calculating empirical ranks and skewness, then returns test scores.
+
+Therefore, this evaluation uses PyOD's batch/transductive scoring
+behaviour. It is not a strictly inductive evaluation with a fixed
+training-only scoring reference.
+
+Labels are used for stratified splitting and evaluation, but are not
+passed to COPOD for fitting or scoring.
+
+Calculate ROC AUC and average precision on the test rows.
+Record the package version, scoring procedure and split seed.
+Do not split test scoring into separate batches, since batch composition
+can affect scores.
+
+Any additional preprocessing requiring fitted parameters must use
+training data only.
 
 Report individual seed results and their variation. Do not change the
 generator to improve test scores.
 
 Comparison detectors and wider experiments will be specified before
 running those comparisons.
+
+### Comparison with a fixed training reference
+
+Run a second evaluation using a clearly labelled modified COPOD scorer.
+
+This variant will:
+
+- Estimate empirical feature distributions from training observations only.
+- Calculate feature skewness from training observations only.
+- Keep these quantities fixed when scoring test observations.
+- Preserve COPOD's tail-score aggregation formula.
+
+For each test value, calculate the proportions of training values less
+than or equal to it, and greater than or equal to it.
+
+To avoid taking the logarithm of zero, floor tail probabilities at
+1 / n_train. Fix this rule before examining model performance.
+
+Use identical training/test splits for both scoring procedures.
+Compare ROC AUC and average precision across the same seeds.
+
+Check that the modified scorer gives an observation the same score
+whether it is evaluated alone or alongside other test observations.
+
+Report standard PyOD results as batch/transductive evaluation.
+Report the modified scorer separately as an evaluation using a fixed
+training reference, not an exact reproduction of the supplied code.
+
+The comparison investigates sensitivity to the scoring protocol.
+It does not assume that either procedure will achieve better results.
 
 ## 9. Planned extensions
 

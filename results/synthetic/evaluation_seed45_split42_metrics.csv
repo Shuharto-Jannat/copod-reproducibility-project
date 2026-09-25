@@ -1,0 +1,5 @@
+scenario,method,data_seed,split_seed,n_features,n_train,n_test,train_anomalies,test_anomalies,test_prevalence,roc_auc,average_precision
+marginal_shift,pyod_batch,45,42,20,6000,4000,300,200,0.05,0.7323171052631577,0.1048225540279046
+marginal_shift,fixed_training_reference,45,42,20,6000,4000,300,200,0.05,0.7320263157894736,0.1023188844398661
+dependence_violation,pyod_batch,45,42,20,6000,4000,300,200,0.05,0.5226723684210527,0.04721741820217912
+dependence_violation,fixed_training_reference,45,42,20,6000,4000,300,200,0.05,0.5093407894736842,0.04611825748097722

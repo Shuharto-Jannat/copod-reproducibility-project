@@ -1,0 +1,64 @@
+{
+  "annotation_join": "row_index = zero-based data row, excluding header",
+  "annotation_path": "data_new/synthetic/marginal_shift_seed45_annotations.csv",
+  "annotations_sha256": "81ca333be1208cfcd0408c0097bd3d9e4f8b49f39070794560dcf76ba9b96a1b",
+  "anomaly_count": 500,
+  "bit_generator": "PCG64",
+  "config": {
+    "block_size": 5,
+    "n_anomalies": 500,
+    "n_features": 20,
+    "n_rows": 10000,
+    "shift_magnitude": 4.0,
+    "within_block_correlation": 0.8
+  },
+  "data_path": "data_new/synthetic/marginal_shift_seed45.csv",
+  "data_sha256": "1eaa7ba084c58d0637732943bf699a8b446fcad4be648bce9eb9d89eb677890d",
+  "duplicate_feature_rows": 0,
+  "feature_columns": [
+    "x01",
+    "x02",
+    "x03",
+    "x04",
+    "x05",
+    "x06",
+    "x07",
+    "x08",
+    "x09",
+    "x10",
+    "x11",
+    "x12",
+    "x13",
+    "x14",
+    "x15",
+    "x16",
+    "x17",
+    "x18",
+    "x19",
+    "x20"
+  ],
+  "generator_sha256": "b0a88a00d5c841fd59a8034e2db894b202b6a402f5f2c94c89db9307d6519d8a",
+  "generator_version": "1.0",
+  "label_meaning": {
+    "0": "normal process",
+    "1": "anomaly process"
+  },
+  "missing_values": 0,
+  "normal_count": 9500,
+  "random_stream_order": [
+    "normal",
+    "anomaly",
+    "shuffle"
+  ],
+  "scenario": "marginal_shift",
+  "scenario_spawn_key": [
+    0
+  ],
+  "seed": 45,
+  "shift_index_convention": "0=x01, ..., 19=x20; -1=no shifted feature",
+  "versions": {
+    "numpy": "2.5.2",
+    "pandas": "3.0.5",
+    "python": "3.12.1"
+  }
+}

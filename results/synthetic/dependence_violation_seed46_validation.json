@@ -1,0 +1,43 @@
+{
+  "annotations_sha256": "e1064798ab12174805236df912a02fd048446d8d19071617ed84c0d9aa9716f3",
+  "anomaly": {
+    "feature_mean_max": 0.05670226331250563,
+    "feature_mean_min": -0.06350401648357097,
+    "feature_std_max": 1.0452642105797763,
+    "feature_std_min": 0.93579257531751,
+    "mean_absolute_between_block_correlation": 0.03225902717327731,
+    "mean_between_block_correlation": 0.005757585508401397,
+    "mean_within_block_correlation": -0.009388457250030348,
+    "rows": 500
+  },
+  "config": {
+    "block_size": 5,
+    "n_anomalies": 500,
+    "n_features": 20,
+    "n_rows": 10000,
+    "shift_magnitude": 4.0,
+    "within_block_correlation": 0.8
+  },
+  "data_sha256": "01ec1ad3874259f84bbb96ce69b280d260ba1037c187040c8721a1d81242265d",
+  "duplicate_feature_rows": 0,
+  "integrity_checks": "passed",
+  "metadata_sha256": "bf029652609d9761ac4486ce4cb7bb586b34a1be8491ad5934f97a52a1d0fc80",
+  "missing_values": 0,
+  "normal": {
+    "feature_mean_max": 0.017095543684707424,
+    "feature_mean_min": -0.012709469788834688,
+    "feature_std_max": 1.0099486564873552,
+    "feature_std_min": 0.9956585694507872,
+    "mean_absolute_between_block_correlation": 0.005314190676873425,
+    "mean_between_block_correlation": 0.00045567403784995287,
+    "mean_within_block_correlation": 0.8005325525224976,
+    "rows": 9500
+  },
+  "scenario": "dependence_violation",
+  "seed": 46,
+  "versions": {
+    "matplotlib": "3.11.1",
+    "numpy": "2.5.2",
+    "pandas": "3.0.5"
+  }
+}

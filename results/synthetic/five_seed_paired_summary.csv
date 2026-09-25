@@ -1,0 +1,3 @@
+scenario,n_pairs,roc_auc_difference_mean,roc_auc_difference_sd,average_precision_difference_mean,average_precision_difference_sd
+dependence_violation,5,-0.0010368421052631804,0.008112777136958823,6.288769891794194e-05,0.0008191073026723717
+marginal_shift,5,-0.0034897368421052287,0.006466485045485655,-0.0019410844145038436,0.005606501055034954
