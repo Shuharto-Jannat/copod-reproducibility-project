@@ -575,3 +575,54 @@ However, it should be ranked as a low-priority candidate because:
 - preliminary discrimination is only slightly better than random.
 
 NATICUSdroid is useful as negative evidence about COPOD's limitations, but it is not recommended as the primary new dataset. If retained in the final experiment, all cleaning decisions and the resulting scope limitation must be reported explicitly.
+
+## APS Failure: scoring-protocol review — 25 September 2026
+
+Reviewed script: `scripts/smoke_test_aps_failure.py`.
+
+### Sampling and preprocessing
+
+The preliminary experiment uses 20,000 rows sampled from the supplied
+training file and 8,000 rows sampled from the supplied test file.
+Sampling is stratified by class, with random seed 42.
+
+Feature selection uses training data only. Median imputation is fitted
+on training data and then applied to test data. PyOD's documented
+standardizer fits scaling parameters on the training input and applies
+the same transformation to the test input.
+
+### Scoring protocol
+
+The script fits COPOD on training features and calls
+`model.decision_function(X_test_norm)` once on the entire test batch.
+
+The installed COPOD implementation inspected during this project
+combines stored training features with the supplied test features when
+calculating empirical tail probabilities and skewness.
+
+The existing APS results should therefore be described as a preliminary
+evaluation using standard PyOD batch/transductive scoring. They do not
+establish performance under a strictly fixed training-reference protocol.
+Test features influence the scoring reference; test labels do not enter
+the scoring calculation.
+
+### Use of labels
+
+Labels are used for stratified sampling and evaluation. Training labels
+also determine the `contamination` parameter through `y_train.mean()`.
+
+For the inspected COPOD implementation, contamination controls the
+prediction threshold rather than the raw anomaly scores. The reported
+ROC AUC and average precision use raw scores, not thresholded predictions.
+
+### Interpretation and remaining work
+
+The earlier results are retained as preliminary feasibility evidence.
+This review does not rerun the experiment or change its reported scores.
+
+A fixed training-reference APS comparison has not yet been performed.
+The small protocol differences observed in our synthetic experiments
+must not be assumed to hold for APS.
+
+This review covers the APS script only; it does not establish the
+preprocessing or scoring behaviour of the other dataset scripts.
