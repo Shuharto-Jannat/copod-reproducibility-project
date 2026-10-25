@@ -1,0 +1,51 @@
+{
+  "status": "exploratory alignment hypothesis; NOT a confirmed correction",
+  "source": "https://arxiv.org/pdf/2009.09463v1",
+  "table": "II",
+  "pdf_page": 6,
+  "source_checked_date": "2026-10-25",
+  "ieee_version_checked": false,
+  "matching_methods": [
+    "ABOD",
+    "HBOS",
+    "KNN",
+    "LOF",
+    "OCSVM"
+  ],
+  "matching_rule": "Nearest mean absolute AP difference across five baselines, among all 16 ARFF datasets.",
+  "copod_used_for_matching": false,
+  "candidate_mapping_printed_to_reproduced": {
+    "Arrhythmia": "Arrhythmia",
+    "Cardiotocography": "Cardiotocography",
+    "HeartDisease": "HeartDisease",
+    "Hepatitis": "Hepatitis",
+    "InternetAds": "InternetAds",
+    "Ionosphere": "Pima",
+    "KDDCup99": "SpamBase",
+    "Lymphography": "Stamps",
+    "Pima": "Ionosphere",
+    "Shuttle": "KDDCup99",
+    "SpamBase": "Lymphography",
+    "Stamps": "Shuttle",
+    "Waveform": "Waveform",
+    "WBC": "WBC",
+    "WDBC": "WDBC",
+    "WPBC": "WPBC"
+  },
+  "input_sha256": {
+    "results/reproduction_arff_16_10_trials/ap.csv": "a86c793e5eefe22077d73cb61575faf3e613c288ce1143e7d4e2077efb474e3d",
+    "results/reproduction_mat_14_10_trials/ap.csv": "0346383f06c497c0ae78979066818afd6b671ef2453acb7310203481ee707728",
+    "results/comparison/copod_published_vs_reproduced.csv": "f132188f0ef6a7f9afee5db2aa9d477fe621c9be4040b6221243494a957d8a3f"
+  },
+  "script_sha256": "920fbecc7f0983b233acc920913ea9532d0ceb1bf062de5cb165f5270715fad7",
+  "python": "3.12.1",
+  "numpy": "2.5.2",
+  "pandas": "3.0.5",
+  "limitations": [
+    "Exploratory analysis of existing results, not independent confirmation.",
+    "Numeric nearest matches do not establish the correct dataset identities.",
+    "Raw dataset mappings and the final IEEE table still require checking.",
+    "Only trial means are available here; no confidence intervals are estimated.",
+    "ROC results and original comparison files are unchanged."
+  ]
+}
