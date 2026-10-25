@@ -1,0 +1,378 @@
+{
+  "scope": "Current loader and raw-file consistency audit; no models run.",
+  "authors_repository": "https://github.com/winstonll/COPOD",
+  "authors_checkout_commit": "3ca17400016386546d2c199886e81bdcc859b36b",
+  "input_sha256": {
+    "scripts/reproduce_benchmark_arff.py": "31ac9f2d2cec76e96ad0dc31bd46b65e2da7180ff62bd91c37f5ca183dfe2ed9",
+    "original_code/COPOD/results/benchmark_arff.py": "4607263fff6a80048a22691496348481e9891bc269b6f14156a703ecd25a7074",
+    "results/reproduction_arff_16_10_trials/roc.csv": "621a56d5c41c8a9ca89060a02f462f1c15c20389456118ddbe7d9f0d57e86423",
+    "results/reproduction_arff_16_10_trials/ap.csv": "a86c793e5eefe22077d73cb61575faf3e613c288ce1143e7d4e2077efb474e3d",
+    "results/reproduction_arff_16_10_trials/prc.csv": "a35832d6e928c8d23877893173013969d99b94eab1ac844e6795c14c9fe715d5",
+    "results/reproduction_arff_16_10_trials/time.csv": "4e232954a4cc7d488c2b7cfa346e80e6f4b124a6a43419e1a8cee613e3da7e89",
+    "original_code/COPOD/data/semantic/Arrhythmia/Arrhythmia_withoutdupl_norm_46.arff": "21be6c53916972620178092d8c98481b0cd402fb5f59f725d79b9268ad0465de",
+    "original_code/COPOD/data/semantic/Cardiotocography/Cardiotocography_withoutdupl_norm_22.arff": "da07e979b8a68037cb92a153af41f1034de6fbfd74ab224c7ea973b9354288ec",
+    "original_code/COPOD/data/semantic/HeartDisease/HeartDisease_withoutdupl_norm_44.arff": "1c575b50c534ec2a3a3d508db3ddb4181b0b5f1ab1f75360407c4565024b13fc",
+    "original_code/COPOD/data/semantic/Hepatitis/Hepatitis_withoutdupl_norm_16.arff": "2b3121b6586bd9f534dcbc8d843667a883dea641efcccec2e95262a3f85877c3",
+    "original_code/COPOD/data/semantic/InternetAds/InternetAds_withoutdupl_norm_19.arff": "60cd5c6f1070411771a83fad2b22612d1801c0416e78f8652dee19eba280ab3d",
+    "original_code/COPOD/data/literature/Ionosphere/Ionosphere_withoutdupl_norm.arff": "1c9e1464f981cb904f42aee0fcfb2e6ad767ce7ee96891e2a2b077993a48a4f7",
+    "original_code/COPOD/data/literature/KDDCup99/KDDCup99_idf.arff": "e6031b8de9e8ccafc5d42f6a370412b0dc622acacf92a82fc548be19e8680d87",
+    "original_code/COPOD/data/literature/Lymphography/Lymphography_withoutdupl_idf.arff": "128ae9d0f40266c219dd5f7a68e631772814d36d90173f63d218cf7e465fc560",
+    "original_code/COPOD/data/semantic/Pima/Pima_withoutdupl_norm_35.arff": "1c73eaac16aa98fea1dca36ae61305ff837bd6d5c1f18aeb1b0fd6142390355c",
+    "original_code/COPOD/data/literature/Shuttle/Shuttle_withoutdupl_v01.arff": "e18c4f15b3403b4b6e2bc66b4ed67aa9a8e71f2786bc82f5b25086ab73807dd2",
+    "original_code/COPOD/data/semantic/SpamBase/SpamBase_withoutdupl_norm_40.arff": "86b09b5ddd2b394958e5205b4632d4fe96f60efbaa21e819ea204771c052695f",
+    "original_code/COPOD/data/semantic/Stamps/Stamps_withoutdupl_norm_09.arff": "994866ad133c443c0ef401e72eb0436488f95ce9e54f9043144b63cc63bdfe43",
+    "original_code/COPOD/data/literature/Waveform/Waveform_withoutdupl_v01.arff": "6e2073f72c978850690f160e4ad8ccd18241fc356113205e1cf83187069866c1",
+    "original_code/COPOD/data/literature/WBC/WBC_withoutdupl_v01.arff": "c2265e717bc90470d3c609b34d96a20f24b1e64cc3080d3134e1a7a564fd70c9",
+    "original_code/COPOD/data/literature/WDBC/WDBC_withoutdupl_v01.arff": "77adb155c40134322b009a04e4794b4c310a02c72cfbd1c2e216023f035ba2ae",
+    "original_code/COPOD/data/literature/WPBC/WPBC_withoutdupl_norm.arff": "c433325dbe9ac74c825d4e333039dc1a43039ba9cf6b467a1122c66284e1f54e"
+  },
+  "audit_script_sha256": "2c109372fd3ba17fbaaeba84917d48b7e78ef25c0980d7a5c2df24ecea43948b",
+  "python": "3.12.1",
+  "numpy": "2.5.2",
+  "pandas": "3.0.5",
+  "liac_arff": "2.5.0",
+  "datasets": [
+    {
+      "dataset": "Arrhythmia",
+      "path": "original_code/COPOD/data/semantic/Arrhythmia/Arrhythmia_withoutdupl_norm_46.arff",
+      "relation": "Arrhythmia, without duplicates, with normalization, 46 pct of outliers",
+      "id_index_zero_based": 260,
+      "outlier_index_zero_based": 259,
+      "benchmark_label_index_zero_based": 259,
+      "raw_label_values_used": [
+        "no",
+        "yes"
+      ],
+      "metadata_checks": {
+        "roc.csv": true,
+        "ap.csv": true,
+        "prc.csv": true,
+        "time.csv": true
+      }
+    },
+    {
+      "dataset": "Cardiotocography",
+      "path": "original_code/COPOD/data/semantic/Cardiotocography/Cardiotocography_withoutdupl_norm_22.arff",
+      "relation": "Cardiotocography, without duplicates, with normalization, 22 pct of outliers",
+      "id_index_zero_based": 22,
+      "outlier_index_zero_based": 21,
+      "benchmark_label_index_zero_based": 21,
+      "raw_label_values_used": [
+        "no",
+        "yes"
+      ],
+      "metadata_checks": {
+        "roc.csv": true,
+        "ap.csv": true,
+        "prc.csv": true,
+        "time.csv": true
+      }
+    },
+    {
+      "dataset": "HeartDisease",
+      "path": "original_code/COPOD/data/semantic/HeartDisease/HeartDisease_withoutdupl_norm_44.arff",
+      "relation": "Heart Disease, without duplicates, with normalization, 44 pct of outliers",
+      "id_index_zero_based": 0,
+      "outlier_index_zero_based": 14,
+      "benchmark_label_index_zero_based": 14,
+      "raw_label_values_used": [
+        "no",
+        "yes"
+      ],
+      "metadata_checks": {
+        "roc.csv": true,
+        "ap.csv": true,
+        "prc.csv": true,
+        "time.csv": true
+      }
+    },
+    {
+      "dataset": "Hepatitis",
+      "path": "original_code/COPOD/data/semantic/Hepatitis/Hepatitis_withoutdupl_norm_16.arff",
+      "relation": "Hepatitis, without duplicates, with normalization, 16 pct of outliers",
+      "id_index_zero_based": 20,
+      "outlier_index_zero_based": 19,
+      "benchmark_label_index_zero_based": 19,
+      "raw_label_values_used": [
+        "no",
+        "yes"
+      ],
+      "metadata_checks": {
+        "roc.csv": true,
+        "ap.csv": true,
+        "prc.csv": true,
+        "time.csv": true
+      }
+    },
+    {
+      "dataset": "InternetAds",
+      "path": "original_code/COPOD/data/semantic/InternetAds/InternetAds_withoutdupl_norm_19.arff",
+      "relation": "Internet Ads, without duplicates, with normalization, 19 pct of outliers",
+      "id_index_zero_based": 1555,
+      "outlier_index_zero_based": 1556,
+      "benchmark_label_index_zero_based": 1556,
+      "raw_label_values_used": [
+        "no",
+        "yes"
+      ],
+      "metadata_checks": {
+        "roc.csv": true,
+        "ap.csv": true,
+        "prc.csv": true,
+        "time.csv": true
+      }
+    },
+    {
+      "dataset": "Ionosphere",
+      "path": "original_code/COPOD/data/literature/Ionosphere/Ionosphere_withoutdupl_norm.arff",
+      "relation": "Ionosphere, without duplicates, with normalization",
+      "id_index_zero_based": 32,
+      "outlier_index_zero_based": 33,
+      "benchmark_label_index_zero_based": 33,
+      "raw_label_values_used": [
+        "no",
+        "yes"
+      ],
+      "metadata_checks": {
+        "roc.csv": true,
+        "ap.csv": true,
+        "prc.csv": true,
+        "time.csv": true
+      }
+    },
+    {
+      "dataset": "KDDCup99",
+      "path": "original_code/COPOD/data/literature/KDDCup99/KDDCup99_idf.arff",
+      "relation": "KDDCup99, idf",
+      "id_index_zero_based": 0,
+      "outlier_index_zero_based": 42,
+      "benchmark_label_index_zero_based": 41,
+      "raw_label_values_used": [
+        "0.0",
+        "0.01",
+        "0.02",
+        "0.03",
+        "0.04",
+        "0.05",
+        "0.06",
+        "0.07",
+        "0.08",
+        "0.09",
+        "0.11",
+        "0.12",
+        "0.13",
+        "0.14",
+        "0.15",
+        "0.17",
+        "0.21",
+        "0.24",
+        "0.25",
+        "0.31",
+        "0.33",
+        "0.45",
+        "0.46",
+        "0.47",
+        "0.48",
+        "0.5",
+        "0.52",
+        "0.53",
+        "0.55",
+        "0.57",
+        "0.58",
+        "0.59",
+        "0.6",
+        "0.62",
+        "0.66",
+        "0.67",
+        "0.68",
+        "0.69",
+        "0.7",
+        "0.72",
+        "0.73",
+        "0.74",
+        "0.75",
+        "0.8",
+        "0.86",
+        "0.88",
+        "0.89",
+        "0.9",
+        "0.98",
+        "1.0"
+      ],
+      "metadata_checks": {
+        "roc.csv": true,
+        "ap.csv": true,
+        "prc.csv": true,
+        "time.csv": true
+      }
+    },
+    {
+      "dataset": "Lymphography",
+      "path": "original_code/COPOD/data/literature/Lymphography/Lymphography_withoutdupl_idf.arff",
+      "relation": "Lymphography, without duplicates, idf",
+      "id_index_zero_based": 0,
+      "outlier_index_zero_based": 19,
+      "benchmark_label_index_zero_based": 19,
+      "raw_label_values_used": [
+        "no",
+        "yes"
+      ],
+      "metadata_checks": {
+        "roc.csv": true,
+        "ap.csv": true,
+        "prc.csv": true,
+        "time.csv": true
+      }
+    },
+    {
+      "dataset": "Pima",
+      "path": "original_code/COPOD/data/semantic/Pima/Pima_withoutdupl_norm_35.arff",
+      "relation": "Pima, without duplicates, with normalization, 35 pct of outliers",
+      "id_index_zero_based": 0,
+      "outlier_index_zero_based": 9,
+      "benchmark_label_index_zero_based": 9,
+      "raw_label_values_used": [
+        "no",
+        "yes"
+      ],
+      "metadata_checks": {
+        "roc.csv": true,
+        "ap.csv": true,
+        "prc.csv": true,
+        "time.csv": true
+      }
+    },
+    {
+      "dataset": "Shuttle",
+      "path": "original_code/COPOD/data/literature/Shuttle/Shuttle_withoutdupl_v01.arff",
+      "relation": "Shuttle, without duplicates, v01",
+      "id_index_zero_based": 9,
+      "outlier_index_zero_based": 10,
+      "benchmark_label_index_zero_based": 10,
+      "raw_label_values_used": [
+        "no",
+        "yes"
+      ],
+      "metadata_checks": {
+        "roc.csv": true,
+        "ap.csv": true,
+        "prc.csv": true,
+        "time.csv": true
+      }
+    },
+    {
+      "dataset": "SpamBase",
+      "path": "original_code/COPOD/data/semantic/SpamBase/SpamBase_withoutdupl_norm_40.arff",
+      "relation": "Spam Base, without duplicates, with normalization, 40 pct of outliers",
+      "id_index_zero_based": 57,
+      "outlier_index_zero_based": 58,
+      "benchmark_label_index_zero_based": 58,
+      "raw_label_values_used": [
+        "no",
+        "yes"
+      ],
+      "metadata_checks": {
+        "roc.csv": true,
+        "ap.csv": true,
+        "prc.csv": true,
+        "time.csv": true
+      }
+    },
+    {
+      "dataset": "Stamps",
+      "path": "original_code/COPOD/data/semantic/Stamps/Stamps_withoutdupl_norm_09.arff",
+      "relation": "Stamps, without duplicates, with normalization, 09 pct of outliers",
+      "id_index_zero_based": 9,
+      "outlier_index_zero_based": 10,
+      "benchmark_label_index_zero_based": 10,
+      "raw_label_values_used": [
+        "no",
+        "yes"
+      ],
+      "metadata_checks": {
+        "roc.csv": true,
+        "ap.csv": true,
+        "prc.csv": true,
+        "time.csv": true
+      }
+    },
+    {
+      "dataset": "Waveform",
+      "path": "original_code/COPOD/data/literature/Waveform/Waveform_withoutdupl_v01.arff",
+      "relation": "Waveform, without duplicates, v01",
+      "id_index_zero_based": 21,
+      "outlier_index_zero_based": 22,
+      "benchmark_label_index_zero_based": 22,
+      "raw_label_values_used": [
+        "no",
+        "yes"
+      ],
+      "metadata_checks": {
+        "roc.csv": true,
+        "ap.csv": true,
+        "prc.csv": true,
+        "time.csv": true
+      }
+    },
+    {
+      "dataset": "WBC",
+      "path": "original_code/COPOD/data/literature/WBC/WBC_withoutdupl_v01.arff",
+      "relation": "WBC, without duplicates, v01",
+      "id_index_zero_based": 9,
+      "outlier_index_zero_based": 10,
+      "benchmark_label_index_zero_based": 10,
+      "raw_label_values_used": [
+        "no",
+        "yes"
+      ],
+      "metadata_checks": {
+        "roc.csv": true,
+        "ap.csv": true,
+        "prc.csv": true,
+        "time.csv": true
+      }
+    },
+    {
+      "dataset": "WDBC",
+      "path": "original_code/COPOD/data/literature/WDBC/WDBC_withoutdupl_v01.arff",
+      "relation": "WDBC, without duplicates, v01",
+      "id_index_zero_based": 30,
+      "outlier_index_zero_based": 31,
+      "benchmark_label_index_zero_based": 31,
+      "raw_label_values_used": [
+        "no",
+        "yes"
+      ],
+      "metadata_checks": {
+        "roc.csv": true,
+        "ap.csv": true,
+        "prc.csv": true,
+        "time.csv": true
+      }
+    },
+    {
+      "dataset": "WPBC",
+      "path": "original_code/COPOD/data/literature/WPBC/WPBC_withoutdupl_norm.arff",
+      "relation": "WPBC, without duplicates, with normalization",
+      "id_index_zero_based": 33,
+      "outlier_index_zero_based": 34,
+      "benchmark_label_index_zero_based": 34,
+      "raw_label_values_used": [
+        "no",
+        "yes"
+      ],
+      "metadata_checks": {
+        "roc.csv": true,
+        "ap.csv": true,
+        "prc.csv": true,
+        "time.csv": true
+      }
+    }
+  ],
+  "limitations": [
+    "Agreement with saved metadata does not prove which exact bytes were used historically.",
+    "Matching dimensions can hide an included ID and an omitted measurement.",
+    "This audit does not calculate corrected model scores or confirm a paper-table error.",
+    "The authors' helper is tested on the same supplied files, not its original path list."
+  ]
+}

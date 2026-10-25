@@ -1,0 +1,17 @@
+dataset,status,issues,n_rows,n_predictors_loaded,n_predictors_by_name,benchmark_label_attribute,benchmark_positive_rows,named_outlier_positive_rows,label_disagreements,unexpected_predictors,omitted_predictors,all_saved_metadata_match,authors_project_loader_agreement
+Arrhythmia,PASS,,450,259,259,outlier,206,206,0,,,True,True
+Cardiotocography,PASS,,2114,21,21,outlier,466,466,0,,,True,True
+HeartDisease,ISSUE,wrong predictor columns,270,13,13,outlier,120,120,0,id,Thal,True,True
+Hepatitis,PASS,,80,19,19,outlier,13,13,0,,,True,True
+InternetAds,PASS,,1966,1555,1555,outlier,368,368,0,,,True,True
+Ionosphere,PASS,,351,32,32,outlier,126,126,0,,,True,True
+KDDCup99,ISSUE,wrong label column; wrong predictor columns,60839,41,41,dst_host_srv_rerror_rate,95,246,339,id,dst_host_srv_rerror_rate,True,True
+Lymphography,ISSUE,wrong predictor columns,148,18,18,outlier,6,6,0,id,att19,True,True
+Pima,ISSUE,wrong predictor columns,768,8,8,outlier,268,268,0,id,att8,True,True
+Shuttle,PASS,,1013,9,9,outlier,13,13,0,,,True,True
+SpamBase,PASS,,4207,57,57,outlier,1679,1679,0,,,True,True
+Stamps,PASS,,340,9,9,outlier,31,31,0,,,True,True
+Waveform,PASS,,3443,21,21,outlier,100,100,0,,,True,True
+WBC,PASS,,223,9,9,outlier,10,10,0,,,True,True
+WDBC,PASS,,367,30,30,outlier,10,10,0,,,True,True
+WPBC,PASS,,198,33,33,outlier,47,47,0,,,True,True
