@@ -1,0 +1,2 @@
+dataset,split_seed,n_train,n_test,n_features,train_positives,test_positives,test_prevalence,metric_status,roc_auc,roc_auc_rounded_4dp,average_precision,average_precision_rounded_4dp,nonfinite_intermediate_O_entries,test_rows_with_nonfinite_contributions,nonfinite_final_scores,recorded_warning_count
+satimage-2,6,3481,2322,36,42,29,0.012489233419465978,ok,0.9879092289877739,0.9879,0.8218753664081848,0.8219,0,0,0,0

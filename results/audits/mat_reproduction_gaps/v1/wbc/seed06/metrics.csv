@@ -1,0 +1,2 @@
+dataset,split_seed,n_train,n_test,n_features,train_positives,test_positives,test_prevalence,metric_status,roc_auc,roc_auc_rounded_4dp,average_precision,average_precision_rounded_4dp,nonfinite_intermediate_O_entries,test_rows_with_nonfinite_contributions,nonfinite_final_scores,recorded_warning_count
+wbc,6,226,152,30,15,6,0.039473684210526314,ok,0.9714611872146118,0.9715,0.6936202686202686,0.6936,0,0,0,0

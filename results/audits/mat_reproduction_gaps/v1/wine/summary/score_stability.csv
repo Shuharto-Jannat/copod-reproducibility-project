@@ -1,0 +1,11 @@
+dataset,split_seed,reference_split_seed,n_rows,max_absolute_score_difference,n_rows_differing_beyond_tolerance,absolute_tolerance
+wine,0,0,129,0.0,0,1e-10
+wine,1,0,129,0.0,0,1e-10
+wine,2,0,129,0.0,0,1e-10
+wine,3,0,129,0.0,0,1e-10
+wine,4,0,129,0.0,0,1e-10
+wine,5,0,129,0.0,0,1e-10
+wine,6,0,129,0.0,0,1e-10
+wine,7,0,129,0.0,0,1e-10
+wine,8,0,129,0.0,0,1e-10
+wine,9,0,129,0.0,0,1e-10

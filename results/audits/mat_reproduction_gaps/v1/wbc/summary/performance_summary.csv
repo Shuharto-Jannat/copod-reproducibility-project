@@ -1,0 +1,2 @@
+dataset,n_planned_trials,test_positives_min,test_positives_max,test_prevalence_mean,roc_auc_n_valid,roc_auc_mean,roc_auc_sd,roc_auc_min,roc_auc_max,average_precision_n_valid,average_precision_mean,average_precision_sd,average_precision_min,average_precision_max
+wbc,10,5,13,0.061184210526315785,10,0.9590327129206434,0.008482223717575045,0.9401360544217687,0.9714611872146118,10,0.6952899137614045,0.1060655429591527,0.46507070351463947,0.8422939068100359

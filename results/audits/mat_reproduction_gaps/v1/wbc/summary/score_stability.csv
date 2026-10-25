@@ -1,0 +1,11 @@
+dataset,split_seed,reference_split_seed,n_rows,max_absolute_score_difference,n_rows_differing_beyond_tolerance,absolute_tolerance
+wbc,0,0,378,0.0,0,1e-10
+wbc,1,0,378,0.0,0,1e-10
+wbc,2,0,378,0.0,0,1e-10
+wbc,3,0,378,0.0,0,1e-10
+wbc,4,0,378,0.0,0,1e-10
+wbc,5,0,378,0.0,0,1e-10
+wbc,6,0,378,0.0,0,1e-10
+wbc,7,0,378,0.0,0,1e-10
+wbc,8,0,378,0.0,0,1e-10
+wbc,9,0,378,0.0,0,1e-10

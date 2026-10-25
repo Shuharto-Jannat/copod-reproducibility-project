@@ -1,0 +1,11 @@
+dataset,split_seed,reference_split_seed,n_rows,max_absolute_score_difference,n_rows_differing_beyond_tolerance,absolute_tolerance
+satimage-2,0,0,5803,0.0,0,1e-10
+satimage-2,1,0,5803,0.0,0,1e-10
+satimage-2,2,0,5803,0.0,0,1e-10
+satimage-2,3,0,5803,0.0,0,1e-10
+satimage-2,4,0,5803,0.0,0,1e-10
+satimage-2,5,0,5803,0.0,0,1e-10
+satimage-2,6,0,5803,0.0,0,1e-10
+satimage-2,7,0,5803,0.0,0,1e-10
+satimage-2,8,0,5803,0.0,0,1e-10
+satimage-2,9,0,5803,0.0,0,1e-10

@@ -1,0 +1,60 @@
+{
+  "configuration": {
+    "schema": "mat_reproduction_diagnostic_v1",
+    "python": "3.12.1",
+    "package_versions": {
+      "numpy": "2.5.2",
+      "pandas": "3.0.5",
+      "scipy": "1.18.0",
+      "scikit-learn": "1.9.0",
+      "pyod": "3.6.4",
+      "statsmodels": "0.14.6"
+    },
+    "authors_commit": "3ca17400016386546d2c199886e81bdcc859b36b",
+    "test_fraction": 0.4,
+    "stratified": false,
+    "subsampled": false,
+    "scaling": "PyOD standardizer fitted on training features and applied to test features",
+    "standardizer_source_sha256": "a7a949cf79f2a52eec65daa1be40b8638c37e1a6d0ff021a97ee8f7ce96a9c51",
+    "scoring_reference": "Authors' implementation: training features plus entire test batch",
+    "threshold_policy": "Full-dataset positive fraction; raw scores evaluated, threshold predictions unused",
+    "feature_names": "MAT X column indices; no semantic feature names assumed",
+    "dataset": "satimage-2",
+    "n_rows": 5803,
+    "n_features": 36,
+    "n_positive": 71,
+    "raw_X_dtype": "float64",
+    "raw_y_dtype": "float64",
+    "duplicate_feature_rows": 2,
+    "full_dataset_constant_columns_zero_based": [],
+    "input_sha256": {
+      "scripts/diagnose_mat_reproduction_gaps.py": "b62915b5655d59c37055ef1a665af0fe093acfaf219d2d570a1695f7dfb14df9",
+      "scripts/reproduce_benchmark.py": "ddaccd05fcb1c27623cadd445a6828fbea085cc4170123c1e655ab737dc4d798",
+      "original_code/COPOD/results/benchmark_mat.py": "0e6e6f91b4770d15b113b106771c3ef567c63b1b2c61a1b1e78c3cf9c20d8f67",
+      "original_code/COPOD/models/cod.py": "e0e526df2b663a0983f6ac279248ae448318479112619c8861e0d0a1a84cb202",
+      "results/comparison/copod_published_vs_reproduced.csv": "f132188f0ef6a7f9afee5db2aa9d477fe621c9be4040b6221243494a957d8a3f",
+      "results/reproduction_mat_14_10_trials/roc.csv": "d72727ae39ab0e97543aaa0dab8eb4c01c456c7f2091cf2d73a7eb772fdc7c2d",
+      "results/reproduction_mat_14_10_trials/ap.csv": "0346383f06c497c0ae78979066818afd6b671ef2453acb7310203481ee707728",
+      "results/reproduction_mat_14_10_trials/prc.csv": "7f7a2abdf7312a398540242f19a606fd7a876e9696b49a367618b395e2a20e0d",
+      "results/reproduction_mat_14_10_trials/time.csv": "998eeef01079a1d7c62ca486c56f22f7796aa34cb980f9e397c5dd425e2aa989",
+      "original_code/COPOD/data/satimage-2.mat": "95c37a07cea2cb201f6900d14f521510e10b6b2f0074c06ac46d3157440ec67b"
+    },
+    "split_seed": 4
+  },
+  "contamination_parameter": 0.0122350508357746,
+  "fit_and_score_seconds": 0.08468409700071788,
+  "training_constant_columns_zero_based": [],
+  "nonfinite_intermediate_counts": {
+    "U_l": 0,
+    "U_r": 0,
+    "U_skew": 0,
+    "O": 0
+  },
+  "warnings": [],
+  "final_score_replacement": "None; the original benchmark's nan_to_num was unnecessary for finite scores.",
+  "output_sha256": {
+    "metrics.csv": "403680d2958d30963f5d0f870627497a1dfda139dc434f8383352e2ab2df2ec5",
+    "scores.csv": "33b58d08036df24d159f9db4dc7a6ee142becccbbcc722ef7f9532a3799ef61c",
+    "split.csv": "37c2b3aa280d2fb105caf3303e0efa6fa4f041adb9d601d97407ebce248b1617"
+  }
+}

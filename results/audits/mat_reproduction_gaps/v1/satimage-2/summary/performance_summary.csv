@@ -1,0 +1,2 @@
+dataset,n_planned_trials,test_positives_min,test_positives_max,test_prevalence_mean,roc_auc_n_valid,roc_auc_mean,roc_auc_sd,roc_auc_min,roc_auc_max,average_precision_n_valid,average_precision_mean,average_precision_sd,average_precision_min,average_precision_max
+satimage-2,10,19,37,0.012446167097329888,10,0.9784390659909306,0.014128996347680674,0.9562954639541072,0.9959796301259716,10,0.7824229889931926,0.07348268310218618,0.6462717564519035,0.8862514997097948

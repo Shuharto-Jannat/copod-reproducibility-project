@@ -1,0 +1,2 @@
+dataset,n_planned_trials,test_positives_min,test_positives_max,test_prevalence_mean,roc_auc_n_valid,roc_auc_mean,roc_auc_sd,roc_auc_min,roc_auc_max,average_precision_n_valid,average_precision_mean,average_precision_sd,average_precision_min,average_precision_max
+wine,10,1,5,0.06538461538461537,10,0.8908787025448477,0.06220992656420979,0.7702127659574469,0.9617021276595745,10,0.4323912267109941,0.1520299492445241,0.16666666666666666,0.6926190476190477
