@@ -1,0 +1,81 @@
+dataset,split_seed,feature_selection,training_constant_features,nonfinite_intermediate_entries,test_rows_with_nonfinite_contributions,recorded_warning_count,warnings,full_dataset_label_disagreements,test_label_disagreements
+HeartDisease,0,legacy,[],0,0,0,[],0,0
+HeartDisease,0,corrected,[],0,0,0,[],0,0
+HeartDisease,1,legacy,[],0,0,0,[],0,0
+HeartDisease,1,corrected,[],0,0,0,[],0,0
+HeartDisease,2,legacy,[],0,0,0,[],0,0
+HeartDisease,2,corrected,[],0,0,0,[],0,0
+HeartDisease,3,legacy,[],0,0,0,[],0,0
+HeartDisease,3,corrected,[],0,0,0,[],0,0
+HeartDisease,4,legacy,[],0,0,0,[],0,0
+HeartDisease,4,corrected,[],0,0,0,[],0,0
+HeartDisease,5,legacy,[],0,0,0,[],0,0
+HeartDisease,5,corrected,[],0,0,0,[],0,0
+HeartDisease,6,legacy,[],0,0,0,[],0,0
+HeartDisease,6,corrected,[],0,0,0,[],0,0
+HeartDisease,7,legacy,[],0,0,0,[],0,0
+HeartDisease,7,corrected,[],0,0,0,[],0,0
+HeartDisease,8,legacy,[],0,0,0,[],0,0
+HeartDisease,8,corrected,[],0,0,0,[],0,0
+HeartDisease,9,legacy,[],0,0,0,[],0,0
+HeartDisease,9,corrected,[],0,0,0,[],0,0
+KDDCup99,0,legacy,"[""land"", ""num_outbounds_cmds""]",121678,24336,0,[],339,126
+KDDCup99,0,corrected,"[""land"", ""num_outbounds_cmds""]",121678,24336,0,[],339,126
+KDDCup99,1,legacy,"[""land"", ""num_outbounds_cmds""]",121678,24336,0,[],339,144
+KDDCup99,1,corrected,"[""land"", ""num_outbounds_cmds""]",121678,24336,0,[],339,144
+KDDCup99,2,legacy,"[""land"", ""num_outbounds_cmds""]",121678,24336,0,[],339,123
+KDDCup99,2,corrected,"[""land"", ""num_outbounds_cmds""]",121678,24336,0,[],339,123
+KDDCup99,3,legacy,"[""land"", ""urgent"", ""num_outbounds_cmds""]",121678,24336,0,[],339,130
+KDDCup99,3,corrected,"[""land"", ""urgent"", ""num_outbounds_cmds""]",121678,24336,0,[],339,130
+KDDCup99,4,legacy,"[""land"", ""num_outbounds_cmds""]",121678,24336,0,[],339,144
+KDDCup99,4,corrected,"[""land"", ""num_outbounds_cmds""]",121678,24336,0,[],339,144
+KDDCup99,5,legacy,"[""land"", ""num_outbounds_cmds""]",121678,24336,0,[],339,147
+KDDCup99,5,corrected,"[""land"", ""num_outbounds_cmds""]",121678,24336,0,[],339,147
+KDDCup99,6,legacy,"[""land"", ""urgent"", ""num_outbounds_cmds""]",121678,24336,0,[],339,143
+KDDCup99,6,corrected,"[""land"", ""urgent"", ""num_outbounds_cmds""]",121678,24336,0,[],339,143
+KDDCup99,7,legacy,"[""land"", ""num_outbounds_cmds""]",121678,24336,0,[],339,142
+KDDCup99,7,corrected,"[""land"", ""num_outbounds_cmds""]",121678,24336,0,[],339,142
+KDDCup99,8,legacy,"[""land"", ""num_outbounds_cmds""]",121678,24336,0,[],339,129
+KDDCup99,8,corrected,"[""land"", ""num_outbounds_cmds""]",121678,24336,0,[],339,129
+KDDCup99,9,legacy,"[""land"", ""num_outbounds_cmds""]",121678,24336,0,[],339,129
+KDDCup99,9,corrected,"[""land"", ""num_outbounds_cmds""]",121678,24336,0,[],339,129
+Lymphography,0,legacy,[],0,0,0,[],0,0
+Lymphography,0,corrected,[],0,0,0,[],0,0
+Lymphography,1,legacy,[],0,0,0,[],0,0
+Lymphography,1,corrected,[],0,0,0,[],0,0
+Lymphography,2,legacy,[],0,0,0,[],0,0
+Lymphography,2,corrected,[],0,0,0,[],0,0
+Lymphography,3,legacy,[],0,0,0,[],0,0
+Lymphography,3,corrected,[],0,0,0,[],0,0
+Lymphography,4,legacy,[],0,0,0,[],0,0
+Lymphography,4,corrected,[],0,0,0,[],0,0
+Lymphography,5,legacy,[],0,0,0,[],0,0
+Lymphography,5,corrected,[],0,0,0,[],0,0
+Lymphography,6,legacy,[],0,0,0,[],0,0
+Lymphography,6,corrected,[],0,0,0,[],0,0
+Lymphography,7,legacy,[],0,0,0,[],0,0
+Lymphography,7,corrected,[],0,0,0,[],0,0
+Lymphography,8,legacy,[],0,0,0,[],0,0
+Lymphography,8,corrected,[],0,0,0,[],0,0
+Lymphography,9,legacy,[],0,0,0,[],0,0
+Lymphography,9,corrected,[],0,0,0,[],0,0
+Pima,0,legacy,[],0,0,0,[],0,0
+Pima,0,corrected,[],0,0,0,[],0,0
+Pima,1,legacy,[],0,0,0,[],0,0
+Pima,1,corrected,[],0,0,0,[],0,0
+Pima,2,legacy,[],0,0,0,[],0,0
+Pima,2,corrected,[],0,0,0,[],0,0
+Pima,3,legacy,[],0,0,0,[],0,0
+Pima,3,corrected,[],0,0,0,[],0,0
+Pima,4,legacy,[],0,0,0,[],0,0
+Pima,4,corrected,[],0,0,0,[],0,0
+Pima,5,legacy,[],0,0,0,[],0,0
+Pima,5,corrected,[],0,0,0,[],0,0
+Pima,6,legacy,[],0,0,0,[],0,0
+Pima,6,corrected,[],0,0,0,[],0,0
+Pima,7,legacy,[],0,0,0,[],0,0
+Pima,7,corrected,[],0,0,0,[],0,0
+Pima,8,legacy,[],0,0,0,[],0,0
+Pima,8,corrected,[],0,0,0,[],0,0
+Pima,9,legacy,[],0,0,0,[],0,0
+Pima,9,corrected,[],0,0,0,[],0,0

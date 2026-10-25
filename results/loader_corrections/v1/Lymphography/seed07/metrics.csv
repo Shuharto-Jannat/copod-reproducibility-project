@@ -1,0 +1,4 @@
+dataset,split_seed,condition,feature_selection,evaluation_labels,n_train,n_test,n_features,train_positives,test_positives,test_prevalence,roc_auc,average_precision,metric_status,roc_auc_rounded_4dp,average_precision_rounded_4dp
+Lymphography,7,legacy_columns_legacy_labels,legacy,legacy,88,60,18,4,2,0.03333333333333333,1.0,1.0,ok,1.0,1.0
+Lymphography,7,legacy_columns_true_labels,legacy,true,88,60,18,4,2,0.03333333333333333,1.0,1.0,ok,1.0,1.0
+Lymphography,7,corrected_columns_true_labels,corrected,true,88,60,18,4,2,0.03333333333333333,1.0,1.0,ok,1.0,1.0

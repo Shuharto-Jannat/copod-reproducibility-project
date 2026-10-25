@@ -1,0 +1,4 @@
+dataset,split_seed,condition,feature_selection,evaluation_labels,n_train,n_test,n_features,train_positives,test_positives,test_prevalence,roc_auc,average_precision,metric_status,roc_auc_rounded_4dp,average_precision_rounded_4dp
+KDDCup99,7,legacy_columns_legacy_labels,legacy,legacy,36503,24336,41,60,35,0.001438198553583169,0.9973957567883744,0.23045189184080245,ok,0.9974,0.2305
+KDDCup99,7,legacy_columns_true_labels,legacy,true,36503,24336,41,137,109,0.0044789612097304405,0.9922775521889106,0.42554366856667325,ok,0.9923,0.4255
+KDDCup99,7,corrected_columns_true_labels,corrected,true,36503,24336,41,137,109,0.0044789612097304405,0.9914065851921221,0.33872415348260027,ok,0.9914,0.3387

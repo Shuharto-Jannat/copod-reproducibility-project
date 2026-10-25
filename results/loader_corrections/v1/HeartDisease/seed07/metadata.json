@@ -1,0 +1,103 @@
+{
+  "configuration": {
+    "schema": "arff_loader_corrections_v1",
+    "python": "3.12.1",
+    "package_versions": {
+      "numpy": "2.5.2",
+      "pandas": "3.0.5",
+      "scipy": "1.18.0",
+      "scikit-learn": "1.9.0",
+      "pyod": "3.6.4",
+      "statsmodels": "0.14.6",
+      "liac-arff": "2.5.0"
+    },
+    "authors_commit": "3ca17400016386546d2c199886e81bdcc859b36b",
+    "test_fraction": 0.4,
+    "stratified": false,
+    "scaling": "PyOD standardizer, fitted on training features separately for each feature set",
+    "scoring_reference": "Authors' implementation: train plus entire test batch",
+    "threshold_policy": "Legacy full-dataset positive fraction in both fits; threshold and binary predictions unused",
+    "conditions": [
+      "legacy_columns_legacy_labels",
+      "legacy_columns_true_labels",
+      "corrected_columns_true_labels"
+    ],
+    "interpretation_limits": [
+      "Label-only correction reuses the exact legacy score array; it is not a new detector.",
+      "Feature correction removes ID and restores omitted measurements together.",
+      "Repeated splits overlap; they are not independent datasets.",
+      "Software versions may differ from earlier runs; preserve the rerun legacy baseline.",
+      "This run does not reproduce other detectors or establish a published table correction."
+    ],
+    "input_sha256": {
+      "scripts/reproduce_benchmark_arff.py": "31ac9f2d2cec76e96ad0dc31bd46b65e2da7180ff62bd91c37f5ca183dfe2ed9",
+      "original_code/COPOD/models/cod.py": "e0e526df2b663a0983f6ac279248ae448318479112619c8861e0d0a1a84cb202",
+      "scripts/audit_arff_dataset_mapping.py": "2c109372fd3ba17fbaaeba84917d48b7e78ef25c0980d7a5c2df24ecea43948b",
+      "scripts/evaluate_arff_loader_corrections.py": "d8f22540dc7f4989afb7cfcd3017dd046895c6a422b5dfcf607cd3fcab67b606",
+      "results/reproduction_arff_16_10_trials/roc.csv": "621a56d5c41c8a9ca89060a02f462f1c15c20389456118ddbe7d9f0d57e86423",
+      "results/reproduction_arff_16_10_trials/ap.csv": "a86c793e5eefe22077d73cb61575faf3e613c288ce1143e7d4e2077efb474e3d",
+      "results/reproduction_arff_16_10_trials/prc.csv": "a35832d6e928c8d23877893173013969d99b94eab1ac844e6795c14c9fe715d5",
+      "results/reproduction_arff_16_10_trials/time.csv": "4e232954a4cc7d488c2b7cfa346e80e6f4b124a6a43419e1a8cee613e3da7e89",
+      "original_code/COPOD/data/semantic/HeartDisease/HeartDisease_withoutdupl_norm_44.arff": "1c575b50c534ec2a3a3d508db3ddb4181b0b5f1ab1f75360407c4565024b13fc"
+    },
+    "dataset": "HeartDisease",
+    "split_seed": 7,
+    "feature_columns": {
+      "legacy": [
+        "id",
+        "Age",
+        "Sex",
+        "ChestPainType",
+        "RestBloodPressure",
+        "SerumCholestoral",
+        "FastingBloodSugar",
+        "ResElectrocardiographic",
+        "MaxHeartRate",
+        "ExerciseInduced",
+        "Oldpeak",
+        "Slope",
+        "MajorVessels"
+      ],
+      "corrected": [
+        "Age",
+        "Sex",
+        "ChestPainType",
+        "RestBloodPressure",
+        "SerumCholestoral",
+        "FastingBloodSugar",
+        "ResElectrocardiographic",
+        "MaxHeartRate",
+        "ExerciseInduced",
+        "Oldpeak",
+        "Slope",
+        "MajorVessels",
+        "Thal"
+      ]
+    },
+    "relation": "Heart Disease, without duplicates, with normalization, 44 pct of outliers"
+  },
+  "contamination_parameter_both_runs": 0.4444444444444444,
+  "full_dataset_label_disagreements": 0,
+  "test_label_disagreements": 0,
+  "score_runs": {
+    "legacy": {
+      "fit_and_score_seconds": 0.010288490000675665,
+      "training_constant_features": [],
+      "nonfinite_intermediate_entries": 0,
+      "test_rows_with_nonfinite_contributions": 0,
+      "warnings": []
+    },
+    "corrected": {
+      "fit_and_score_seconds": 0.009299707000536728,
+      "training_constant_features": [],
+      "nonfinite_intermediate_entries": 0,
+      "test_rows_with_nonfinite_contributions": 0,
+      "warnings": []
+    }
+  },
+  "output_sha256": {
+    "metrics.csv": "089d4f68546784b5dadfbc71840fbf4fc53e07fe5055df7ebb04303adb993f04",
+    "scores.csv": "c19755f2c99878bc652677a5a8ba7600fded06abbcae03fa2fb88f33a52a3abe",
+    "split.csv": "04fd84a1adc7bd9ee9458c718d574cc8055f01d8617bc09bb1f34bd78f1b834a"
+  }
+}

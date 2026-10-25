@@ -1,0 +1,4 @@
+dataset,split_seed,condition,feature_selection,evaluation_labels,n_train,n_test,n_features,train_positives,test_positives,test_prevalence,roc_auc,average_precision,metric_status,roc_auc_rounded_4dp,average_precision_rounded_4dp
+HeartDisease,5,legacy_columns_legacy_labels,legacy,legacy,162,108,13,75,45,0.4166666666666667,0.6828924162257496,0.5929567292837985,ok,0.6829,0.593
+HeartDisease,5,legacy_columns_true_labels,legacy,true,162,108,13,75,45,0.4166666666666667,0.6828924162257496,0.5929567292837985,ok,0.6829,0.593
+HeartDisease,5,corrected_columns_true_labels,corrected,true,162,108,13,75,45,0.4166666666666667,0.7216931216931217,0.6476860712959857,ok,0.7217,0.6477

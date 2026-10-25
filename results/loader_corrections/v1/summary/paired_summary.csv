@@ -1,0 +1,13 @@
+dataset,comparison,n_planned_pairs,roc_auc_n_valid_pairs,roc_auc_difference_mean,roc_auc_difference_sd,roc_auc_higher_count,roc_auc_tied_count,roc_auc_lower_count,average_precision_n_valid_pairs,average_precision_difference_mean,average_precision_difference_sd,average_precision_higher_count,average_precision_tied_count,average_precision_lower_count
+HeartDisease,label_correction_only,10,10,0.0,0.0,0,10,0,10,0.0,0.0,0,10,0
+HeartDisease,column_correction_with_true_labels,10,10,0.04742991690980832,0.01159814438955665,10,0,0,10,0.04770400867954043,0.013975088975282015,10,0,0
+HeartDisease,combined_correction,10,10,0.04742991690980832,0.01159814438955665,10,0,0,10,0.04770400867954043,0.013975088975282015,10,0,0
+KDDCup99,label_correction_only,10,10,-0.004361685182168751,0.0008942219084693066,0,0,10,10,0.18886263597588937,0.06807927156360177,10,0,0
+KDDCup99,column_correction_with_true_labels,10,10,-0.0008419663822437862,9.642896652195993e-05,0,0,10,10,-0.10548138753058396,0.013851416126852745,0,0,10
+KDDCup99,combined_correction,10,10,-0.005203651564412537,0.0009073146801338785,0,0,10,10,0.0833812484453054,0.06456943425939107,9,0,1
+Lymphography,label_correction_only,10,10,0.0,0.0,0,10,0,10,0.0,0.0,0,10,0
+Lymphography,column_correction_with_true_labels,10,10,0.0,0.0,0,10,0,10,0.0,0.0,0,10,0
+Lymphography,combined_correction,10,10,0.0,0.0,0,10,0,10,0.0,0.0,0,10,0
+Pima,label_correction_only,10,10,0.0,0.0,0,10,0,10,0.0,0.0,0,10,0
+Pima,column_correction_with_true_labels,10,10,0.0052738188101337236,0.012634727442348833,7,0,3,10,-0.0038877505551904333,0.015291298992859222,4,0,6
+Pima,combined_correction,10,10,0.0052738188101337236,0.012634727442348833,7,0,3,10,-0.0038877505551904333,0.015291298992859222,4,0,6
