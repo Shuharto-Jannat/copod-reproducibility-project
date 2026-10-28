@@ -1,0 +1,3 @@
+method,roc_points,pr_points,roc_curve_area,saved_roc_auc,noninterpolated_curve_ap,saved_average_precision,checks
+pyod_batch,16001,16001,0.9776901119999999,0.977690112,0.5317405564547864,0.5317405564547864,passed
+fixed_training_reference,15894,15894,0.9778210133333333,0.9778210133333332,0.5342305936020094,0.5342305936020094,passed
