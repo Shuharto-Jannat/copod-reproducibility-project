@@ -1,0 +1,5 @@
+profile_id,partition,row_index_zero_based,class,label
+profile_000001,train,9621,neg,0
+profile_000001,train,10543,neg,0
+profile_000002,train,57512,neg,0
+profile_000002,test,9070,neg,0

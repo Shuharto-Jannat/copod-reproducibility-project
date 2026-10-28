@@ -1,0 +1,83 @@
+{
+  "schema": "aps_full_evaluation_v1",
+  "run_name": "v1",
+  "plan_commit": "f005e7041ab47449e2f7fe24a60c70452d6ed247",
+  "plan_sha256": "a9e1d152c94caf7012a8a8cab732d91f0a9672fd560abba037ab020e66d7f3b7",
+  "input_sha256": {
+    "data_new/aps_failure/aps_failure_training_set.csv": "bb484302e3a3a1c8ef5e1f0129c4dc7cbd58f350867f95b575461ca21ab6b9da",
+    "data_new/aps_failure/aps_failure_test_set.csv": "2cdf6f7661c7b4c63333c93cdec36a3a82350176b604a2312cf82799fb2712f3",
+    "data_new/aps_failure/aps_failure_description.txt": "57b1eb3c551a678ffc1c8112e5b34c566dd16457642563f58aeb3ca65beeb820",
+    "data_new/aps_failure/aps_failure.zip": "5504d0402f54faaf97ac0ca085a621645763f5cfea2eb29c592b057d43d4db89",
+    "scripts/audit_aps_full_data.py": "36608b280f596cf405c7b4c5ea338a24d6d0aeb827f7b7faf5b87abc28d088ee",
+    "notes/aps_full_evaluation_plan.md": "a9e1d152c94caf7012a8a8cab732d91f0a9672fd560abba037ab020e66d7f3b7",
+    "scripts/evaluate_aps_full_data.py": "caf4bc9022fd15e177ae80a7581db60c6a23c98db649aa2fe2ba88d67a2de2dc",
+    "scripts/evaluate_synthetic_copod.py": "dc53b73026ca9dc9f1ecbc5cbb2397d7b75167347898a92b12376bdd7964e4e5",
+    "results/audits/aps_full_data/v1/audit_metadata.json": "69f77df73d4b1faa823ec71d0ad2d717505dd6bb92888507462966788360bc9f",
+    "results/audits/aps_full_data/v1/feature_audit.csv": "82707840cefa415ed30610839b7151e9c72b9860343871f4dc51471054e83c1d",
+    "results/audits/aps_full_data/v1/duplicate_groups.csv": "e15a809d0e19734a0b6d855e27a6ee386c2f8387e02dbd9c195304695cc39769",
+    "results/audits/aps_full_data/v1/duplicate_members.csv": "9a67fb1911842ab04f0591e69fa4c3b828a5fac3ed67dacfbe4b6424e461f592"
+  },
+  "implementation_sha256": {
+    "pyod_copod_module": "87817ce056eb8bb9bf75fd76ea5e8f8811cddb8dfb9f131212c1635b4fb1b2de",
+    "pyod_ecdf_module": "b9f3cd49d3559dc710b2d7668b430f2a484923675a3b033bd5ff3ac35bd313be",
+    "isolation_forest_module": "9be48f3b39c17bd9c27d57a01e4a90340a55da70004b4230398333e9b0164ed7",
+    "simple_imputer_module": "863ce9620e3a1808927af9c959899ed713dd85cb844c261f88268032d87561ca",
+    "standard_scaler_module": "361f058b427be49ff21c7ac10cda03ac59e2768a13b8d71a9f69c27b69558133",
+    "scipy_skew_module": "599cbc8896fb05a4743c31e55f1f587682d5a42614d1199aea55c9754e990437"
+  },
+  "versions": {
+    "numpy": "2.5.2",
+    "pandas": "3.0.5",
+    "scipy": "1.18.0",
+    "scikit-learn": "1.9.0",
+    "pyod": "3.6.4",
+    "numba": "0.67.0",
+    "joblib": "1.5.3"
+  },
+  "python": "3.12.1",
+  "hardware": {
+    "platform": "Linux-6.8.0-1064-azure-x86_64-with-glibc2.39",
+    "machine": "x86_64",
+    "processor": "x86_64",
+    "logical_cpus": 2
+  },
+  "planned_conditions": [
+    "primary",
+    "drop_high_missingness"
+  ],
+  "isolation_forest_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46
+  ],
+  "isolation_forest_parameters": {
+    "n_estimators": 200,
+    "max_samples": 256,
+    "max_features": 1.0,
+    "bootstrap": false,
+    "contamination": "auto",
+    "n_jobs": 1,
+    "warm_start": false
+  },
+  "copod_parameters": {
+    "contamination": 0.1,
+    "n_jobs": 1
+  },
+  "label_use": "Descriptive counts, audit conflicts and test metrics only; never model fitting.",
+  "row_reference": "Every supplied row in original order; indices zero-based after CSV header.",
+  "partitions": {
+    "train": {
+      "rows": 60000,
+      "first_index": 0,
+      "last_index": 59999
+    },
+    "test": {
+      "rows": 16000,
+      "first_index": 0,
+      "last_index": 15999
+    }
+  },
+  "pending_followups": "Primary paired bootstrap summaries and presentation figures are separate steps."
+}

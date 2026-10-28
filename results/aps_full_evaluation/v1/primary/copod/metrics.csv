@@ -1,0 +1,3 @@
+condition,method,model_seed,n_train,n_test,n_features,train_positives,test_positives,test_prevalence,roc_auc,average_precision,precision_at_375,precision_k,precision_cutoff_score,cutoff_tie_size,cutoff_remaining_slots,positives_above_cutoff,positives_in_cutoff_tie,fit_seconds,score_seconds
+primary,pyod_batch,,60000,16000,169,1000,375,0.0234375,0.977690112,0.5317405564547864,0.5493333333333333,375,389.8748465144935,1,1,205,1,2.3381119989999206,3.493071903999862
+primary,fixed_training_reference,,60000,16000,169,1000,375,0.0234375,0.9778210133333332,0.5342305936020094,0.5493333333333333,375,392.0102599555162,1,1,205,1,0.7652492830000028,0.5971589559999302

@@ -1,0 +1,2 @@
+condition,method,model_seed,n_train,n_test,n_features,train_positives,test_positives,test_prevalence,roc_auc,average_precision,precision_at_375,precision_k,precision_cutoff_score,cutoff_tie_size,cutoff_remaining_slots,positives_above_cutoff,positives_in_cutoff_tie,fit_seconds,score_seconds
+primary,isolation_forest,42,60000,16000,169,1000,375,0.0234375,0.984525824,0.5744530945799098,0.5786666666666667,375,0.6207874455119892,1,1,216,1,0.4401447200000348,0.09272765999980948

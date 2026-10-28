@@ -1,0 +1,53 @@
+{
+  "schema": "aps_full_evaluation_v1",
+  "configuration": {
+    "run_manifest_sha256": "dadcea8b162c5b3e48e6ed9f6a2b2560a210b85631b67149216d4bc2f578239b",
+    "condition": "drop_high_missingness",
+    "preprocessing_metadata_sha256": "6c587ba4a7e31df566f101e9ca7f7aee87f80842a8319ffb73c34832a88d4c2f",
+    "implementation_checks_sha256": "4c7db6bf6da83415824527bc5e9a952719be12bc05168a864a4b7d44d4d68f6a",
+    "methods": [
+      "pyod_batch",
+      "fixed_training_reference"
+    ],
+    "standard_parameters": {
+      "contamination": 0.1,
+      "n_jobs": 1
+    },
+    "modified_probability_floor": 1.6666666666666667e-05,
+    "batch_call_rows": 16000
+  },
+  "details": {
+    "checks": "passed",
+    "training_score_agreement": "passed",
+    "training_score_max_abs_difference": 1.1368683772161603e-13,
+    "fixed_batch_invariance": "passed",
+    "fixed_chunk_max_abs_difference": 0.0,
+    "fixed_singleton_max_abs_difference": 0.0,
+    "nonfinite_training_contributions": {
+      "U_l": 0,
+      "U_r": 0,
+      "U_skew": 0,
+      "O": 0
+    },
+    "nonfinite_combined_contributions": {
+      "U_l": 0,
+      "U_r": 0,
+      "U_skew": 0,
+      "O": 0
+    },
+    "nonfinite_final_scores": 0,
+    "warnings": [],
+    "skewness_sign_changes": 0,
+    "zero_tail_probability_replacements": 87,
+    "protocols": {
+      "pyod_batch": "training plus entire supplied test batch",
+      "fixed_training_reference": "training only; inclusive empirical tails and fixed skew signs"
+    },
+    "timing_note": "Each reported score time covers one full-test call. Training-score, batch-invariance and feature-diagnostic checks are excluded. Fit work differs between implementations; these are descriptive timings."
+  },
+  "output_sha256": {
+    "metrics.csv": "4897ff786c605f5e8cf09e883003827db37b674b8831618fe94c0a18124c37d7",
+    "scores.csv": "7fc8275ed3e5cb43d7f1d94bdf58c92be441f8a34de320f7ba019449e9a0c0fa",
+    "feature_diagnostics.csv": "d0bf60385918cbd1c4d4b24a9b0311e499612212fcebe1aaecb688c497c8916b"
+  }
+}

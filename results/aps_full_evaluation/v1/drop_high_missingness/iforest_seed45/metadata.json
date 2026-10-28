@@ -1,0 +1,43 @@
+{
+  "schema": "aps_full_evaluation_v1",
+  "configuration": {
+    "run_manifest_sha256": "dadcea8b162c5b3e48e6ed9f6a2b2560a210b85631b67149216d4bc2f578239b",
+    "condition": "drop_high_missingness",
+    "preprocessing_metadata_sha256": "6c587ba4a7e31df566f101e9ca7f7aee87f80842a8319ffb73c34832a88d4c2f",
+    "implementation_checks_sha256": "4c7db6bf6da83415824527bc5e9a952719be12bc05168a864a4b7d44d4d68f6a",
+    "method": "isolation_forest",
+    "parameters": {
+      "n_estimators": 200,
+      "max_samples": 256,
+      "max_features": 1.0,
+      "bootstrap": false,
+      "contamination": "auto",
+      "n_jobs": 1,
+      "warm_start": false
+    },
+    "random_state": 45
+  },
+  "details": {
+    "checks": "passed",
+    "nonfinite_final_scores": 0,
+    "warnings": [],
+    "score_direction": "negative sklearn score_samples; higher is more abnormal",
+    "reference": "training features only",
+    "fitted_parameters": {
+      "bootstrap": false,
+      "contamination": "auto",
+      "max_features": 1.0,
+      "max_samples": 256,
+      "n_estimators": 200,
+      "n_jobs": 1,
+      "random_state": 45,
+      "verbose": 0,
+      "warm_start": false
+    },
+    "effective_max_samples": 256
+  },
+  "output_sha256": {
+    "metrics.csv": "a582796d2e9b5391e4bdd6e7ee64525535f746a9c101fd82eadb5edfd5328d17",
+    "scores.csv": "57f0e890ea0b5b2b98d73dab60cc930dcb195d90e80d29efa815959487b58bd5"
+  }
+}

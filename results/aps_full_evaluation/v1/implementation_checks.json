@@ -1,0 +1,14 @@
+{
+  "result": {
+    "status": "passed",
+    "training_rows": 4,
+    "query_rows": 5,
+    "skewness_signs": [
+      1,
+      -1,
+      0
+    ],
+    "timing_note": "This tiny check calls PyOD ECDF before full-data timing; other first-call effects are not controlled."
+  },
+  "warnings": []
+}

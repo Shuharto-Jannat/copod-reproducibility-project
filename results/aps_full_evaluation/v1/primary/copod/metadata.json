@@ -1,0 +1,53 @@
+{
+  "schema": "aps_full_evaluation_v1",
+  "configuration": {
+    "run_manifest_sha256": "dadcea8b162c5b3e48e6ed9f6a2b2560a210b85631b67149216d4bc2f578239b",
+    "condition": "primary",
+    "preprocessing_metadata_sha256": "b7a74f9d7a8a5b10c700f61ae154804e2a76ce6b0f5aed3c7e53acceec1ee394",
+    "implementation_checks_sha256": "4c7db6bf6da83415824527bc5e9a952719be12bc05168a864a4b7d44d4d68f6a",
+    "methods": [
+      "pyod_batch",
+      "fixed_training_reference"
+    ],
+    "standard_parameters": {
+      "contamination": 0.1,
+      "n_jobs": 1
+    },
+    "modified_probability_floor": 1.6666666666666667e-05,
+    "batch_call_rows": 16000
+  },
+  "details": {
+    "checks": "passed",
+    "training_score_agreement": "passed",
+    "training_score_max_abs_difference": 1.1368683772161603e-13,
+    "fixed_batch_invariance": "passed",
+    "fixed_chunk_max_abs_difference": 0.0,
+    "fixed_singleton_max_abs_difference": 0.0,
+    "nonfinite_training_contributions": {
+      "U_l": 0,
+      "U_r": 0,
+      "U_skew": 0,
+      "O": 0
+    },
+    "nonfinite_combined_contributions": {
+      "U_l": 0,
+      "U_r": 0,
+      "U_skew": 0,
+      "O": 0
+    },
+    "nonfinite_final_scores": 0,
+    "warnings": [],
+    "skewness_sign_changes": 0,
+    "zero_tail_probability_replacements": 87,
+    "protocols": {
+      "pyod_batch": "training plus entire supplied test batch",
+      "fixed_training_reference": "training only; inclusive empirical tails and fixed skew signs"
+    },
+    "timing_note": "Each reported score time covers one full-test call. Training-score, batch-invariance and feature-diagnostic checks are excluded. Fit work differs between implementations; these are descriptive timings."
+  },
+  "output_sha256": {
+    "metrics.csv": "1682a0452d617faaa8e1eb548a917dc67cb734662326bd0acf09cdc419590574",
+    "scores.csv": "824c7d55d4911f52c9207203f2190a96f0956eb28bb96e854a605e5347fe634c",
+    "feature_diagnostics.csv": "02e3a0e64db9c91df82103f740f790bb6f6e18ffe6dfdee5572db4d194efb254"
+  }
+}
