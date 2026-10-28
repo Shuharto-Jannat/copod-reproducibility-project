@@ -1,0 +1,5 @@
+condition,stage,train_repeated_profiles,train_rows_in_repeated_profiles,train_extra_copies_beyond_first,train_conflicting_label_profiles,test_repeated_profiles,test_rows_in_repeated_profiles,test_extra_copies_beyond_first,test_conflicting_label_profiles,across_supplied_split_shared_profiles,across_supplied_split_train_rows_in_shared_profiles,across_supplied_split_test_rows_in_shared_profiles,across_supplied_split_shared_profiles_with_cross_split_label_disagreement,combined_unique_profiles,combined_repeated_profiles,combined_rows_in_repeated_profiles,combined_extra_copies_beyond_first,combined_conflicting_label_profiles,shared_train_positive_rows,shared_test_positive_rows
+primary,selected,1,2,1,0,0,0,0,0,0,0,0,0,75999,1,2,1,0,0,0
+primary,prepared,1,2,1,0,0,0,0,0,0,0,0,0,75999,1,2,1,0,0,0
+drop_high_missingness,selected,1,2,1,0,0,0,0,0,1,1,1,0,75998,2,4,2,0,0,0
+drop_high_missingness,prepared,1,2,1,0,0,0,0,0,1,1,1,0,75998,2,4,2,0,0,0

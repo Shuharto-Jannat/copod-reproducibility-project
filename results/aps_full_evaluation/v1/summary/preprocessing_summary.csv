@@ -1,0 +1,3 @@
+condition,n_train,n_test,n_features,excluded_features,training_missing_cells_in_retained_features,test_missing_cells_in_retained_features,feature_selection_seconds,imputation_seconds,scaling_seconds,warning_count,checks
+primary,60000,16000,169,cd_000,849339,228495,0.2036999570000262,1.1543715850000353,0.08237367900005665,0,passed
+drop_high_missingness,60000,16000,161,ab_000;bm_000;bn_000;bo_000;bp_000;bq_000;br_000;cd_000;cr_000,481064,130303,0.20452845399995567,0.841689236999855,0.08109296799989352,0,passed

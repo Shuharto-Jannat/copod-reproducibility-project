@@ -1,0 +1,4 @@
+method,n_pairs,roc_auc_difference_mean,roc_auc_difference_sd,average_precision_difference_mean,average_precision_difference_sd
+pyod_batch,1,-0.0008454826666666193,,-0.0023299661982849607,
+fixed_training_reference,1,-0.0008311466666663936,,-0.0022134166531214694,
+isolation_forest,5,-0.0005837141333332685,0.0005636192366100215,-0.016086724157259515,0.012436021405441517

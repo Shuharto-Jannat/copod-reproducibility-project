@@ -1,0 +1,13 @@
+condition,component,checks,nonfinite_final_scores,warning_count,training_score_max_abs_difference,fixed_chunk_max_abs_difference,fixed_singleton_max_abs_difference,skewness_sign_changes,zero_tail_replacement_events,already_at_floor_tail_events_not_replaced
+primary,copod_pair,passed,0,0,1.1368683772161603e-13,0.0,0.0,0.0,87.0,80.0
+primary,iforest_seed42,passed,0,0,,,,,,
+primary,iforest_seed43,passed,0,0,,,,,,
+primary,iforest_seed44,passed,0,0,,,,,,
+primary,iforest_seed45,passed,0,0,,,,,,
+primary,iforest_seed46,passed,0,0,,,,,,
+drop_high_missingness,copod_pair,passed,0,0,1.1368683772161603e-13,0.0,0.0,0.0,87.0,80.0
+drop_high_missingness,iforest_seed42,passed,0,0,,,,,,
+drop_high_missingness,iforest_seed43,passed,0,0,,,,,,
+drop_high_missingness,iforest_seed44,passed,0,0,,,,,,
+drop_high_missingness,iforest_seed45,passed,0,0,,,,,,
+drop_high_missingness,iforest_seed46,passed,0,0,,,,,,
