@@ -1,0 +1,15 @@
+condition,label,null_control,rows_plotted,histogram_area,within_block_correlation,expected_within_block_correlation,saved_summaries_agree,finite_correlations
+marginal_delta0,0,True,9500,1,0.80005873546549078,0.80000000000000004,True,True
+marginal_delta0,1,True,500,1,0.79690249111699618,0.80000000000000004,True,True
+marginal_delta2,0,False,9500,1,0.80005873546549078,0.80000000000000004,True,True
+marginal_delta2,1,False,500,1,0.66511980841357432,0.66666666666666674,True,True
+marginal_delta4,0,False,9500,1,0.80005873546549078,0.80000000000000004,True,True
+marginal_delta4,1,False,500,1,0.44686874591635445,0.44444444444444448,True,True
+marginal_delta6,0,False,9500,1,0.80005873546549078,0.80000000000000004,True,True
+marginal_delta6,1,False,500,1,0.28946856929369036,0.28571428571428575,True,True
+dependence_rho0p0,0,True,9500,1,-0.0024575927027690259,0,True,True
+dependence_rho0p0,1,True,500,1,0.0020274056990737272,0,True,True
+dependence_rho0p4,0,False,9500,1,0.40129329736508679,0.40000000000000002,True,True
+dependence_rho0p4,1,False,500,1,0.0020274056990737272,0,True,True
+dependence_rho0p8,0,False,9500,1,0.80091673570960464,0.80000000000000004,True,True
+dependence_rho0p8,1,False,500,1,0.0020274056990737272,0,True,True

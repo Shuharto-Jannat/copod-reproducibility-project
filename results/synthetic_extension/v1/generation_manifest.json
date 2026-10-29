@@ -1,0 +1,141 @@
+{
+  "block_size": 5,
+  "completion_scope": "This manifest describes planned settings; seed_metadata.json records each completed seed.",
+  "conditions": [
+    {
+      "condition": "marginal_delta0",
+      "delta": 0.0,
+      "family": "marginal_shift",
+      "null_control": true,
+      "rho": 0.8
+    },
+    {
+      "condition": "marginal_delta2",
+      "delta": 2.0,
+      "family": "marginal_shift",
+      "null_control": false,
+      "rho": 0.8
+    },
+    {
+      "condition": "marginal_delta4",
+      "delta": 4.0,
+      "family": "marginal_shift",
+      "null_control": false,
+      "rho": 0.8
+    },
+    {
+      "condition": "marginal_delta6",
+      "delta": 6.0,
+      "family": "marginal_shift",
+      "null_control": false,
+      "rho": 0.8
+    },
+    {
+      "condition": "dependence_rho0p0",
+      "delta": 0.0,
+      "family": "dependence_violation",
+      "null_control": true,
+      "rho": 0.0
+    },
+    {
+      "condition": "dependence_rho0p4",
+      "delta": 0.0,
+      "family": "dependence_violation",
+      "null_control": false,
+      "rho": 0.4
+    },
+    {
+      "condition": "dependence_rho0p8",
+      "delta": 0.0,
+      "family": "dependence_violation",
+      "null_control": false,
+      "rho": 0.8
+    }
+  ],
+  "construction_check_atol": 1e-12,
+  "construction_check_rtol": 0.0,
+  "csv_float_format": "%.17g",
+  "csv_reader": "pandas float_precision=round_trip",
+  "factor_rule": "sqrt(rho)*repeat(S,5,axis=1) + sqrt(1-rho)*E",
+  "family_order": [
+    "marginal_shift",
+    "dependence_violation"
+  ],
+  "feature_columns": [
+    "x01",
+    "x02",
+    "x03",
+    "x04",
+    "x05",
+    "x06",
+    "x07",
+    "x08",
+    "x09",
+    "x10",
+    "x11",
+    "x12",
+    "x13",
+    "x14",
+    "x15",
+    "x16",
+    "x17",
+    "x18",
+    "x19",
+    "x20"
+  ],
+  "generator_sha256": "42471e6adeafff994963fe5fb56b0539a109bf8e6985b95a75813896aaa01ab3",
+  "label_meaning": {
+    "0": "normal-origin process",
+    "1": "positive-origin process"
+  },
+  "latent_draw_order": "(group_rows,4) factors, then (group_rows,20) residuals",
+  "models_run": false,
+  "n_features": 20,
+  "n_positive": 500,
+  "n_rows": 10000,
+  "null_label_limit": "Null groups have identical population distributions; labels are not distinguishable anomalies.",
+  "plan_commit": "39a2cb60318ecd73f9e017f03a94adae25a2678b",
+  "plan_path": "notes/synthetic_extension_plan.md",
+  "plan_sha256": "8f91155a425bc6714a4c8e47ada30e5a1a5128bdd7b38b0dea4b7609abebbcb9",
+  "planned_seeds": [
+    100,
+    101,
+    102,
+    103,
+    104,
+    105,
+    106,
+    107,
+    108,
+    109
+  ],
+  "population_targets": "Descriptive, not thresholds for rejecting/redrawing seeds.",
+  "preprocessing": "none",
+  "quantile_method": "linear",
+  "rng": "Generator(PCG64(SeedSequence([data_seed, 20261029]) child))",
+  "run_name": "v1",
+  "sample_sd_ddof": 1,
+  "schema": "synthetic_extension_generation_v1",
+  "split": {
+    "random_state": 42,
+    "stratify": "label",
+    "test_positives": 200,
+    "test_rows": 4000,
+    "test_size": 0.4,
+    "train_positives": 300,
+    "train_rows": 6000
+  },
+  "versions": {
+    "numpy": "2.5.2",
+    "pandas": "3.0.5",
+    "python": "3.12.1",
+    "scikit-learn": "1.9.0"
+  },
+  "within_family_stream_order": [
+    "normal_latents",
+    "positive_latents",
+    "shift_feature",
+    "shift_sign",
+    "row_permutation"
+  ]
+}
