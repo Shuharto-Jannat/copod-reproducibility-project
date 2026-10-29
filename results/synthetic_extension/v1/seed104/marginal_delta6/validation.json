@@ -1,0 +1,34 @@
+{
+  "annotations_and_allowed_coordinate_changes": "passed",
+  "condition": "marginal_delta6",
+  "csv_round_trip": "exact numerical/string value agreement",
+  "data_sha256": "85780ddc32a28ea2c96c0f5299753ed4e54e4d4f2719d068f1760c006bdc60e3",
+  "dimensions": [
+    10000,
+    20
+  ],
+  "distribution_summary_policy": "Population targets recorded; no empirical threshold or score-based seed rejection",
+  "duplicates": {
+    "all_extra_copies": 0,
+    "conflicting_label_profiles": 0,
+    "shared_training_test_profiles": 0,
+    "test_extra_copies": 0,
+    "training_extra_copies": 0
+  },
+  "integrity_checks": "passed",
+  "metadata_sha256": "3fc6276b01b030f5e5d63e0ba6a589d1d704a7fc490a34c11c885b1677c74920",
+  "missing_or_nonfinite_values": 0,
+  "models_run": false,
+  "normal_rows": 9500,
+  "null_check": "not_applicable",
+  "null_control": false,
+  "paired_construction": "passed",
+  "positive_rows": 500,
+  "schema": "synthetic_extension_validation_v1",
+  "seed": 104,
+  "test_positives": 200,
+  "test_rows": 4000,
+  "train_positives": 300,
+  "train_rows": 6000,
+  "undo_shift_max_abs_difference": 8.881784197001252e-16
+}

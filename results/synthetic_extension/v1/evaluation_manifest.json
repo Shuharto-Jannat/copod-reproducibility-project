@@ -1,0 +1,185 @@
+{
+  "conditions": [
+    {
+      "condition": "marginal_delta0",
+      "delta": 0.0,
+      "family": "marginal_shift",
+      "null_control": true,
+      "rho": 0.8
+    },
+    {
+      "condition": "marginal_delta2",
+      "delta": 2.0,
+      "family": "marginal_shift",
+      "null_control": false,
+      "rho": 0.8
+    },
+    {
+      "condition": "marginal_delta4",
+      "delta": 4.0,
+      "family": "marginal_shift",
+      "null_control": false,
+      "rho": 0.8
+    },
+    {
+      "condition": "marginal_delta6",
+      "delta": 6.0,
+      "family": "marginal_shift",
+      "null_control": false,
+      "rho": 0.8
+    },
+    {
+      "condition": "dependence_rho0p0",
+      "delta": 0.0,
+      "family": "dependence_violation",
+      "null_control": true,
+      "rho": 0.0
+    },
+    {
+      "condition": "dependence_rho0p4",
+      "delta": 0.0,
+      "family": "dependence_violation",
+      "null_control": false,
+      "rho": 0.4
+    },
+    {
+      "condition": "dependence_rho0p8",
+      "delta": 0.0,
+      "family": "dependence_violation",
+      "null_control": false,
+      "rho": 0.8
+    }
+  ],
+  "copod_parameters": {
+    "contamination": 0.05,
+    "n_jobs": 1
+  },
+  "fixed_reference_class_sha256": "22f91d4c47de51f029a0e7e059a42e74be34bf91904e6a65d7d1bbca264800da",
+  "fixed_reference_probability_floor": 0.00016666666666666666,
+  "generation_manifest_sha256": "29e9d3477573c9b10fc7639fc45edfb1af907b8741fc54b544fd94fd18d12dd6",
+  "generation_versions": {
+    "numpy": "2.5.2",
+    "pandas": "3.0.5",
+    "python": "3.12.1",
+    "scikit-learn": "1.9.0"
+  },
+  "labels_in_fit": false,
+  "ledoit_wolf_parameters": {
+    "assume_centered": false,
+    "block_size": 1000,
+    "store_precision": true
+  },
+  "methods": [
+    "pyod_batch",
+    "fixed_training_reference",
+    "ledoit_wolf"
+  ],
+  "metrics": [
+    "roc_auc",
+    "average_precision"
+  ],
+  "metrics_use": "test rows only, raw scores",
+  "null_references": {
+    "average_precision_prevalence": 0.05,
+    "roc_auc": 0.5
+  },
+  "ordered_feature_columns": [
+    "x01",
+    "x02",
+    "x03",
+    "x04",
+    "x05",
+    "x06",
+    "x07",
+    "x08",
+    "x09",
+    "x10",
+    "x11",
+    "x12",
+    "x13",
+    "x14",
+    "x15",
+    "x16",
+    "x17",
+    "x18",
+    "x19",
+    "x20"
+  ],
+  "performance_acceptance_thresholds": null,
+  "plan_commit": "39a2cb60318ecd73f9e017f03a94adae25a2678b",
+  "plan_path": "notes/synthetic_extension_plan.md",
+  "plan_sha256": "8f91155a425bc6714a4c8e47ada30e5a1a5128bdd7b38b0dea4b7609abebbcb9",
+  "planned_data_seeds": [
+    100,
+    101,
+    102,
+    103,
+    104,
+    105,
+    106,
+    107,
+    108,
+    109
+  ],
+  "preprocessing": "none",
+  "run_name": "v1",
+  "runtime": {
+    "packages": {
+      "numba": "0.67.0",
+      "numpy": "2.5.2",
+      "pandas": "3.0.5",
+      "pyod": "3.6.4",
+      "scikit-learn": "1.9.0",
+      "scipy": "1.18.0",
+      "statsmodels": "0.14.6"
+    },
+    "platform": "Linux-6.8.0-1064-azure-x86_64-with-glibc2.39",
+    "python": "3.12.1"
+  },
+  "schema": "synthetic_extension_evaluation_v1",
+  "scoring_references": {
+    "fixed_training_reference": "training only",
+    "ledoit_wolf": "training only; squared Mahalanobis distances",
+    "pyod_batch": "training plus entire test batch in one call"
+  },
+  "source_sha256": {
+    "evaluator": "f263b6e7d4712573d1802f647dc5daeff719d0211f3160fbfbfa8c61606b5d44",
+    "fixed_reference_module": "dc53b73026ca9dc9f1ecbc5cbb2397d7b75167347898a92b12376bdd7964e4e5",
+    "generator": "42471e6adeafff994963fe5fb56b0539a109bf8e6985b95a75813896aaa01ab3",
+    "ledoit_wolf": "f1b3e23de01bb2400bbbac45bdab0197cbe5c526abe03075689bf86c698c661d",
+    "mahalanobis": "cc5c4de1d50de8e20dfc93643139964defa64f95b045d71e60ac4ac0aa0d49c8",
+    "metrics": "c7750d4f33b2536c10aa5280c006173822b48b4bd6dd2c3065f06a16bd53bbb4",
+    "pyod_base": "cf5040ab8e00da741d439983788571a2103682d449d7020b04377026369804a5",
+    "pyod_copod": "87817ce056eb8bb9bf75fd76ea5e8f8811cddb8dfb9f131212c1635b4fb1b2de",
+    "pyod_ecdf": "b9f3cd49d3559dc710b2d7668b430f2a484923675a3b033bd5ff3ac35bd313be",
+    "scipy_skew": "599cbc8896fb05a4743c31e55f1f587682d5a42614d1199aea55c9754e990437"
+  },
+  "split": {
+    "random_state": 42,
+    "stratify": "label",
+    "test_positives": 200,
+    "test_rows": 4000,
+    "test_size": 0.4,
+    "train_positives": 300,
+    "train_rows": 6000
+  },
+  "test_positives": 200,
+  "test_rows": 4000,
+  "timing_policy": "One fit and one whole-test score call; diagnostic checks excluded. No speed claim.",
+  "tolerances": {
+    "fixed_batch": {
+      "atol": 1e-12,
+      "rtol": 0
+    },
+    "ledoit_wolf_batch_formula": {
+      "atol": 1e-12,
+      "rtol": 1e-10
+    },
+    "training_agreement": {
+      "atol": 1e-10,
+      "rtol": 1e-10
+    }
+  },
+  "training_positives_retained": 300,
+  "training_rows": 6000
+}

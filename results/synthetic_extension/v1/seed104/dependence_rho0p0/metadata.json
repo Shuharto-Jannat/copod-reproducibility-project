@@ -1,0 +1,88 @@
+{
+  "annotation_join": "row_index is zero-based CSV row position; source_row_id is stable within family/seed",
+  "annotation_path": "data_new/synthetic_extension/v1/seed104/dependence_rho0p0_annotations.csv",
+  "data_path": "data_new/synthetic_extension/v1/seed104/dependence_rho0p0.csv",
+  "feature_columns": [
+    "x01",
+    "x02",
+    "x03",
+    "x04",
+    "x05",
+    "x06",
+    "x07",
+    "x08",
+    "x09",
+    "x10",
+    "x11",
+    "x12",
+    "x13",
+    "x14",
+    "x15",
+    "x16",
+    "x17",
+    "x18",
+    "x19",
+    "x20"
+  ],
+  "generation_manifest_sha256": "29e9d3477573c9b10fc7639fc45edfb1af907b8741fc54b544fd94fd18d12dd6",
+  "output_sha256": {
+    "data_new/synthetic_extension/v1/seed104/dependence_rho0p0.csv": "b0faa777caa7ab70fec9de38ed480bc010c05e7e30988f2c5829f60efdd9a65b",
+    "data_new/synthetic_extension/v1/seed104/dependence_rho0p0_annotations.csv": "4fc7417c1a9bbfbd7599c3da396415753989858326e0d2b2ef4ec43a65b84b9b",
+    "results/synthetic_extension/v1/seed104/dependence_rho0p0/correlation_summary.csv": "4ffc16c94a40c10627a905ab2058975ed8b490ea84034cba6068ce48576a34ff",
+    "results/synthetic_extension/v1/seed104/dependence_rho0p0/feature_summary.csv": "475a3e5e8d0c698b53f007cc99db4cfb096191d94bc38e9f50f081b80469e9a6",
+    "results/synthetic_extension/v1/seed104/dependence_rho0p0/split.csv": "c3462700ea256f53d5e7777e71eb59ba2f66018dc562062b291bed915c7fc2aa"
+  },
+  "schema": "synthetic_extension_dataset_v1",
+  "seed": 104,
+  "selected_feature_convention": "0=x01,...,19=x20; -1=none; marginal delta0 keeps selected feature and +/-1 sign",
+  "specification": {
+    "condition": "dependence_rho0p0",
+    "delta": 0.0,
+    "family": "dependence_violation",
+    "null_control": true,
+    "rho": 0.0
+  },
+  "split_order": "Select split, then sort by partition_position to recover train_test_split order",
+  "stream_provenance": {
+    "entropy": [
+      104,
+      20261029
+    ],
+    "family_spawn_key": [
+      1
+    ],
+    "latent_array_sha256": {
+      "normal_factors": "1c244f8f58c03f01990726cabd0b9fe43a73915d99208ce3084bd8c8682bbf3c",
+      "normal_residuals": "48860c39975c4bf288467de0df63e0bb3ac9561acf0eaa2599407b12d5587bbe",
+      "positive_factors": "52f81133f924f9f91336604141b90e752f66ee29e2e7caf597254bbee4ab48aa",
+      "positive_residuals": "efa9b80b23bc79231fee703f6720c9dc34b97c8105b4622d4d8c6bfb8d356b7a"
+    },
+    "selected_features_sha256": "c7ffd26ef72adfcca6e767eafe5e51c118bab473d71c56350792e275b39d99ab",
+    "shift_signs_sha256": "deb7f5c43f6dfea07f822bc9b727f3268629d443d310776fdd98a02aa475e5f6",
+    "source_order_sha256": "6ef98fa12ec72fbc1765b760772bab0e85053afe35ffa3e024f60ec5c843fa2e",
+    "stream_spawn_keys": {
+      "normal_latents": [
+        1,
+        0
+      ],
+      "positive_latents": [
+        1,
+        1
+      ],
+      "row_permutation": [
+        1,
+        4
+      ],
+      "shift_feature": [
+        1,
+        2
+      ],
+      "shift_sign": [
+        1,
+        3
+      ]
+    },
+    "test_row_order_sha256": "0a26d065e016d2e31d91810e66557d9ad57023ec65d8f24eb2804553086581ea",
+    "train_row_order_sha256": "e877bcecf59551751c660b2ff384be5882170c934be6ea88a5c90d4e1bb00048"
+  }
+}
