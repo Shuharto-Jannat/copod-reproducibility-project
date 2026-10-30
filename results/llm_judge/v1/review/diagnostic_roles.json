@@ -1,0 +1,27 @@
+{
+  "internal_only_do_not_send_to_judge": true,
+  "source_protocol_commit": "3721a7dde5543c53666efa3177eaad270312e65e",
+  "substantive_claims": [
+    "C01",
+    "C02",
+    "C03",
+    "C04",
+    "C05",
+    "C06",
+    "C07",
+    "C08"
+  ],
+  "diagnostics": [
+    {
+      "claim_id": "C09",
+      "role": "numerical-error check",
+      "author_defined_expected": "CONTRADICTED"
+    },
+    {
+      "claim_id": "C10",
+      "role": "unsupported-transfer check",
+      "author_defined_expected": "INSUFFICIENT_EVIDENCE"
+    }
+  ],
+  "limit": "Two author-defined checks do not validate general judge reliability."
+}

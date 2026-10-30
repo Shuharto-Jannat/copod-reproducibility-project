@@ -1,0 +1,31 @@
+{
+  "schema": "llm_judge_ai_assisted_draft_v1",
+  "draft_date": "2026-10-30",
+  "date_timezone": "Australia/Sydney",
+  "provenance": "Codex assistant in the ongoing project conversation; automated source checks and assistant-agent drafting QA; full project context and known diagnostic roles",
+  "drafting_backend_version": "not exposed in these saved materials",
+  "experiment_baseline_commit": "ed494a3b3c78ecd17f5436f6c9bcfae0050603fe",
+  "original_protocol_commit": "3721a7dde5543c53666efa3177eaad270312e65e",
+  "amendment_path": "notes/llm_judge_protocol_amendment_01.md",
+  "snapshot_status": "draft_assessments_created_author_review_pending",
+  "human_review_completed_at_draft_creation": false,
+  "planned_judge_sessions_performed_by_this_drafting_step": false,
+  "author_review_policy": "Author checks each source and records acceptance, revision or uncertainty; final author fields left blank at creation. Preserve these AI drafts and record later adjudication separately.",
+  "claims_exactly_match_frozen_registry": true,
+  "original_initial_author_reference": "preserved blank and unused under amendment",
+  "frozen_input_sha256": {
+    "results/llm_judge/v1/inputs/claims.csv": "f4ea2efd2b09ceab8e5831a71d469fa6d6d555bd35d229335a21d1dc643b76eb",
+    "results/llm_judge/v1/inputs/evidence_packet.md": "6ccd524f91b0fece48a19eee9776699a9f073b496211b95fee4deb0d2428e6a8",
+    "results/llm_judge/v1/inputs/judgment_entry_schema.json": "f7d215ef1a86c5583e185f7da115224194550957a33ecfcb93c23f3a76fc9cc7",
+    "results/llm_judge/v1/inputs/preparation_manifest.json": "427392d6051a4375d4d0e6f2cf8324ce318503a4e56fda239bc2be03f2545c8f",
+    "results/llm_judge/v1/inputs/session_A_prompt.txt": "500b11ae14f4399345af700d5aab3eb54b4d08e24c886c9a53d3bba6885c0d09",
+    "results/llm_judge/v1/inputs/session_B_prompt.txt": "540dd0f5d5ee78b8e63e907a3cb5a68f1e4d305099c570f4d46c1b55fbffdf13",
+    "results/llm_judge/v1/inputs/source_manifest.json": "52cb7cf3f8930d84bede24d5a3775318106b64c35a2a795d6babe2dfc8ca2356"
+  },
+  "draft_artifact_sha256_at_creation": {
+    "results/llm_judge/v1/review/ai_assisted_review_draft.md": "b7a436abbd66a76b6bb004191d13b92136f83e8f7f6196114b0e362b5256be24",
+    "results/llm_judge/v1/review/author_review_ai_assisted.csv": "53bf3f99a8778a6650367d0595c983c62585edf31ee1136fae24ef8380714e42",
+    "notes/llm_judge_protocol_amendment_01.md": "2bd0a441905804086bac63a9fc1dfd9ff06dfe67110291d0e227b1c93f3871a8"
+  },
+  "hash_policy": "Author review CSV hash is its blank-author-fields creation snapshot; actual reviewed version requires a later freeze commit/hash."
+}

@@ -1,0 +1,43 @@
+{
+  "schema": "llm_judge_author_approval_record_v1",
+  "record_type": "author_approved_ai_assisted_assessments",
+  "author": "Shuharto Jannat",
+  "approval_quote": "Good to go. Please proceed.",
+  "approval_date": "2026-10-30",
+  "approval_timezone": "Australia/Sydney",
+  "approval_date_source": "Date of the approval message in the conversation context; exact message timestamp not supplied.",
+  "scope": "Approval of the presented ten-claim draft set after receiving the draft review and protocol amendment; no claim-specific amendments supplied.",
+  "claim_ids": [
+    "C01",
+    "C02",
+    "C03",
+    "C04",
+    "C05",
+    "C06",
+    "C07",
+    "C08",
+    "C09",
+    "C10"
+  ],
+  "author_verdict_origin": "AI-proposed verdicts adopted through blanket author approval; not independently generated human verdicts.",
+  "author_reason": "Not supplied separately; CSV field intentionally blank. AI-drafted reasons retained in ai_draft_reason.",
+  "reviewed_at_with_timezone": "Actual review time not supplied; CSV field intentionally blank. Approval date is recorded separately.",
+  "source_check_status": "Not separately documented by the author; this record does not assert claim-by-claim source verification.",
+  "reporting_label": "author-approved AI-assisted reference",
+  "reporting_limit": "Do not describe this record alone as an unaided or independently source-verified human assessment. The amendment makes author-verified wording conditional on actual source review.",
+  "planned_judge_sessions_run_by_this_step": false,
+  "original_initial_author_reference": "Preserved blank and unused.",
+  "original_protocol_commit": "3721a7dde5543c53666efa3177eaad270312e65e",
+  "amendment_path": "notes/llm_judge_protocol_amendment_01.md",
+  "amendment_sha256": "2bd0a441905804086bac63a9fc1dfd9ff06dfe67110291d0e227b1c93f3871a8",
+  "ai_draft_sha256": "b7a436abbd66a76b6bb004191d13b92136f83e8f7f6196114b0e362b5256be24",
+  "review_csv_path": "results/llm_judge/v1/review/author_review_ai_assisted.csv",
+  "review_csv_before_approval_sha256": "53bf3f99a8778a6650367d0595c983c62585edf31ee1136fae24ef8380714e42",
+  "review_csv_after_approval_sha256": "7cd0058cc8b5074642072ba03faff9d7c1964d34286addabb2c8141c30541615",
+  "frozen_inputs_modified": false,
+  "remaining_before_judging": [
+    "Review the record and document the scope of actual author evidence checking or any remaining limitation before treating the reference as complete.",
+    "Record the chosen model/interface and visible settings.",
+    "Commit the inputs, amendment, draft, author record and model configuration before either planned judge request."
+  ]
+}

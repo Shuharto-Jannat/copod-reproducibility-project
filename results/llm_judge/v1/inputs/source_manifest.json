@@ -1,0 +1,1399 @@
+{
+  "baseline_commit": "ed494a3b3c78ecd17f5436f6c9bcfae0050603fe",
+  "items": [
+    {
+      "item_id": "E01.01",
+      "evidence_id": "E01",
+      "source_path": "results/comparison/copod_comparison_summary.csv",
+      "source_commit": "ed494a3b3c78ecd17f5436f6c9bcfae0050603fe",
+      "source_sha256": "2307a5b4d2452a1f708c021945158451a3889a0c3cd8a5c793d4a84dc6793563",
+      "selection": {
+        "row_filter": {
+          "Metric": [
+            "Mean ROC-AUC"
+          ]
+        },
+        "source_data_rows_1based": [
+          1
+        ],
+        "total_source_rows": 6,
+        "selected_columns": [
+          "Metric",
+          "Paper",
+          "Reproduced"
+        ],
+        "omitted_columns": [
+          "Value"
+        ],
+        "omitted_row_count": 5,
+        "numeric_values": "original CSV strings; no rounding or metric recomputation"
+      },
+      "excerpt_sha256": "67fb09a55848c8796735d8ec626b82344ebd1927028841acbec66cbb5bce98d0"
+    },
+    {
+      "item_id": "E01.02",
+      "evidence_id": "E01",
+      "source_path": "results/comparison/copod_published_vs_reproduced.csv",
+      "source_commit": "ed494a3b3c78ecd17f5436f6c9bcfae0050603fe",
+      "source_sha256": "f132188f0ef6a7f9afee5db2aa9d477fe621c9be4040b6221243494a957d8a3f",
+      "selection": {
+        "row_filter": "all rows",
+        "source_data_rows_1based": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30
+        ],
+        "total_source_rows": 30,
+        "selected_columns": [
+          "Format",
+          "Data",
+          "Paper_ROC",
+          "Reproduced_ROC",
+          "ROC_Difference"
+        ],
+        "omitted_columns": [
+          "ROC_Absolute_Difference",
+          "Paper_AP",
+          "Reproduced_AP",
+          "AP_Difference",
+          "AP_Absolute_Difference"
+        ],
+        "omitted_row_count": 0,
+        "numeric_values": "original CSV strings; no rounding or metric recomputation"
+      },
+      "excerpt_sha256": "394182b3cd2ed736f40804124eecf7b0fe2fd6c883d360c25bbd8a1976ada226"
+    },
+    {
+      "item_id": "E02.01",
+      "evidence_id": "E02",
+      "source_path": "results/audits/arff_dataset_mapping/dataset_mapping_summary.csv",
+      "source_commit": "ed494a3b3c78ecd17f5436f6c9bcfae0050603fe",
+      "source_sha256": "c3aa12dc28141903934e25e9834744815e5c28a25074cc8b13343d34d075b318",
+      "selection": {
+        "row_filter": {
+          "status": [
+            "ISSUE"
+          ]
+        },
+        "source_data_rows_1based": [
+          3,
+          7,
+          8,
+          9
+        ],
+        "total_source_rows": 16,
+        "selected_columns": [
+          "dataset",
+          "status",
+          "issues",
+          "n_rows",
+          "n_predictors_loaded",
+          "n_predictors_by_name",
+          "benchmark_label_attribute",
+          "benchmark_positive_rows",
+          "named_outlier_positive_rows",
+          "label_disagreements",
+          "unexpected_predictors",
+          "omitted_predictors",
+          "all_saved_metadata_match",
+          "authors_project_loader_agreement"
+        ],
+        "omitted_columns": [],
+        "omitted_row_count": 12,
+        "numeric_values": "original CSV strings; no rounding or metric recomputation"
+      },
+      "excerpt_sha256": "d4e456813f5b7771e9eb41d096953e2a31b471a8936dc177b65b3a7f7f1157d0"
+    },
+    {
+      "item_id": "E02.02",
+      "evidence_id": "E02",
+      "source_path": "results/loader_corrections/v1/summary/performance_summary.csv",
+      "source_commit": "ed494a3b3c78ecd17f5436f6c9bcfae0050603fe",
+      "source_sha256": "78744cf3a81aed65e0886f16fd2423bce4dac8445ab1d0d85678aeee9480e05b",
+      "selection": {
+        "row_filter": "all rows",
+        "source_data_rows_1based": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "total_source_rows": 12,
+        "selected_columns": [
+          "dataset",
+          "condition",
+          "n_trials",
+          "test_positives_min",
+          "test_positives_max",
+          "test_prevalence_mean",
+          "roc_auc_n_valid",
+          "roc_auc_mean",
+          "roc_auc_sd",
+          "average_precision_n_valid",
+          "average_precision_mean",
+          "average_precision_sd"
+        ],
+        "omitted_columns": [],
+        "omitted_row_count": 0,
+        "numeric_values": "original CSV strings; no rounding or metric recomputation"
+      },
+      "excerpt_sha256": "78744cf3a81aed65e0886f16fd2423bce4dac8445ab1d0d85678aeee9480e05b"
+    },
+    {
+      "item_id": "E02.03",
+      "evidence_id": "E02",
+      "source_path": "results/loader_corrections/v1/summary/paired_summary.csv",
+      "source_commit": "ed494a3b3c78ecd17f5436f6c9bcfae0050603fe",
+      "source_sha256": "ce1bf5d1389556e7af6f081fde16680f7af1ba3a732f1ca5c67f52010cf2fc69",
+      "selection": {
+        "row_filter": {
+          "comparison": [
+            "column_correction_with_true_labels"
+          ]
+        },
+        "source_data_rows_1based": [
+          2,
+          5,
+          8,
+          11
+        ],
+        "total_source_rows": 12,
+        "selected_columns": [
+          "dataset",
+          "comparison",
+          "n_planned_pairs",
+          "roc_auc_n_valid_pairs",
+          "roc_auc_difference_mean",
+          "roc_auc_difference_sd",
+          "roc_auc_higher_count",
+          "roc_auc_tied_count",
+          "roc_auc_lower_count",
+          "average_precision_n_valid_pairs",
+          "average_precision_difference_mean",
+          "average_precision_difference_sd",
+          "average_precision_higher_count",
+          "average_precision_tied_count",
+          "average_precision_lower_count"
+        ],
+        "omitted_columns": [],
+        "omitted_row_count": 8,
+        "numeric_values": "original CSV strings; no rounding or metric recomputation"
+      },
+      "excerpt_sha256": "1e80c0ed2f9918e5c1a6dcd9f3aef5048bfacddf2472a5969f8ae92be73f4ee2"
+    },
+    {
+      "item_id": "E03.01",
+      "evidence_id": "E03",
+      "source_path": "results/audits/mat_reproduction_gaps/v1/wine/summary/historical_comparison.csv",
+      "source_commit": "ed494a3b3c78ecd17f5436f6c9bcfae0050603fe",
+      "source_sha256": "00d232171a261d1298f13325964d6bf4d3045be260828a8567a790ddc405de1b",
+      "selection": {
+        "row_filter": "all rows",
+        "source_data_rows_1based": [
+          1,
+          2
+        ],
+        "total_source_rows": 2,
+        "selected_columns": [
+          "dataset",
+          "metric",
+          "n_valid_trials",
+          "historical_project_mean_as_saved",
+          "diagnostic_full_precision_mean",
+          "diagnostic_mean_of_trials_rounded_4dp",
+          "diagnostic_minus_historical",
+          "historical_comparison_status",
+          "paper_value_from_existing_comparison",
+          "diagnostic_rounded_mean_minus_paper"
+        ],
+        "omitted_columns": [],
+        "omitted_row_count": 0,
+        "numeric_values": "original CSV strings; no rounding or metric recomputation"
+      },
+      "excerpt_sha256": "00d232171a261d1298f13325964d6bf4d3045be260828a8567a790ddc405de1b"
+    },
+    {
+      "item_id": "E03.02",
+      "evidence_id": "E03",
+      "source_path": "results/audits/mat_reproduction_gaps/v1/wine/summary/all_metrics.csv",
+      "source_commit": "ed494a3b3c78ecd17f5436f6c9bcfae0050603fe",
+      "source_sha256": "6d058d299b48cac8777131941ed0626b3aa4069f25fbe31aa9f6e406bb17e1f0",
+      "selection": {
+        "row_filter": "all rows",
+        "source_data_rows_1based": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "total_source_rows": 10,
+        "selected_columns": [
+          "dataset",
+          "split_seed",
+          "n_train",
+          "n_test",
+          "n_features",
+          "train_positives",
+          "test_positives",
+          "test_prevalence",
+          "metric_status",
+          "roc_auc",
+          "roc_auc_rounded_4dp",
+          "average_precision",
+          "average_precision_rounded_4dp",
+          "nonfinite_intermediate_O_entries",
+          "test_rows_with_nonfinite_contributions",
+          "nonfinite_final_scores",
+          "recorded_warning_count"
+        ],
+        "omitted_columns": [],
+        "omitted_row_count": 0,
+        "numeric_values": "original CSV strings; no rounding or metric recomputation"
+      },
+      "excerpt_sha256": "6d058d299b48cac8777131941ed0626b3aa4069f25fbe31aa9f6e406bb17e1f0"
+    },
+    {
+      "item_id": "E03.03",
+      "evidence_id": "E03",
+      "source_path": "results/audits/mat_reproduction_gaps/v1/wine/summary/score_stability.csv",
+      "source_commit": "ed494a3b3c78ecd17f5436f6c9bcfae0050603fe",
+      "source_sha256": "9f215f9862da6b1fdcb643a1408e2b8ffa95411459d8970a81ca183451c183ab",
+      "selection": {
+        "row_filter": "all rows",
+        "source_data_rows_1based": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "total_source_rows": 10,
+        "selected_columns": [
+          "dataset",
+          "split_seed",
+          "reference_split_seed",
+          "n_rows",
+          "max_absolute_score_difference",
+          "n_rows_differing_beyond_tolerance",
+          "absolute_tolerance"
+        ],
+        "omitted_columns": [],
+        "omitted_row_count": 0,
+        "numeric_values": "original CSV strings; no rounding or metric recomputation"
+      },
+      "excerpt_sha256": "9f215f9862da6b1fdcb643a1408e2b8ffa95411459d8970a81ca183451c183ab"
+    },
+    {
+      "item_id": "E03.04",
+      "evidence_id": "E03",
+      "source_path": "results/audits/mat_reproduction_gaps/v1/wine/summary/summary_metadata.json",
+      "source_commit": "ed494a3b3c78ecd17f5436f6c9bcfae0050603fe",
+      "source_sha256": "2efc64719d11a648e390e3acce17bb4ecc5e4edba94467116a6f6b77f8da9729",
+      "selection": {
+        "json_pointers": [
+          "/configuration/schema",
+          "/configuration/python",
+          "/configuration/package_versions",
+          "/configuration/authors_commit",
+          "/configuration/test_fraction",
+          "/configuration/stratified",
+          "/configuration/subsampled",
+          "/configuration/scaling",
+          "/configuration/scoring_reference",
+          "/configuration/threshold_policy",
+          "/configuration/dataset",
+          "/configuration/n_rows",
+          "/configuration/n_features",
+          "/configuration/n_positive",
+          "/configuration/duplicate_feature_rows",
+          "/split_seeds",
+          "/interpretation_limits"
+        ],
+        "omissions": "All other JSON fields excluded."
+      },
+      "excerpt_sha256": "f27a73b0b83219d71e89d4437d1e22cdbedf05fdfeb6d87da2ba608713f4790f"
+    },
+    {
+      "item_id": "E03.05",
+      "evidence_id": "E03",
+      "source_path": "results/audits/mat_reproduction_gaps/v1/wbc/summary/historical_comparison.csv",
+      "source_commit": "ed494a3b3c78ecd17f5436f6c9bcfae0050603fe",
+      "source_sha256": "9a454e54aa2f3adab2e6aa4efe71a2b117806fc2d056fa3adc05dbee922f8081",
+      "selection": {
+        "row_filter": "all rows",
+        "source_data_rows_1based": [
+          1,
+          2
+        ],
+        "total_source_rows": 2,
+        "selected_columns": [
+          "dataset",
+          "metric",
+          "n_valid_trials",
+          "historical_project_mean_as_saved",
+          "diagnostic_full_precision_mean",
+          "diagnostic_mean_of_trials_rounded_4dp",
+          "diagnostic_minus_historical",
+          "historical_comparison_status",
+          "paper_value_from_existing_comparison",
+          "diagnostic_rounded_mean_minus_paper"
+        ],
+        "omitted_columns": [],
+        "omitted_row_count": 0,
+        "numeric_values": "original CSV strings; no rounding or metric recomputation"
+      },
+      "excerpt_sha256": "9a454e54aa2f3adab2e6aa4efe71a2b117806fc2d056fa3adc05dbee922f8081"
+    },
+    {
+      "item_id": "E03.06",
+      "evidence_id": "E03",
+      "source_path": "results/audits/mat_reproduction_gaps/v1/wbc/summary/all_metrics.csv",
+      "source_commit": "ed494a3b3c78ecd17f5436f6c9bcfae0050603fe",
+      "source_sha256": "77de4aeaaf02f032005fada7a21128b808a0ba2fecae288eb49d0903fe568314",
+      "selection": {
+        "row_filter": "all rows",
+        "source_data_rows_1based": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "total_source_rows": 10,
+        "selected_columns": [
+          "dataset",
+          "split_seed",
+          "n_train",
+          "n_test",
+          "n_features",
+          "train_positives",
+          "test_positives",
+          "test_prevalence",
+          "metric_status",
+          "roc_auc",
+          "roc_auc_rounded_4dp",
+          "average_precision",
+          "average_precision_rounded_4dp",
+          "nonfinite_intermediate_O_entries",
+          "test_rows_with_nonfinite_contributions",
+          "nonfinite_final_scores",
+          "recorded_warning_count"
+        ],
+        "omitted_columns": [],
+        "omitted_row_count": 0,
+        "numeric_values": "original CSV strings; no rounding or metric recomputation"
+      },
+      "excerpt_sha256": "77de4aeaaf02f032005fada7a21128b808a0ba2fecae288eb49d0903fe568314"
+    },
+    {
+      "item_id": "E03.07",
+      "evidence_id": "E03",
+      "source_path": "results/audits/mat_reproduction_gaps/v1/wbc/summary/score_stability.csv",
+      "source_commit": "ed494a3b3c78ecd17f5436f6c9bcfae0050603fe",
+      "source_sha256": "ade58eb315b8d97df728ff38a75b78d3bfcbadf4e9790d753c4d92225b88cb07",
+      "selection": {
+        "row_filter": "all rows",
+        "source_data_rows_1based": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "total_source_rows": 10,
+        "selected_columns": [
+          "dataset",
+          "split_seed",
+          "reference_split_seed",
+          "n_rows",
+          "max_absolute_score_difference",
+          "n_rows_differing_beyond_tolerance",
+          "absolute_tolerance"
+        ],
+        "omitted_columns": [],
+        "omitted_row_count": 0,
+        "numeric_values": "original CSV strings; no rounding or metric recomputation"
+      },
+      "excerpt_sha256": "ade58eb315b8d97df728ff38a75b78d3bfcbadf4e9790d753c4d92225b88cb07"
+    },
+    {
+      "item_id": "E03.08",
+      "evidence_id": "E03",
+      "source_path": "results/audits/mat_reproduction_gaps/v1/wbc/summary/summary_metadata.json",
+      "source_commit": "ed494a3b3c78ecd17f5436f6c9bcfae0050603fe",
+      "source_sha256": "9b10a3a76b63f6a3f7134a20785ff052b47853ff65c1c286ddd9bdf85173c527",
+      "selection": {
+        "json_pointers": [
+          "/configuration/schema",
+          "/configuration/python",
+          "/configuration/package_versions",
+          "/configuration/authors_commit",
+          "/configuration/test_fraction",
+          "/configuration/stratified",
+          "/configuration/subsampled",
+          "/configuration/scaling",
+          "/configuration/scoring_reference",
+          "/configuration/threshold_policy",
+          "/configuration/dataset",
+          "/configuration/n_rows",
+          "/configuration/n_features",
+          "/configuration/n_positive",
+          "/configuration/duplicate_feature_rows",
+          "/split_seeds",
+          "/interpretation_limits"
+        ],
+        "omissions": "All other JSON fields excluded."
+      },
+      "excerpt_sha256": "847262caaa2e1abac6816c7209d3a96e2822373bb25b0670f83e87c747ff41c4"
+    },
+    {
+      "item_id": "E03.09",
+      "evidence_id": "E03",
+      "source_path": "results/audits/mat_reproduction_gaps/v1/satimage-2/summary/historical_comparison.csv",
+      "source_commit": "ed494a3b3c78ecd17f5436f6c9bcfae0050603fe",
+      "source_sha256": "08d8a182ba17ded7ca4edc96ae409e75e9206a9124c79d1e0415f4b62a2f52e8",
+      "selection": {
+        "row_filter": "all rows",
+        "source_data_rows_1based": [
+          1,
+          2
+        ],
+        "total_source_rows": 2,
+        "selected_columns": [
+          "dataset",
+          "metric",
+          "n_valid_trials",
+          "historical_project_mean_as_saved",
+          "diagnostic_full_precision_mean",
+          "diagnostic_mean_of_trials_rounded_4dp",
+          "diagnostic_minus_historical",
+          "historical_comparison_status",
+          "paper_value_from_existing_comparison",
+          "diagnostic_rounded_mean_minus_paper"
+        ],
+        "omitted_columns": [],
+        "omitted_row_count": 0,
+        "numeric_values": "original CSV strings; no rounding or metric recomputation"
+      },
+      "excerpt_sha256": "08d8a182ba17ded7ca4edc96ae409e75e9206a9124c79d1e0415f4b62a2f52e8"
+    },
+    {
+      "item_id": "E03.10",
+      "evidence_id": "E03",
+      "source_path": "results/audits/mat_reproduction_gaps/v1/satimage-2/summary/all_metrics.csv",
+      "source_commit": "ed494a3b3c78ecd17f5436f6c9bcfae0050603fe",
+      "source_sha256": "07e6fa23e924a634deeff303dc1c88006bcbdb79f52ffff5857a8b5f42bf0f38",
+      "selection": {
+        "row_filter": "all rows",
+        "source_data_rows_1based": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "total_source_rows": 10,
+        "selected_columns": [
+          "dataset",
+          "split_seed",
+          "n_train",
+          "n_test",
+          "n_features",
+          "train_positives",
+          "test_positives",
+          "test_prevalence",
+          "metric_status",
+          "roc_auc",
+          "roc_auc_rounded_4dp",
+          "average_precision",
+          "average_precision_rounded_4dp",
+          "nonfinite_intermediate_O_entries",
+          "test_rows_with_nonfinite_contributions",
+          "nonfinite_final_scores",
+          "recorded_warning_count"
+        ],
+        "omitted_columns": [],
+        "omitted_row_count": 0,
+        "numeric_values": "original CSV strings; no rounding or metric recomputation"
+      },
+      "excerpt_sha256": "07e6fa23e924a634deeff303dc1c88006bcbdb79f52ffff5857a8b5f42bf0f38"
+    },
+    {
+      "item_id": "E03.11",
+      "evidence_id": "E03",
+      "source_path": "results/audits/mat_reproduction_gaps/v1/satimage-2/summary/score_stability.csv",
+      "source_commit": "ed494a3b3c78ecd17f5436f6c9bcfae0050603fe",
+      "source_sha256": "860f0f32b62cdc0060ab4f600f093a4755c0520c8dbe0beeb74ca4561686ac95",
+      "selection": {
+        "row_filter": "all rows",
+        "source_data_rows_1based": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "total_source_rows": 10,
+        "selected_columns": [
+          "dataset",
+          "split_seed",
+          "reference_split_seed",
+          "n_rows",
+          "max_absolute_score_difference",
+          "n_rows_differing_beyond_tolerance",
+          "absolute_tolerance"
+        ],
+        "omitted_columns": [],
+        "omitted_row_count": 0,
+        "numeric_values": "original CSV strings; no rounding or metric recomputation"
+      },
+      "excerpt_sha256": "860f0f32b62cdc0060ab4f600f093a4755c0520c8dbe0beeb74ca4561686ac95"
+    },
+    {
+      "item_id": "E03.12",
+      "evidence_id": "E03",
+      "source_path": "results/audits/mat_reproduction_gaps/v1/satimage-2/summary/summary_metadata.json",
+      "source_commit": "ed494a3b3c78ecd17f5436f6c9bcfae0050603fe",
+      "source_sha256": "8de4781c7db19c3c56434551890b200939b81095567640a3ffe4fbce1cb30858",
+      "selection": {
+        "json_pointers": [
+          "/configuration/schema",
+          "/configuration/python",
+          "/configuration/package_versions",
+          "/configuration/authors_commit",
+          "/configuration/test_fraction",
+          "/configuration/stratified",
+          "/configuration/subsampled",
+          "/configuration/scaling",
+          "/configuration/scoring_reference",
+          "/configuration/threshold_policy",
+          "/configuration/dataset",
+          "/configuration/n_rows",
+          "/configuration/n_features",
+          "/configuration/n_positive",
+          "/configuration/duplicate_feature_rows",
+          "/split_seeds",
+          "/interpretation_limits"
+        ],
+        "omissions": "All other JSON fields excluded."
+      },
+      "excerpt_sha256": "2e1b1ab732c900711769eae773d924119cf7297937bea0625fa8f22b363d3922"
+    },
+    {
+      "item_id": "E03.13",
+      "evidence_id": "E03",
+      "source_path": "scripts/diagnose_mat_reproduction_gaps.py",
+      "source_commit": "ed494a3b3c78ecd17f5436f6c9bcfae0050603fe",
+      "source_sha256": "b62915b5655d59c37055ef1a665af0fe093acfaf219d2d570a1695f7dfb14df9",
+      "selection": {
+        "inclusive_source_line_ranges": [
+          [
+            137,
+            154
+          ],
+          [
+            240,
+            266
+          ]
+        ],
+        "source_lines": 354,
+        "omissions": "All source lines outside the listed ranges excluded."
+      },
+      "excerpt_sha256": "e06f85cd300c2eb98919b23a0991316608dd374335a15dc10af77262f91de63a"
+    },
+    {
+      "item_id": "E04.01",
+      "evidence_id": "E04",
+      "source_path": "results/aps_full_evaluation/v1/summary/all_metrics.csv",
+      "source_commit": "ed494a3b3c78ecd17f5436f6c9bcfae0050603fe",
+      "source_sha256": "1d6f859e8868e0674df886abc7270efd5ae670fd5111ebada1d0a06b824facc3",
+      "selection": {
+        "row_filter": "all rows",
+        "source_data_rows_1based": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+        ],
+        "total_source_rows": 14,
+        "selected_columns": [
+          "condition",
+          "method",
+          "model_seed",
+          "n_train",
+          "n_test",
+          "n_features",
+          "train_positives",
+          "test_positives",
+          "test_prevalence",
+          "roc_auc",
+          "average_precision"
+        ],
+        "omitted_columns": [
+          "precision_at_375",
+          "precision_k",
+          "precision_cutoff_score",
+          "cutoff_tie_size",
+          "cutoff_remaining_slots",
+          "positives_above_cutoff",
+          "positives_in_cutoff_tie",
+          "fit_seconds",
+          "score_seconds"
+        ],
+        "omitted_row_count": 0,
+        "numeric_values": "original CSV strings; no rounding or metric recomputation"
+      },
+      "excerpt_sha256": "ac4a43ab59d15df738817acdf7797fd5b6acb554ff8b552a55c0d3f5e6dc464a"
+    },
+    {
+      "item_id": "E04.02",
+      "evidence_id": "E04",
+      "source_path": "results/aps_full_evaluation/v1/summary/performance_summary.csv",
+      "source_commit": "ed494a3b3c78ecd17f5436f6c9bcfae0050603fe",
+      "source_sha256": "ac71c77d74e94b6f4d667cb234c44771ba8e56249485f057850bf626ca8bf922",
+      "selection": {
+        "row_filter": "all rows",
+        "source_data_rows_1based": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "total_source_rows": 6,
+        "selected_columns": [
+          "condition",
+          "method",
+          "n_runs",
+          "n_features",
+          "test_prevalence",
+          "score_reference",
+          "sd_interpretation",
+          "roc_auc_mean",
+          "roc_auc_sd",
+          "average_precision_mean",
+          "average_precision_sd"
+        ],
+        "omitted_columns": [
+          "precision_at_375_mean",
+          "precision_at_375_sd",
+          "fit_seconds_mean",
+          "fit_seconds_sd",
+          "score_seconds_mean",
+          "score_seconds_sd"
+        ],
+        "omitted_row_count": 0,
+        "numeric_values": "original CSV strings; no rounding or metric recomputation"
+      },
+      "excerpt_sha256": "edc946e8d411e580fe5f5258874fce5eb23a196f147e70c8a588e297d012ee7c"
+    },
+    {
+      "item_id": "E04.03",
+      "evidence_id": "E04",
+      "source_path": "results/aps_full_evaluation/v1/summary/preprocessing_summary.csv",
+      "source_commit": "ed494a3b3c78ecd17f5436f6c9bcfae0050603fe",
+      "source_sha256": "3292b120f4dcd71cad5b4b82fd0176002774ba2b6df7b87c16f2efd63efaa028",
+      "selection": {
+        "row_filter": "all rows",
+        "source_data_rows_1based": [
+          1,
+          2
+        ],
+        "total_source_rows": 2,
+        "selected_columns": [
+          "condition",
+          "n_train",
+          "n_test",
+          "n_features",
+          "excluded_features",
+          "training_missing_cells_in_retained_features",
+          "test_missing_cells_in_retained_features",
+          "checks"
+        ],
+        "omitted_columns": [
+          "feature_selection_seconds",
+          "imputation_seconds",
+          "scaling_seconds",
+          "warning_count"
+        ],
+        "omitted_row_count": 0,
+        "numeric_values": "original CSV strings; no rounding or metric recomputation"
+      },
+      "excerpt_sha256": "f7497d1e7d136b7f688729455001853ec73113b8fd7846c95d535df9a18bfa70"
+    },
+    {
+      "item_id": "E04.04",
+      "evidence_id": "E04",
+      "source_path": "results/aps_full_evaluation/v1/summary/missingness_summary.csv",
+      "source_commit": "ed494a3b3c78ecd17f5436f6c9bcfae0050603fe",
+      "source_sha256": "928c4b7cc522997bb073f1cb07f08f07464b7d428aa784b7203811429c5c76e0",
+      "selection": {
+        "row_filter": "all rows",
+        "source_data_rows_1based": [
+          1,
+          2,
+          3
+        ],
+        "total_source_rows": 3,
+        "selected_columns": [
+          "method",
+          "n_pairs",
+          "roc_auc_difference_mean",
+          "roc_auc_difference_sd",
+          "average_precision_difference_mean",
+          "average_precision_difference_sd"
+        ],
+        "omitted_columns": [],
+        "omitted_row_count": 0,
+        "numeric_values": "original CSV strings; no rounding or metric recomputation"
+      },
+      "excerpt_sha256": "928c4b7cc522997bb073f1cb07f08f07464b7d428aa784b7203811429c5c76e0"
+    },
+    {
+      "item_id": "E04.05",
+      "evidence_id": "E04",
+      "source_path": "results/aps_full_evaluation/v1/summary/missingness_paired_differences.csv",
+      "source_commit": "ed494a3b3c78ecd17f5436f6c9bcfae0050603fe",
+      "source_sha256": "a4caaf2d33929ed79820a88ce0b9a7ed954f66dc236f56bd80ba82d7f89e0376",
+      "selection": {
+        "row_filter": "all rows",
+        "source_data_rows_1based": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "total_source_rows": 7,
+        "selected_columns": [
+          "method",
+          "model_seed",
+          "roc_auc_primary",
+          "roc_auc_secondary",
+          "roc_auc_secondary_minus_primary",
+          "average_precision_primary",
+          "average_precision_secondary",
+          "average_precision_secondary_minus_primary"
+        ],
+        "omitted_columns": [],
+        "omitted_row_count": 0,
+        "numeric_values": "original CSV strings; no rounding or metric recomputation"
+      },
+      "excerpt_sha256": "a4caaf2d33929ed79820a88ce0b9a7ed954f66dc236f56bd80ba82d7f89e0376"
+    },
+    {
+      "item_id": "E04.06",
+      "evidence_id": "E04",
+      "source_path": "results/aps_full_evaluation/v1/run_manifest.json",
+      "source_commit": "ed494a3b3c78ecd17f5436f6c9bcfae0050603fe",
+      "source_sha256": "dadcea8b162c5b3e48e6ed9f6a2b2560a210b85631b67149216d4bc2f578239b",
+      "selection": {
+        "json_pointers": [
+          "/schema",
+          "/plan_commit",
+          "/planned_conditions",
+          "/isolation_forest_seeds",
+          "/isolation_forest_parameters",
+          "/copod_parameters",
+          "/label_use",
+          "/row_reference",
+          "/partitions"
+        ],
+        "omissions": "All other JSON fields excluded."
+      },
+      "excerpt_sha256": "1a0fe7dd1018ec1984b6fd09a2848a767139a4b3cb0d57f50777995d206778b4"
+    },
+    {
+      "item_id": "E04.07",
+      "evidence_id": "E04",
+      "source_path": "results/aps_full_evaluation/v1/primary/preprocessing/metadata.json",
+      "source_commit": "ed494a3b3c78ecd17f5436f6c9bcfae0050603fe",
+      "source_sha256": "b7a74f9d7a8a5b10c700f61ae154804e2a76ce6b0f5aed3c7e53acceec1ee394",
+      "selection": {
+        "json_pointers": [
+          "/configuration",
+          "/details/all_rows_retained",
+          "/details/checks"
+        ],
+        "omissions": "All other JSON fields excluded."
+      },
+      "excerpt_sha256": "4d6393a929a4c3be2e837ee2aa966787828dac2c4aad27c587e5c79440112410"
+    },
+    {
+      "item_id": "E04.08",
+      "evidence_id": "E04",
+      "source_path": "results/aps_full_evaluation/v1/drop_high_missingness/preprocessing/metadata.json",
+      "source_commit": "ed494a3b3c78ecd17f5436f6c9bcfae0050603fe",
+      "source_sha256": "6c587ba4a7e31df566f101e9ca7f7aee87f80842a8319ffb73c34832a88d4c2f",
+      "selection": {
+        "json_pointers": [
+          "/configuration",
+          "/details/all_rows_retained",
+          "/details/checks"
+        ],
+        "omissions": "All other JSON fields excluded."
+      },
+      "excerpt_sha256": "282d5d3d7e96653705fefc1d0603c7abc10bd74f2965b79f06e19cb88a449848"
+    },
+    {
+      "item_id": "E04.09",
+      "evidence_id": "E04",
+      "source_path": "notes/aps_full_evaluation_plan.md",
+      "source_commit": "ed494a3b3c78ecd17f5436f6c9bcfae0050603fe",
+      "source_sha256": "a9e1d152c94caf7012a8a8cab732d91f0a9672fd560abba037ab020e66d7f3b7",
+      "selection": {
+        "inclusive_source_line_ranges": [
+          [
+            9,
+            13
+          ],
+          [
+            27,
+            59
+          ],
+          [
+            63,
+            93
+          ]
+        ],
+        "source_lines": 150,
+        "omissions": "All source lines outside the listed ranges excluded."
+      },
+      "excerpt_sha256": "eb4f5f8037142f214e830740d0bafb76133c79cbb4d6533c7950e4442cf99cf5"
+    },
+    {
+      "item_id": "E05.01",
+      "evidence_id": "E05",
+      "source_path": "results/synthetic_extension/v1/summary/performance_summary.csv",
+      "source_commit": "ed494a3b3c78ecd17f5436f6c9bcfae0050603fe",
+      "source_sha256": "58600ce6df82c63f6815628e14bb3f1d596a486f60bd0d8ab1fef649f9d3e843",
+      "selection": {
+        "row_filter": "all rows",
+        "source_data_rows_1based": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21
+        ],
+        "total_source_rows": 21,
+        "selected_columns": [
+          "condition",
+          "family",
+          "rho",
+          "delta",
+          "null_control",
+          "method",
+          "n_seeds",
+          "roc_auc_random_reference",
+          "average_precision_prevalence_reference",
+          "roc_auc_mean",
+          "roc_auc_sd",
+          "roc_auc_min",
+          "roc_auc_max",
+          "average_precision_mean",
+          "average_precision_sd",
+          "average_precision_min",
+          "average_precision_max"
+        ],
+        "omitted_columns": [],
+        "omitted_row_count": 0,
+        "numeric_values": "original CSV strings; no rounding or metric recomputation"
+      },
+      "excerpt_sha256": "58600ce6df82c63f6815628e14bb3f1d596a486f60bd0d8ab1fef649f9d3e843"
+    },
+    {
+      "item_id": "E05.02",
+      "evidence_id": "E05",
+      "source_path": "results/synthetic_extension/v1/summary/method_paired_differences.csv",
+      "source_commit": "ed494a3b3c78ecd17f5436f6c9bcfae0050603fe",
+      "source_sha256": "c82c5de1872ab7f766ad8ff5dd1edfe4722895b638936281fcea966f4504665f",
+      "selection": {
+        "row_filter": {
+          "principal_relational_comparison": [
+            "True"
+          ]
+        },
+        "source_data_rows_1based": [
+          131,
+          132,
+          133,
+          134,
+          135,
+          136,
+          137,
+          138,
+          139,
+          140
+        ],
+        "total_source_rows": 140,
+        "selected_columns": [
+          "comparison",
+          "condition",
+          "family",
+          "rho",
+          "delta",
+          "null_control",
+          "data_seed",
+          "left_method",
+          "right_method",
+          "principal_relational_comparison",
+          "roc_auc_left",
+          "roc_auc_right",
+          "roc_auc_difference",
+          "average_precision_left",
+          "average_precision_right",
+          "average_precision_difference"
+        ],
+        "omitted_columns": [],
+        "omitted_row_count": 130,
+        "numeric_values": "original CSV strings; no rounding or metric recomputation"
+      },
+      "excerpt_sha256": "a8f293d55e75c91e7da02e4a0203c1472a40488a809d3b25f56247fafd61e0e5"
+    },
+    {
+      "item_id": "E05.03",
+      "evidence_id": "E05",
+      "source_path": "results/synthetic_extension/v1/summary/method_paired_summary.csv",
+      "source_commit": "ed494a3b3c78ecd17f5436f6c9bcfae0050603fe",
+      "source_sha256": "891cb7fe413fa6e7fd0133a09cf27eb945ebaf4ba2f56fa60bf66879af719c3a",
+      "selection": {
+        "row_filter": "all rows",
+        "source_data_rows_1based": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+        ],
+        "total_source_rows": 14,
+        "selected_columns": [
+          "comparison",
+          "condition",
+          "family",
+          "rho",
+          "delta",
+          "null_control",
+          "left_method",
+          "right_method",
+          "principal_relational_comparison",
+          "n_pairs",
+          "roc_auc_difference_mean",
+          "roc_auc_difference_sd",
+          "roc_auc_difference_min",
+          "roc_auc_difference_max",
+          "roc_auc_positive_differences",
+          "roc_auc_negative_differences",
+          "roc_auc_zero_differences",
+          "average_precision_difference_mean",
+          "average_precision_difference_sd",
+          "average_precision_difference_min",
+          "average_precision_difference_max",
+          "average_precision_positive_differences",
+          "average_precision_negative_differences",
+          "average_precision_zero_differences"
+        ],
+        "omitted_columns": [],
+        "omitted_row_count": 0,
+        "numeric_values": "original CSV strings; no rounding or metric recomputation"
+      },
+      "excerpt_sha256": "891cb7fe413fa6e7fd0133a09cf27eb945ebaf4ba2f56fa60bf66879af719c3a"
+    },
+    {
+      "item_id": "E05.04",
+      "evidence_id": "E05",
+      "source_path": "results/synthetic_extension/v1/summary/verified_inventory.csv",
+      "source_commit": "ed494a3b3c78ecd17f5436f6c9bcfae0050603fe",
+      "source_sha256": "bf8a7efa169e63049fb9ce6c3855400c09c7d02e6d80df0b70449d3f9c37910e",
+      "selection": {
+        "row_filter": "all rows",
+        "source_data_rows_1based": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62,
+          63,
+          64,
+          65,
+          66,
+          67,
+          68,
+          69,
+          70
+        ],
+        "total_source_rows": 70,
+        "selected_columns": [
+          "data_seed",
+          "condition",
+          "family",
+          "rho",
+          "delta",
+          "null_control",
+          "n_methods",
+          "n_test",
+          "test_positives",
+          "checks"
+        ],
+        "omitted_columns": [
+          "train_row_order_sha256",
+          "test_row_order_sha256",
+          "evaluation_metadata_sha256"
+        ],
+        "omitted_row_count": 0,
+        "numeric_values": "original CSV strings; no rounding or metric recomputation"
+      },
+      "excerpt_sha256": "a6d8444f72b609a998879aeea8a3f13945444271c26b94a3dc77d3d7db39ce61"
+    },
+    {
+      "item_id": "E06.01",
+      "evidence_id": "E06",
+      "source_path": "notes/synthetic_extension_plan.md",
+      "source_commit": "ed494a3b3c78ecd17f5436f6c9bcfae0050603fe",
+      "source_sha256": "8f91155a425bc6714a4c8e47ada30e5a1a5128bdd7b38b0dea4b7609abebbcb9",
+      "selection": {
+        "inclusive_source_line_ranges": [
+          [
+            13,
+            13
+          ],
+          [
+            53,
+            71
+          ],
+          [
+            79,
+            95
+          ],
+          [
+            99,
+            115
+          ],
+          [
+            138,
+            150
+          ],
+          [
+            168,
+            174
+          ]
+        ],
+        "source_lines": 184,
+        "omissions": "All source lines outside the listed ranges excluded."
+      },
+      "excerpt_sha256": "8a936f559cbd2604060ea37e31a20e838933b9578f277c26d8eb623c62afdb6a"
+    },
+    {
+      "item_id": "E06.02",
+      "evidence_id": "E06",
+      "source_path": "scripts/generate_synthetic_extension.py",
+      "source_commit": "ed494a3b3c78ecd17f5436f6c9bcfae0050603fe",
+      "source_sha256": "42471e6adeafff994963fe5fb56b0539a109bf8e6985b95a75813896aaa01ab3",
+      "selection": {
+        "inclusive_source_line_ranges": [
+          [
+            24,
+            42
+          ],
+          [
+            73,
+            107
+          ],
+          [
+            135,
+            158
+          ]
+        ],
+        "source_lines": 459,
+        "omissions": "All source lines outside the listed ranges excluded."
+      },
+      "excerpt_sha256": "ab569e09b773b8ce2bf801ec25c402db9507e3abd882bc129cd94508f508c3a0"
+    },
+    {
+      "item_id": "E06.03",
+      "evidence_id": "E06",
+      "source_path": "scripts/evaluate_synthetic_extension.py",
+      "source_commit": "ed494a3b3c78ecd17f5436f6c9bcfae0050603fe",
+      "source_sha256": "f263b6e7d4712573d1802f647dc5daeff719d0211f3160fbfbfa8c61606b5d44",
+      "selection": {
+        "inclusive_source_line_ranges": [
+          [
+            431,
+            451
+          ],
+          [
+            465,
+            477
+          ]
+        ],
+        "source_lines": 670,
+        "omissions": "All source lines outside the listed ranges excluded."
+      },
+      "excerpt_sha256": "81834d337cc1b36307bb967d7105afca5ab04a242f7e814a7712f075352bd7eb"
+    },
+    {
+      "item_id": "E06.04",
+      "evidence_id": "E06",
+      "source_path": "results/synthetic_extension/v1/generation_manifest.json",
+      "source_commit": "ed494a3b3c78ecd17f5436f6c9bcfae0050603fe",
+      "source_sha256": "29e9d3477573c9b10fc7639fc45edfb1af907b8741fc54b544fd94fd18d12dd6",
+      "selection": {
+        "json_pointers": [
+          "/conditions",
+          "/planned_seeds",
+          "/n_rows",
+          "/n_features",
+          "/n_positive",
+          "/block_size",
+          "/factor_rule",
+          "/label_meaning",
+          "/null_label_limit",
+          "/rng",
+          "/family_order",
+          "/within_family_stream_order",
+          "/latent_draw_order",
+          "/split",
+          "/preprocessing",
+          "/population_targets",
+          "/completion_scope",
+          "/plan_commit",
+          "/plan_sha256"
+        ],
+        "omissions": "All other JSON fields excluded."
+      },
+      "excerpt_sha256": "1832ba6cfb8375df6173294405b5f393e682faf39e22d4ccce1817efc5ae2836"
+    },
+    {
+      "item_id": "E06.05",
+      "evidence_id": "E06",
+      "source_path": "results/synthetic_extension/v1/evaluation_manifest.json",
+      "source_commit": "ed494a3b3c78ecd17f5436f6c9bcfae0050603fe",
+      "source_sha256": "e4cf254c389c4846c6157205d57863dc3a80b36caa491a535db8227af1e77af3",
+      "selection": {
+        "json_pointers": [
+          "/methods",
+          "/planned_data_seeds",
+          "/scoring_references",
+          "/copod_parameters",
+          "/fixed_reference_probability_floor",
+          "/ledoit_wolf_parameters",
+          "/labels_in_fit",
+          "/training_rows",
+          "/training_positives_retained",
+          "/split",
+          "/metrics",
+          "/metrics_use",
+          "/preprocessing",
+          "/performance_acceptance_thresholds",
+          "/runtime",
+          "/timing_policy"
+        ],
+        "omissions": "All other JSON fields excluded."
+      },
+      "excerpt_sha256": "ac5b22421295bd3db24c412cbf92914d747b1945894c89fa2e5029a4b7dc7c15"
+    },
+    {
+      "item_id": "E06.06",
+      "evidence_id": "E06",
+      "source_path": "results/synthetic_extension/v1/seed100/marginal_delta0/metadata.json",
+      "source_commit": "ed494a3b3c78ecd17f5436f6c9bcfae0050603fe",
+      "source_sha256": "e84504d0dcc511fe4ece7cc3afec3c617f062947dea0368a036022a19a1323f7",
+      "selection": {
+        "json_pointers": [
+          "/schema",
+          "/seed",
+          "/specification",
+          "/annotation_join",
+          "/selected_feature_convention",
+          "/stream_provenance/entropy",
+          "/stream_provenance/family_spawn_key",
+          "/stream_provenance/stream_spawn_keys"
+        ],
+        "omissions": "All other JSON fields excluded."
+      },
+      "excerpt_sha256": "4005bce0ce7b926ec85b199f3599568f2305f01e105f9cc258ea8a0452199771"
+    },
+    {
+      "item_id": "E06.07",
+      "evidence_id": "E06",
+      "source_path": "results/synthetic_extension/v1/seed100/dependence_rho0p0/metadata.json",
+      "source_commit": "ed494a3b3c78ecd17f5436f6c9bcfae0050603fe",
+      "source_sha256": "588e8ec93aaba3f187eb9ddf5ca32e6a7ef978b64667be428e4c9461ee1fc674",
+      "selection": {
+        "json_pointers": [
+          "/schema",
+          "/seed",
+          "/specification",
+          "/annotation_join",
+          "/selected_feature_convention",
+          "/stream_provenance/entropy",
+          "/stream_provenance/family_spawn_key",
+          "/stream_provenance/stream_spawn_keys"
+        ],
+        "omissions": "All other JSON fields excluded."
+      },
+      "excerpt_sha256": "2a75c778009d5a0cdd6d8a006d6e6289f98578dc66cbf543712e18cecef64b56"
+    }
+  ]
+}

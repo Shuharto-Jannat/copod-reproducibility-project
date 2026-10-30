@@ -1,0 +1,14 @@
+{
+  "claim_id": "C01",
+  "verdict": "ONE_OF_THE_FOUR_RUBRIC_LABELS",
+  "evidence": [
+    {
+      "evidence_id": "E01",
+      "locator": "Exact table row/column keys or excerpt line range",
+      "finding": "The relevant source fact or value"
+    }
+  ],
+  "rationale": "Concise explanation, no more than 100 words",
+  "required_change": "Correction or qualification, or 'none'",
+  "missing_evidence": "What would be needed, or 'none'"
+}

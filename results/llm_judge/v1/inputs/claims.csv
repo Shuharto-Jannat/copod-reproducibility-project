@@ -1,0 +1,11 @@
+claim_id,claim
+C01,"Across the 30 benchmark datasets, the released-loader reproduction's mean COPOD ROC AUC was lower than the published mean recorded in the project's comparison table."
+C02,"With the correct labels used in both conditions, correcting feature selection did not increase mean AP on every one of the four affected ARFF datasets."
+C03,"The Wine, WBC and Satimage-2 diagnostics recovered the saved project averages, but did not establish the cause of the remaining differences from the recorded paper results."
+C04,"On the full APS primary test set, Isolation Forest's mean AP across its five planned seeds exceeded the AP of both COPOD scoring procedures."
+C05,Removing the eight additional high-missingness APS features reduced the observed mean AP for each of the three evaluated methods relative to the primary condition.
+C06,"In the synthetic extension, both COPOD procedures' ten-seed mean AP increased across the tested single-feature shift levels 0, 2, 4 and 6."
+C07,"In the synthetic extension's correlation-0.8 dependence setting, Ledoit-Wolf exceeded fixed-reference COPOD on both ROC AUC and AP in every one of the ten planned data seeds."
+C08,"In each of the synthetic extension's two null controls, the label-1 and label-0 groups follow the same population distribution by construction."
+C09,"In the synthetic extension's correlation-0.8 dependence setting, fixed-reference COPOD achieved a ten-seed mean AP of approximately 0.5000."
+C10,The synthetic extension establishes Ledoit-Wolf as the best detector for future Scania APS observations.

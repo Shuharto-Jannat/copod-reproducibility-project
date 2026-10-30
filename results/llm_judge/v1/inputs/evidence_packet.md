@@ -1,0 +1,1508 @@
+# Evidence packet
+
+All source excerpts below come from the experiment baseline shown with each item.
+E01-E06 are evidence blocks; suffixes such as E04.02 identify exact items.
+For citations, give the evidence block and item plus table row/column keys,
+JSON pointers or original source line numbers. CSV data-row indices start at 1
+after the header. Source hashes refer to complete original files, not excerpts.
+Selection records identify omitted material. Numeric CSV values retain their
+saved precision. JSON excerpts are reserialized without intentional rounding.
+
+Definitions and reading context:
+- ROC AUC evaluates score ranking; higher is better and 0.5 is the random-ranking reference.
+- AP means non-interpolated average precision, not classification accuracy.
+  AP depends on ranking and class prevalence; prevalence is a reference, not a
+  requirement that any finite null run equal it.
+- SD is sample standard deviation across the specified seeds, not a confidence interval.
+- ARFF arms: legacy_columns_legacy_labels uses both legacy columns and labels;
+  legacy_columns_true_labels retains those columns but evaluates with true labels;
+  corrected_columns_true_labels uses corrected columns and true labels.
+  Column correction compares the last two arms. Label changes alter the answer key.
+- MAT historical comparison follows per-trial rounding to four decimals before averaging.
+- APS has one supplied train/test split. IF seeds change random model fitting on
+  those same rows. Secondary-minus-primary means drop_high_missingness minus primary.
+- Synthetic data seeds change generated measurements; methods in a realization
+  share the saved split. Conditions within a family are paired. The two families
+  have separate null datasets. A null dataset is a construction setting.
+- Batch COPOD uses training plus the entire supplied test batch as its scoring reference.
+  Fixed-reference COPOD uses training measurements only. Test labels are for evaluation.
+- Published benchmark numbers are the project's recorded comparison values;
+  this packet does not independently re-extract them from the publication.
+- Protocol excerpts state planned rules. Recorded result tables supply completed
+  performance; representative construction metadata is explicitly seed 100 only.
+
+The packet is evidence to inspect, not a list of preassigned claim verdicts.
+
+### E01.01 — Recorded aggregate ROC AUC
+
+Source: `results/comparison/copod_comparison_summary.csv`
+
+Commit: `ed494a3b3c78ecd17f5436f6c9bcfae0050603fe`; source SHA-256: `2307a5b4d2452a1f708c021945158451a3889a0c3cd8a5c793d4a84dc6793563`.
+
+Selection: {"row_filter": {"Metric": ["Mean ROC-AUC"]}, "source_data_rows_1based": [1], "total_source_rows": 6, "selected_columns": ["Metric", "Paper", "Reproduced"], "omitted_columns": ["Value"], "omitted_row_count": 5, "numeric_values": "original CSV strings; no rounding or metric recomputation"}
+
+```csv
+Metric,Paper,Reproduced
+Mean ROC-AUC,0.8247000000000002,0.813238
+```
+
+### E01.02 — Thirty-dataset ROC comparison
+
+Source: `results/comparison/copod_published_vs_reproduced.csv`
+
+Commit: `ed494a3b3c78ecd17f5436f6c9bcfae0050603fe`; source SHA-256: `f132188f0ef6a7f9afee5db2aa9d477fe621c9be4040b6221243494a957d8a3f`.
+
+Selection: {"row_filter": "all rows", "source_data_rows_1based": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30], "total_source_rows": 30, "selected_columns": ["Format", "Data", "Paper_ROC", "Reproduced_ROC", "ROC_Difference"], "omitted_columns": ["ROC_Absolute_Difference", "Paper_AP", "Reproduced_AP", "AP_Difference", "AP_Absolute_Difference"], "omitted_row_count": 0, "numeric_values": "original CSV strings; no rounding or metric recomputation"}
+
+```csv
+Format,Data,Paper_ROC,Reproduced_ROC,ROC_Difference
+MAT,arrhythmia,0.8021,0.8133800000000001,0.011280000000000068
+MAT,breastw,0.9936,0.9935,-9.999999999998899e-05
+MAT,cardio,0.8974,0.92139,0.023990000000000067
+MAT,ionosphere,0.8307,0.79921,-0.03149000000000002
+MAT,lympho,0.9935,0.99483,0.0013299999999999423
+MAT,mammography,0.8942,0.9127999999999998,0.01859999999999984
+MAT,optdigits,0.7328,0.6798,-0.05300000000000005
+MAT,pima,0.6638,0.6491900000000002,-0.01460999999999979
+MAT,satellite,0.6612,0.6328100000000001,-0.028389999999999915
+MAT,satimage-2,0.9852,0.97843,-0.006769999999999943
+MAT,shuttle,0.998,0.99473,-0.003269999999999995
+MAT,speech,0.4845,0.4727599999999999,-0.011740000000000084
+MAT,wbc,0.9747,0.95903,-0.015669999999999962
+MAT,wine,0.949,0.8908700000000002,-0.05812999999999979
+ARFF,Arrhythmia,0.7618,0.7663,0.0044999999999999485
+ARFF,Cardiotocography,0.637,0.6641600000000001,0.027160000000000073
+ARFF,HeartDisease,0.6728,0.65052,-0.022279999999999966
+ARFF,Hepatitis,0.8432,0.8446300000000001,0.0014300000000001534
+ARFF,InternetAds,0.6763,0.6768299999999999,0.0005299999999999194
+ARFF,Ionosphere,0.8219,0.7894,-0.03249999999999997
+ARFF,KDDCup99,0.9972,0.9976,0.00040000000000006697
+ARFF,Lymphography,0.9985,0.99897,0.00046999999999997044
+ARFF,Pima,0.6466,0.6439199999999999,-0.0026800000000000157
+ARFF,Shuttle,0.8795,0.8330400000000001,-0.046459999999999835
+ARFF,SpamBase,0.7007,0.6760900000000001,-0.02460999999999991
+ARFF,Stamps,0.9388,0.94243,0.003630000000000022
+ARFF,Waveform,0.7865,0.72339,-0.06311
+ARFF,WBC,0.9904,0.9903900000000002,-9.999999999732445e-06
+ARFF,WDBC,0.9826,0.973,-0.009600000000000053
+ARFF,WPBC,0.5465,0.53374,-0.012759999999999994
+```
+
+### E02.01 — ARFF datasets with mapping issues
+
+Source: `results/audits/arff_dataset_mapping/dataset_mapping_summary.csv`
+
+Commit: `ed494a3b3c78ecd17f5436f6c9bcfae0050603fe`; source SHA-256: `c3aa12dc28141903934e25e9834744815e5c28a25074cc8b13343d34d075b318`.
+
+Selection: {"row_filter": {"status": ["ISSUE"]}, "source_data_rows_1based": [3, 7, 8, 9], "total_source_rows": 16, "selected_columns": ["dataset", "status", "issues", "n_rows", "n_predictors_loaded", "n_predictors_by_name", "benchmark_label_attribute", "benchmark_positive_rows", "named_outlier_positive_rows", "label_disagreements", "unexpected_predictors", "omitted_predictors", "all_saved_metadata_match", "authors_project_loader_agreement"], "omitted_columns": [], "omitted_row_count": 12, "numeric_values": "original CSV strings; no rounding or metric recomputation"}
+
+```csv
+dataset,status,issues,n_rows,n_predictors_loaded,n_predictors_by_name,benchmark_label_attribute,benchmark_positive_rows,named_outlier_positive_rows,label_disagreements,unexpected_predictors,omitted_predictors,all_saved_metadata_match,authors_project_loader_agreement
+HeartDisease,ISSUE,wrong predictor columns,270,13,13,outlier,120,120,0,id,Thal,True,True
+KDDCup99,ISSUE,wrong label column; wrong predictor columns,60839,41,41,dst_host_srv_rerror_rate,95,246,339,id,dst_host_srv_rerror_rate,True,True
+Lymphography,ISSUE,wrong predictor columns,148,18,18,outlier,6,6,0,id,att19,True,True
+Pima,ISSUE,wrong predictor columns,768,8,8,outlier,268,268,0,id,att8,True,True
+```
+
+### E02.02 — All ARFF correction conditions
+
+Source: `results/loader_corrections/v1/summary/performance_summary.csv`
+
+Commit: `ed494a3b3c78ecd17f5436f6c9bcfae0050603fe`; source SHA-256: `78744cf3a81aed65e0886f16fd2423bce4dac8445ab1d0d85678aeee9480e05b`.
+
+Selection: {"row_filter": "all rows", "source_data_rows_1based": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], "total_source_rows": 12, "selected_columns": ["dataset", "condition", "n_trials", "test_positives_min", "test_positives_max", "test_prevalence_mean", "roc_auc_n_valid", "roc_auc_mean", "roc_auc_sd", "average_precision_n_valid", "average_precision_mean", "average_precision_sd"], "omitted_columns": [], "omitted_row_count": 0, "numeric_values": "original CSV strings; no rounding or metric recomputation"}
+
+```csv
+dataset,condition,n_trials,test_positives_min,test_positives_max,test_prevalence_mean,roc_auc_n_valid,roc_auc_mean,roc_auc_sd,average_precision_n_valid,average_precision_mean,average_precision_sd
+HeartDisease,legacy_columns_legacy_labels,10,41,53,0.42314814814814816,10,0.6505137194244571,0.03484040217189223,10,0.596669282471238,0.05626038481817646
+HeartDisease,legacy_columns_true_labels,10,41,53,0.42314814814814816,10,0.6505137194244571,0.03484040217189223,10,0.596669282471238,0.05626038481817646
+HeartDisease,corrected_columns_true_labels,10,41,53,0.42314814814814816,10,0.6979436363342654,0.02832411341040056,10,0.6443732911507782,0.05149597879687841
+KDDCup99,legacy_columns_legacy_labels,10,33,42,0.001573800131492439,10,0.9975894530647308,0.00040157657199819144,10,0.26047588053463794,0.03341925276588869
+KDDCup99,legacy_columns_true_labels,10,84,109,0.004018737672583827,10,0.9932277678825618,0.0008170554623864672,10,0.44933851651052725,0.03938449051148091
+KDDCup99,corrected_columns_true_labels,10,84,109,0.004018737672583827,10,0.992385801500318,0.0008414674019921929,10,0.34385712897994336,0.03454338845323095
+Lymphography,legacy_columns_legacy_labels,10,2,4,0.05,10,0.9989687761069341,0.002198337164095144,10,0.9866666666666667,0.029186501192363816
+Lymphography,legacy_columns_true_labels,10,2,4,0.05,10,0.9989687761069341,0.002198337164095144,10,0.9866666666666667,0.029186501192363816
+Lymphography,corrected_columns_true_labels,10,2,4,0.05,10,0.9989687761069341,0.002198337164095144,10,0.9866666666666667,0.029186501192363816
+Pima,legacy_columns_legacy_labels,10,100,125,0.34577922077922074,10,0.643929729661717,0.034442801564540305,10,0.5261428465162081,0.0361342441915379
+Pima,legacy_columns_true_labels,10,100,125,0.34577922077922074,10,0.643929729661717,0.034442801564540305,10,0.5261428465162081,0.0361342441915379
+Pima,corrected_columns_true_labels,10,100,125,0.34577922077922074,10,0.6492035484718508,0.025448825823480386,10,0.5222550959610175,0.028077303477119443
+```
+
+### E02.03 — Column correction with true labels held fixed
+
+Source: `results/loader_corrections/v1/summary/paired_summary.csv`
+
+Commit: `ed494a3b3c78ecd17f5436f6c9bcfae0050603fe`; source SHA-256: `ce1bf5d1389556e7af6f081fde16680f7af1ba3a732f1ca5c67f52010cf2fc69`.
+
+Selection: {"row_filter": {"comparison": ["column_correction_with_true_labels"]}, "source_data_rows_1based": [2, 5, 8, 11], "total_source_rows": 12, "selected_columns": ["dataset", "comparison", "n_planned_pairs", "roc_auc_n_valid_pairs", "roc_auc_difference_mean", "roc_auc_difference_sd", "roc_auc_higher_count", "roc_auc_tied_count", "roc_auc_lower_count", "average_precision_n_valid_pairs", "average_precision_difference_mean", "average_precision_difference_sd", "average_precision_higher_count", "average_precision_tied_count", "average_precision_lower_count"], "omitted_columns": [], "omitted_row_count": 8, "numeric_values": "original CSV strings; no rounding or metric recomputation"}
+
+```csv
+dataset,comparison,n_planned_pairs,roc_auc_n_valid_pairs,roc_auc_difference_mean,roc_auc_difference_sd,roc_auc_higher_count,roc_auc_tied_count,roc_auc_lower_count,average_precision_n_valid_pairs,average_precision_difference_mean,average_precision_difference_sd,average_precision_higher_count,average_precision_tied_count,average_precision_lower_count
+HeartDisease,column_correction_with_true_labels,10,10,0.04742991690980832,0.01159814438955665,10,0,0,10,0.04770400867954043,0.013975088975282015,10,0,0
+KDDCup99,column_correction_with_true_labels,10,10,-0.0008419663822437862,9.642896652195993e-05,0,0,10,10,-0.10548138753058396,0.013851416126852745,0,0,10
+Lymphography,column_correction_with_true_labels,10,10,0.0,0.0,0,10,0,10,0.0,0.0,0,10,0
+Pima,column_correction_with_true_labels,10,10,0.0052738188101337236,0.012634727442348833,7,0,3,10,-0.0038877505551904333,0.015291298992859222,4,0,6
+```
+
+### E03.01 — wine: historical and paper comparison
+
+Source: `results/audits/mat_reproduction_gaps/v1/wine/summary/historical_comparison.csv`
+
+Commit: `ed494a3b3c78ecd17f5436f6c9bcfae0050603fe`; source SHA-256: `00d232171a261d1298f13325964d6bf4d3045be260828a8567a790ddc405de1b`.
+
+Selection: {"row_filter": "all rows", "source_data_rows_1based": [1, 2], "total_source_rows": 2, "selected_columns": ["dataset", "metric", "n_valid_trials", "historical_project_mean_as_saved", "diagnostic_full_precision_mean", "diagnostic_mean_of_trials_rounded_4dp", "diagnostic_minus_historical", "historical_comparison_status", "paper_value_from_existing_comparison", "diagnostic_rounded_mean_minus_paper"], "omitted_columns": [], "omitted_row_count": 0, "numeric_values": "original CSV strings; no rounding or metric recomputation"}
+
+```csv
+dataset,metric,n_valid_trials,historical_project_mean_as_saved,diagnostic_full_precision_mean,diagnostic_mean_of_trials_rounded_4dp,diagnostic_minus_historical,historical_comparison_status,paper_value_from_existing_comparison,diagnostic_rounded_mean_minus_paper
+wine,roc_auc,10,0.8908700000000002,0.8908787025448477,0.8908699999999999,-2.220446049250313e-16,matching_within_1e-12,0.949,-0.058130000000000015
+wine,average_precision,10,0.4324,0.4323912267109941,0.4324,0.0,matching_within_1e-12,0.6082,-0.17579999999999996
+```
+
+### E03.02 — wine: all original diagnostic trials
+
+Source: `results/audits/mat_reproduction_gaps/v1/wine/summary/all_metrics.csv`
+
+Commit: `ed494a3b3c78ecd17f5436f6c9bcfae0050603fe`; source SHA-256: `6d058d299b48cac8777131941ed0626b3aa4069f25fbe31aa9f6e406bb17e1f0`.
+
+Selection: {"row_filter": "all rows", "source_data_rows_1based": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], "total_source_rows": 10, "selected_columns": ["dataset", "split_seed", "n_train", "n_test", "n_features", "train_positives", "test_positives", "test_prevalence", "metric_status", "roc_auc", "roc_auc_rounded_4dp", "average_precision", "average_precision_rounded_4dp", "nonfinite_intermediate_O_entries", "test_rows_with_nonfinite_contributions", "nonfinite_final_scores", "recorded_warning_count"], "omitted_columns": [], "omitted_row_count": 0, "numeric_values": "original CSV strings; no rounding or metric recomputation"}
+
+```csv
+dataset,split_seed,n_train,n_test,n_features,train_positives,test_positives,test_prevalence,metric_status,roc_auc,roc_auc_rounded_4dp,average_precision,average_precision_rounded_4dp,nonfinite_intermediate_O_entries,test_rows_with_nonfinite_contributions,nonfinite_final_scores,recorded_warning_count
+wine,0,77,52,13,5,5,0.09615384615384616,ok,0.7702127659574469,0.7702,0.3965891472868217,0.3966,0,0,0,0
+wine,1,77,52,13,8,2,0.038461538461538464,ok,0.89,0.89,0.5769230769230769,0.5769,0,0,0,0
+wine,2,77,52,13,6,4,0.07692307692307693,ok,0.9010416666666666,0.901,0.4125,0.4125,0,0,0,0
+wine,3,77,52,13,5,5,0.09615384615384616,ok,0.9617021276595745,0.9617,0.6926190476190477,0.6926,0,0,0,0
+wine,4,77,52,13,5,5,0.09615384615384616,ok,0.7957446808510639,0.7957,0.3841698841698842,0.3842,0,0,0,0
+wine,5,77,52,13,9,1,0.019230769230769232,ok,0.9019607843137255,0.902,0.16666666666666666,0.1667,0,0,0,0
+wine,6,77,52,13,8,2,0.038461538461538464,ok,0.92,0.92,0.26785714285714285,0.2679,0,0,0,0
+wine,7,77,52,13,8,2,0.038461538461538464,ok,0.9400000000000001,0.94,0.39285714285714285,0.3929,0,0,0,0
+wine,8,77,52,13,6,4,0.07692307692307693,ok,0.9427083333333334,0.9427,0.4861111111111111,0.4861,0,0,0,0
+wine,9,77,52,13,6,4,0.07692307692307693,ok,0.8854166666666666,0.8854,0.5476190476190477,0.5476,0,0,0,0
+```
+
+### E03.03 — wine: all-row score stability
+
+Source: `results/audits/mat_reproduction_gaps/v1/wine/summary/score_stability.csv`
+
+Commit: `ed494a3b3c78ecd17f5436f6c9bcfae0050603fe`; source SHA-256: `9f215f9862da6b1fdcb643a1408e2b8ffa95411459d8970a81ca183451c183ab`.
+
+Selection: {"row_filter": "all rows", "source_data_rows_1based": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], "total_source_rows": 10, "selected_columns": ["dataset", "split_seed", "reference_split_seed", "n_rows", "max_absolute_score_difference", "n_rows_differing_beyond_tolerance", "absolute_tolerance"], "omitted_columns": [], "omitted_row_count": 0, "numeric_values": "original CSV strings; no rounding or metric recomputation"}
+
+```csv
+dataset,split_seed,reference_split_seed,n_rows,max_absolute_score_difference,n_rows_differing_beyond_tolerance,absolute_tolerance
+wine,0,0,129,0.0,0,1e-10
+wine,1,0,129,0.0,0,1e-10
+wine,2,0,129,0.0,0,1e-10
+wine,3,0,129,0.0,0,1e-10
+wine,4,0,129,0.0,0,1e-10
+wine,5,0,129,0.0,0,1e-10
+wine,6,0,129,0.0,0,1e-10
+wine,7,0,129,0.0,0,1e-10
+wine,8,0,129,0.0,0,1e-10
+wine,9,0,129,0.0,0,1e-10
+```
+
+### E03.04 — wine: recorded provenance and scope
+
+Source: `results/audits/mat_reproduction_gaps/v1/wine/summary/summary_metadata.json`
+
+Commit: `ed494a3b3c78ecd17f5436f6c9bcfae0050603fe`; source SHA-256: `2efc64719d11a648e390e3acce17bb4ecc5e4edba94467116a6f6b77f8da9729`.
+
+Selection: {"json_pointers": ["/configuration/schema", "/configuration/python", "/configuration/package_versions", "/configuration/authors_commit", "/configuration/test_fraction", "/configuration/stratified", "/configuration/subsampled", "/configuration/scaling", "/configuration/scoring_reference", "/configuration/threshold_policy", "/configuration/dataset", "/configuration/n_rows", "/configuration/n_features", "/configuration/n_positive", "/configuration/duplicate_feature_rows", "/split_seeds", "/interpretation_limits"], "omissions": "All other JSON fields excluded."}
+
+```json
+{
+  "/configuration/schema": "mat_reproduction_diagnostic_v1",
+  "/configuration/python": "3.12.1",
+  "/configuration/package_versions": {
+    "numpy": "2.5.2",
+    "pandas": "3.0.5",
+    "scipy": "1.18.0",
+    "scikit-learn": "1.9.0",
+    "pyod": "3.6.4",
+    "statsmodels": "0.14.6"
+  },
+  "/configuration/authors_commit": "3ca17400016386546d2c199886e81bdcc859b36b",
+  "/configuration/test_fraction": 0.4,
+  "/configuration/stratified": false,
+  "/configuration/subsampled": false,
+  "/configuration/scaling": "PyOD standardizer fitted on training features and applied to test features",
+  "/configuration/scoring_reference": "Authors' implementation: training features plus entire test batch",
+  "/configuration/threshold_policy": "Full-dataset positive fraction; raw scores evaluated, threshold predictions unused",
+  "/configuration/dataset": "wine",
+  "/configuration/n_rows": 129,
+  "/configuration/n_features": 13,
+  "/configuration/n_positive": 10,
+  "/configuration/duplicate_feature_rows": 0,
+  "/split_seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "/interpretation_limits": [
+    "Only the original ten splits are analysed; no favourable seeds are selected.",
+    "SD describes variation across overlapping test sets; it is not a confidence interval.",
+    "Performance metrics evaluate test rows only. Training-row scores are diagnostic batch scores.",
+    "Score stability and metric variability alone do not identify the cause of a published gap.",
+    "Historical comparisons use four-decimal rounding per trial before averaging.",
+    "Paper values come from the existing project comparison; they are not newly verified here.",
+    "This diagnostic reruns only COPOD and does not change other detectors' results."
+  ]
+}
+```
+
+### E03.05 — wbc: historical and paper comparison
+
+Source: `results/audits/mat_reproduction_gaps/v1/wbc/summary/historical_comparison.csv`
+
+Commit: `ed494a3b3c78ecd17f5436f6c9bcfae0050603fe`; source SHA-256: `9a454e54aa2f3adab2e6aa4efe71a2b117806fc2d056fa3adc05dbee922f8081`.
+
+Selection: {"row_filter": "all rows", "source_data_rows_1based": [1, 2], "total_source_rows": 2, "selected_columns": ["dataset", "metric", "n_valid_trials", "historical_project_mean_as_saved", "diagnostic_full_precision_mean", "diagnostic_mean_of_trials_rounded_4dp", "diagnostic_minus_historical", "historical_comparison_status", "paper_value_from_existing_comparison", "diagnostic_rounded_mean_minus_paper"], "omitted_columns": [], "omitted_row_count": 0, "numeric_values": "original CSV strings; no rounding or metric recomputation"}
+
+```csv
+dataset,metric,n_valid_trials,historical_project_mean_as_saved,diagnostic_full_precision_mean,diagnostic_mean_of_trials_rounded_4dp,diagnostic_minus_historical,historical_comparison_status,paper_value_from_existing_comparison,diagnostic_rounded_mean_minus_paper
+wbc,roc_auc,10,0.9590299999999999,0.9590327129206434,0.9590299999999999,0.0,matching_within_1e-12,0.9747,-0.015670000000000073
+wbc,average_precision,10,0.6952900000000001,0.6952899137614045,0.6952900000000001,0.0,matching_within_1e-12,0.7827,-0.08740999999999988
+```
+
+### E03.06 — wbc: all original diagnostic trials
+
+Source: `results/audits/mat_reproduction_gaps/v1/wbc/summary/all_metrics.csv`
+
+Commit: `ed494a3b3c78ecd17f5436f6c9bcfae0050603fe`; source SHA-256: `77de4aeaaf02f032005fada7a21128b808a0ba2fecae288eb49d0903fe568314`.
+
+Selection: {"row_filter": "all rows", "source_data_rows_1based": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], "total_source_rows": 10, "selected_columns": ["dataset", "split_seed", "n_train", "n_test", "n_features", "train_positives", "test_positives", "test_prevalence", "metric_status", "roc_auc", "roc_auc_rounded_4dp", "average_precision", "average_precision_rounded_4dp", "nonfinite_intermediate_O_entries", "test_rows_with_nonfinite_contributions", "nonfinite_final_scores", "recorded_warning_count"], "omitted_columns": [], "omitted_row_count": 0, "numeric_values": "original CSV strings; no rounding or metric recomputation"}
+
+```csv
+dataset,split_seed,n_train,n_test,n_features,train_positives,test_positives,test_prevalence,metric_status,roc_auc,roc_auc_rounded_4dp,average_precision,average_precision_rounded_4dp,nonfinite_intermediate_O_entries,test_rows_with_nonfinite_contributions,nonfinite_final_scores,recorded_warning_count
+wbc,0,226,152,30,13,8,0.05263157894736842,ok,0.9574652777777778,0.9575,0.6970420777006454,0.697,0,0,0,0
+wbc,1,226,152,30,11,10,0.06578947368421052,ok,0.9654929577464788,0.9655,0.7606449456975772,0.7606,0,0,0,0
+wbc,2,226,152,30,16,5,0.03289473684210526,ok,0.9401360544217687,0.9401,0.46507070351463947,0.4651,0,0,0,0
+wbc,3,226,152,30,12,9,0.05921052631578947,ok,0.9658119658119658,0.9658,0.8422939068100359,0.8423,0,0,0,0
+wbc,4,226,152,30,11,10,0.06578947368421052,ok,0.9570422535211268,0.957,0.5828174603174603,0.5828,0,0,0,0
+wbc,5,226,152,30,10,11,0.07236842105263158,ok,0.9535783365570599,0.9536,0.7237692046515576,0.7238,0,0,0,0
+wbc,6,226,152,30,15,6,0.039473684210526314,ok,0.9714611872146118,0.9715,0.6936202686202686,0.6936,0,0,0,0
+wbc,7,226,152,30,8,13,0.08552631578947369,ok,0.9623685666851134,0.9624,0.7741905943518848,0.7742,0,0,0,0
+wbc,8,226,152,30,12,9,0.05921052631578947,ok,0.958041958041958,0.958,0.6719907407407408,0.672,0,0,0,0
+wbc,9,226,152,30,9,12,0.07894736842105263,ok,0.9589285714285715,0.9589,0.7414592352092353,0.7415,0,0,0,0
+```
+
+### E03.07 — wbc: all-row score stability
+
+Source: `results/audits/mat_reproduction_gaps/v1/wbc/summary/score_stability.csv`
+
+Commit: `ed494a3b3c78ecd17f5436f6c9bcfae0050603fe`; source SHA-256: `ade58eb315b8d97df728ff38a75b78d3bfcbadf4e9790d753c4d92225b88cb07`.
+
+Selection: {"row_filter": "all rows", "source_data_rows_1based": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], "total_source_rows": 10, "selected_columns": ["dataset", "split_seed", "reference_split_seed", "n_rows", "max_absolute_score_difference", "n_rows_differing_beyond_tolerance", "absolute_tolerance"], "omitted_columns": [], "omitted_row_count": 0, "numeric_values": "original CSV strings; no rounding or metric recomputation"}
+
+```csv
+dataset,split_seed,reference_split_seed,n_rows,max_absolute_score_difference,n_rows_differing_beyond_tolerance,absolute_tolerance
+wbc,0,0,378,0.0,0,1e-10
+wbc,1,0,378,0.0,0,1e-10
+wbc,2,0,378,0.0,0,1e-10
+wbc,3,0,378,0.0,0,1e-10
+wbc,4,0,378,0.0,0,1e-10
+wbc,5,0,378,0.0,0,1e-10
+wbc,6,0,378,0.0,0,1e-10
+wbc,7,0,378,0.0,0,1e-10
+wbc,8,0,378,0.0,0,1e-10
+wbc,9,0,378,0.0,0,1e-10
+```
+
+### E03.08 — wbc: recorded provenance and scope
+
+Source: `results/audits/mat_reproduction_gaps/v1/wbc/summary/summary_metadata.json`
+
+Commit: `ed494a3b3c78ecd17f5436f6c9bcfae0050603fe`; source SHA-256: `9b10a3a76b63f6a3f7134a20785ff052b47853ff65c1c286ddd9bdf85173c527`.
+
+Selection: {"json_pointers": ["/configuration/schema", "/configuration/python", "/configuration/package_versions", "/configuration/authors_commit", "/configuration/test_fraction", "/configuration/stratified", "/configuration/subsampled", "/configuration/scaling", "/configuration/scoring_reference", "/configuration/threshold_policy", "/configuration/dataset", "/configuration/n_rows", "/configuration/n_features", "/configuration/n_positive", "/configuration/duplicate_feature_rows", "/split_seeds", "/interpretation_limits"], "omissions": "All other JSON fields excluded."}
+
+```json
+{
+  "/configuration/schema": "mat_reproduction_diagnostic_v1",
+  "/configuration/python": "3.12.1",
+  "/configuration/package_versions": {
+    "numpy": "2.5.2",
+    "pandas": "3.0.5",
+    "scipy": "1.18.0",
+    "scikit-learn": "1.9.0",
+    "pyod": "3.6.4",
+    "statsmodels": "0.14.6"
+  },
+  "/configuration/authors_commit": "3ca17400016386546d2c199886e81bdcc859b36b",
+  "/configuration/test_fraction": 0.4,
+  "/configuration/stratified": false,
+  "/configuration/subsampled": false,
+  "/configuration/scaling": "PyOD standardizer fitted on training features and applied to test features",
+  "/configuration/scoring_reference": "Authors' implementation: training features plus entire test batch",
+  "/configuration/threshold_policy": "Full-dataset positive fraction; raw scores evaluated, threshold predictions unused",
+  "/configuration/dataset": "wbc",
+  "/configuration/n_rows": 378,
+  "/configuration/n_features": 30,
+  "/configuration/n_positive": 21,
+  "/configuration/duplicate_feature_rows": 1,
+  "/split_seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "/interpretation_limits": [
+    "Only the original ten splits are analysed; no favourable seeds are selected.",
+    "SD describes variation across overlapping test sets; it is not a confidence interval.",
+    "Performance metrics evaluate test rows only. Training-row scores are diagnostic batch scores.",
+    "Score stability and metric variability alone do not identify the cause of a published gap.",
+    "Historical comparisons use four-decimal rounding per trial before averaging.",
+    "Paper values come from the existing project comparison; they are not newly verified here.",
+    "This diagnostic reruns only COPOD and does not change other detectors' results."
+  ]
+}
+```
+
+### E03.09 — satimage-2: historical and paper comparison
+
+Source: `results/audits/mat_reproduction_gaps/v1/satimage-2/summary/historical_comparison.csv`
+
+Commit: `ed494a3b3c78ecd17f5436f6c9bcfae0050603fe`; source SHA-256: `08d8a182ba17ded7ca4edc96ae409e75e9206a9124c79d1e0415f4b62a2f52e8`.
+
+Selection: {"row_filter": "all rows", "source_data_rows_1based": [1, 2], "total_source_rows": 2, "selected_columns": ["dataset", "metric", "n_valid_trials", "historical_project_mean_as_saved", "diagnostic_full_precision_mean", "diagnostic_mean_of_trials_rounded_4dp", "diagnostic_minus_historical", "historical_comparison_status", "paper_value_from_existing_comparison", "diagnostic_rounded_mean_minus_paper"], "omitted_columns": [], "omitted_row_count": 0, "numeric_values": "original CSV strings; no rounding or metric recomputation"}
+
+```csv
+dataset,metric,n_valid_trials,historical_project_mean_as_saved,diagnostic_full_precision_mean,diagnostic_mean_of_trials_rounded_4dp,diagnostic_minus_historical,historical_comparison_status,paper_value_from_existing_comparison,diagnostic_rounded_mean_minus_paper
+satimage-2,roc_auc,10,0.97843,0.9784390659909306,0.97843,0.0,matching_within_1e-12,0.9852,-0.006769999999999943
+satimage-2,average_precision,10,0.78243,0.7824229889931926,0.78243,0.0,matching_within_1e-12,0.8599,-0.07747000000000004
+```
+
+### E03.10 — satimage-2: all original diagnostic trials
+
+Source: `results/audits/mat_reproduction_gaps/v1/satimage-2/summary/all_metrics.csv`
+
+Commit: `ed494a3b3c78ecd17f5436f6c9bcfae0050603fe`; source SHA-256: `07e6fa23e924a634deeff303dc1c88006bcbdb79f52ffff5857a8b5f42bf0f38`.
+
+Selection: {"row_filter": "all rows", "source_data_rows_1based": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], "total_source_rows": 10, "selected_columns": ["dataset", "split_seed", "n_train", "n_test", "n_features", "train_positives", "test_positives", "test_prevalence", "metric_status", "roc_auc", "roc_auc_rounded_4dp", "average_precision", "average_precision_rounded_4dp", "nonfinite_intermediate_O_entries", "test_rows_with_nonfinite_contributions", "nonfinite_final_scores", "recorded_warning_count"], "omitted_columns": [], "omitted_row_count": 0, "numeric_values": "original CSV strings; no rounding or metric recomputation"}
+
+```csv
+dataset,split_seed,n_train,n_test,n_features,train_positives,test_positives,test_prevalence,metric_status,roc_auc,roc_auc_rounded_4dp,average_precision,average_precision_rounded_4dp,nonfinite_intermediate_O_entries,test_rows_with_nonfinite_contributions,nonfinite_final_scores,recorded_warning_count
+satimage-2,0,3481,2322,36,39,32,0.013781223083548665,ok,0.9824918122270743,0.9825,0.8049367299141137,0.8049,0,0,0,0
+satimage-2,1,3481,2322,36,45,26,0.01119724375538329,ok,0.9959796301259716,0.996,0.8862514997097948,0.8863,0,0,0,0
+satimage-2,2,3481,2322,36,39,32,0.013781223083548665,ok,0.9847843886462883,0.9848,0.7894543294469644,0.7895,0,0,0,0
+satimage-2,3,3481,2322,36,52,19,0.00818260120585702,ok,0.9828370317891995,0.9828,0.6702229735099503,0.6702,0,0,0,0
+satimage-2,4,3481,2322,36,41,30,0.012919896640826873,ok,0.958347876672484,0.9583,0.7813949451073938,0.7814,0,0,0,0
+satimage-2,5,3481,2322,36,34,37,0.015934539190353144,ok,0.9562954639541072,0.9563,0.7810965513738115,0.7811,0,0,0,0
+satimage-2,6,3481,2322,36,42,29,0.012489233419465978,ok,0.9879092289877739,0.9879,0.8218753664081848,0.8219,0,0,0,0
+satimage-2,7,3481,2322,36,45,26,0.01119724375538329,ok,0.9945222460466362,0.9945,0.8491363997879977,0.8491,0,0,0,0
+satimage-2,8,3481,2322,36,49,22,0.009474590869939707,ok,0.9755138339920948,0.9755,0.6462717564519035,0.6463,0,0,0,0
+satimage-2,9,3481,2322,36,35,36,0.015503875968992248,ok,0.9657091474676778,0.9657,0.793589338221811,0.7936,0,0,0,0
+```
+
+### E03.11 — satimage-2: all-row score stability
+
+Source: `results/audits/mat_reproduction_gaps/v1/satimage-2/summary/score_stability.csv`
+
+Commit: `ed494a3b3c78ecd17f5436f6c9bcfae0050603fe`; source SHA-256: `860f0f32b62cdc0060ab4f600f093a4755c0520c8dbe0beeb74ca4561686ac95`.
+
+Selection: {"row_filter": "all rows", "source_data_rows_1based": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], "total_source_rows": 10, "selected_columns": ["dataset", "split_seed", "reference_split_seed", "n_rows", "max_absolute_score_difference", "n_rows_differing_beyond_tolerance", "absolute_tolerance"], "omitted_columns": [], "omitted_row_count": 0, "numeric_values": "original CSV strings; no rounding or metric recomputation"}
+
+```csv
+dataset,split_seed,reference_split_seed,n_rows,max_absolute_score_difference,n_rows_differing_beyond_tolerance,absolute_tolerance
+satimage-2,0,0,5803,0.0,0,1e-10
+satimage-2,1,0,5803,0.0,0,1e-10
+satimage-2,2,0,5803,0.0,0,1e-10
+satimage-2,3,0,5803,0.0,0,1e-10
+satimage-2,4,0,5803,0.0,0,1e-10
+satimage-2,5,0,5803,0.0,0,1e-10
+satimage-2,6,0,5803,0.0,0,1e-10
+satimage-2,7,0,5803,0.0,0,1e-10
+satimage-2,8,0,5803,0.0,0,1e-10
+satimage-2,9,0,5803,0.0,0,1e-10
+```
+
+### E03.12 — satimage-2: recorded provenance and scope
+
+Source: `results/audits/mat_reproduction_gaps/v1/satimage-2/summary/summary_metadata.json`
+
+Commit: `ed494a3b3c78ecd17f5436f6c9bcfae0050603fe`; source SHA-256: `8de4781c7db19c3c56434551890b200939b81095567640a3ffe4fbce1cb30858`.
+
+Selection: {"json_pointers": ["/configuration/schema", "/configuration/python", "/configuration/package_versions", "/configuration/authors_commit", "/configuration/test_fraction", "/configuration/stratified", "/configuration/subsampled", "/configuration/scaling", "/configuration/scoring_reference", "/configuration/threshold_policy", "/configuration/dataset", "/configuration/n_rows", "/configuration/n_features", "/configuration/n_positive", "/configuration/duplicate_feature_rows", "/split_seeds", "/interpretation_limits"], "omissions": "All other JSON fields excluded."}
+
+```json
+{
+  "/configuration/schema": "mat_reproduction_diagnostic_v1",
+  "/configuration/python": "3.12.1",
+  "/configuration/package_versions": {
+    "numpy": "2.5.2",
+    "pandas": "3.0.5",
+    "scipy": "1.18.0",
+    "scikit-learn": "1.9.0",
+    "pyod": "3.6.4",
+    "statsmodels": "0.14.6"
+  },
+  "/configuration/authors_commit": "3ca17400016386546d2c199886e81bdcc859b36b",
+  "/configuration/test_fraction": 0.4,
+  "/configuration/stratified": false,
+  "/configuration/subsampled": false,
+  "/configuration/scaling": "PyOD standardizer fitted on training features and applied to test features",
+  "/configuration/scoring_reference": "Authors' implementation: training features plus entire test batch",
+  "/configuration/threshold_policy": "Full-dataset positive fraction; raw scores evaluated, threshold predictions unused",
+  "/configuration/dataset": "satimage-2",
+  "/configuration/n_rows": 5803,
+  "/configuration/n_features": 36,
+  "/configuration/n_positive": 71,
+  "/configuration/duplicate_feature_rows": 2,
+  "/split_seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "/interpretation_limits": [
+    "Only the original ten splits are analysed; no favourable seeds are selected.",
+    "SD describes variation across overlapping test sets; it is not a confidence interval.",
+    "Performance metrics evaluate test rows only. Training-row scores are diagnostic batch scores.",
+    "Score stability and metric variability alone do not identify the cause of a published gap.",
+    "Historical comparisons use four-decimal rounding per trial before averaging.",
+    "Paper values come from the existing project comparison; they are not newly verified here.",
+    "This diagnostic reruns only COPOD and does not change other detectors' results."
+  ]
+}
+```
+
+### E03.13 — MAT split, scoring and summary logic
+
+Source: `scripts/diagnose_mat_reproduction_gaps.py`
+
+Commit: `ed494a3b3c78ecd17f5436f6c9bcfae0050603fe`; source SHA-256: `b62915b5655d59c37055ef1a665af0fe093acfaf219d2d570a1695f7dfb14df9`.
+
+Selection: {"inclusive_source_line_ranges": [[137, 154], [240, 266]], "source_lines": 354, "omissions": "All source lines outside the listed ranges excluded."}
+
+```text
+137: def run_trial(folder, config, X, y, model_class):
+138:     seed = config["split_seed"]
+139:     train_indices, test_indices = train_test_split(
+140:         np.arange(len(y)), test_size=0.4, random_state=np.random.RandomState(seed)
+141:     )
+142:     if folder.exists():
+143:         result = verify_trial(folder, config, y, train_indices, test_indices)
+144:         print(f"Verified existing run: {config['dataset']}, seed {seed}", flush=True)
+145:         return result
+146:     with warnings.catch_warnings(record=True) as captured:
+147:         warnings.simplefilter("always")
+148:         train, test = standardizer(X[train_indices], X[test_indices])
+149:         require(np.isfinite(train).all() and np.isfinite(test).all(), "Non-finite scaled features.")
+150:         model = model_class(contamination=float(np.count_nonzero(y) / len(y)))
+151:         start = perf_counter()
+152:         model.fit(train)  # The authors' fit returns None; no labels are supplied.
+153:         test_scores = np.asarray(model.decision_function(test), dtype=float).ravel()
+154:         elapsed = perf_counter() - start
+
+240:         old = read_csv(HISTORICAL / filename)
+241:         historical = old[old.Data == base_config["dataset"]]
+242:         require(len(historical) == 1, "Missing/ambiguous historical row.")
+243:         saved = float(historical.iloc[0].COD)
+244:         rounded_mean = float(all_metrics[metric + "_rounded_4dp"].mean())
+245:         published = float(selected.iloc[0][paper_column])
+246:         valid = len(values) == len(SEEDS)
+247:         comparisons.append({
+248:             "dataset": base_config["dataset"], "metric": metric, "n_valid_trials": len(values),
+249:             "historical_project_mean_as_saved": saved,
+250:             "diagnostic_full_precision_mean": values.mean(),
+251:             "diagnostic_mean_of_trials_rounded_4dp": rounded_mean,
+252:             "diagnostic_minus_historical": rounded_mean - saved if valid else np.nan,
+253:             "historical_comparison_status": ("matching_within_1e-12" if close(rounded_mean, saved)
+254:                                              else "difference_to_investigate") if valid
+255:                                             else "not_assessed_missing_valid_trials",
+256:             "paper_value_from_existing_comparison": published,
+257:             "diagnostic_rounded_mean_minus_paper": rounded_mean - published if valid else np.nan,
+258:         })
+259:     stability = []
+260:     for seed, vector in zip(SEEDS, vectors):
+261:         differences = np.abs(vector - vectors[0])
+262:         stability.append({"dataset": base_config["dataset"], "split_seed": seed,
+263:                           "reference_split_seed": 0, "n_rows": len(y),
+264:                           "max_absolute_score_difference": float(differences.max()),
+265:                           "n_rows_differing_beyond_tolerance": int((differences > SCORE_TOL).sum()),
+266:                           "absolute_tolerance": SCORE_TOL})
+```
+
+### E04.01 — Every full APS model-condition result
+
+Source: `results/aps_full_evaluation/v1/summary/all_metrics.csv`
+
+Commit: `ed494a3b3c78ecd17f5436f6c9bcfae0050603fe`; source SHA-256: `1d6f859e8868e0674df886abc7270efd5ae670fd5111ebada1d0a06b824facc3`.
+
+Selection: {"row_filter": "all rows", "source_data_rows_1based": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "total_source_rows": 14, "selected_columns": ["condition", "method", "model_seed", "n_train", "n_test", "n_features", "train_positives", "test_positives", "test_prevalence", "roc_auc", "average_precision"], "omitted_columns": ["precision_at_375", "precision_k", "precision_cutoff_score", "cutoff_tie_size", "cutoff_remaining_slots", "positives_above_cutoff", "positives_in_cutoff_tie", "fit_seconds", "score_seconds"], "omitted_row_count": 0, "numeric_values": "original CSV strings; no rounding or metric recomputation"}
+
+```csv
+condition,method,model_seed,n_train,n_test,n_features,train_positives,test_positives,test_prevalence,roc_auc,average_precision
+primary,pyod_batch,,60000,16000,169,1000,375,0.0234375,0.977690112,0.5317405564547864
+primary,fixed_training_reference,,60000,16000,169,1000,375,0.0234375,0.9778210133333332,0.5342305936020094
+primary,isolation_forest,42,60000,16000,169,1000,375,0.0234375,0.984525824,0.5744530945799098
+primary,isolation_forest,43,60000,16000,169,1000,375,0.0234375,0.9853521919999999,0.5969090683582786
+primary,isolation_forest,44,60000,16000,169,1000,375,0.0234375,0.9851374933333332,0.5973905139790204
+primary,isolation_forest,45,60000,16000,169,1000,375,0.0234375,0.9851634346666667,0.5880360659857925
+primary,isolation_forest,46,60000,16000,169,1000,375,0.0234375,0.9851229866666666,0.572979352576433
+drop_high_missingness,pyod_batch,,60000,16000,161,1000,375,0.0234375,0.9768446293333334,0.5294105902565014
+drop_high_missingness,fixed_training_reference,,60000,16000,161,1000,375,0.0234375,0.9769898666666668,0.532017176948888
+drop_high_missingness,isolation_forest,42,60000,16000,161,1000,375,0.0234375,0.984438784,0.5714908692115428
+drop_high_missingness,isolation_forest,43,60000,16000,161,1000,375,0.0234375,0.9839073280000001,0.5632843464636194
+drop_high_missingness,isolation_forest,44,60000,16000,161,1000,375,0.0234375,0.9842955946666666,0.574135836597842
+drop_high_missingness,isolation_forest,45,60000,16000,161,1000,375,0.0234375,0.9849956693333333,0.5809291202707235
+drop_high_missingness,isolation_forest,46,60000,16000,161,1000,375,0.0234375,0.9847459840000001,0.5594943021494091
+```
+
+### E04.02 — APS performance across model seeds
+
+Source: `results/aps_full_evaluation/v1/summary/performance_summary.csv`
+
+Commit: `ed494a3b3c78ecd17f5436f6c9bcfae0050603fe`; source SHA-256: `ac71c77d74e94b6f4d667cb234c44771ba8e56249485f057850bf626ca8bf922`.
+
+Selection: {"row_filter": "all rows", "source_data_rows_1based": [1, 2, 3, 4, 5, 6], "total_source_rows": 6, "selected_columns": ["condition", "method", "n_runs", "n_features", "test_prevalence", "score_reference", "sd_interpretation", "roc_auc_mean", "roc_auc_sd", "average_precision_mean", "average_precision_sd"], "omitted_columns": ["precision_at_375_mean", "precision_at_375_sd", "fit_seconds_mean", "fit_seconds_sd", "score_seconds_mean", "score_seconds_sd"], "omitted_row_count": 0, "numeric_values": "original CSV strings; no rounding or metric recomputation"}
+
+```csv
+condition,method,n_runs,n_features,test_prevalence,score_reference,sd_interpretation,roc_auc_mean,roc_auc_sd,average_precision_mean,average_precision_sd
+primary,pyod_batch,1,169,0.0234375,training_plus_test_batch,not_applicable_one_deterministic_run,0.977690112,,0.5317405564547864,
+primary,fixed_training_reference,1,169,0.0234375,training_only,not_applicable_one_deterministic_run,0.9778210133333332,,0.5342305936020094,
+primary,isolation_forest,5,169,0.0234375,training_only,variation_across_five_model_seeds,0.9850603861333334,0.0003128061242617023,0.585953619095887,0.011787224800799984
+drop_high_missingness,pyod_batch,1,161,0.0234375,training_plus_test_batch,not_applicable_one_deterministic_run,0.9768446293333334,,0.5294105902565014,
+drop_high_missingness,fixed_training_reference,1,161,0.0234375,training_only,not_applicable_one_deterministic_run,0.9769898666666668,,0.532017176948888,
+drop_high_missingness,isolation_forest,5,161,0.0234375,training_only,variation_across_five_model_seeds,0.9844766720000001,0.0004184089736364691,0.5698668949386273,0.00857546806628816
+```
+
+### E04.03 — Retained and excluded APS features
+
+Source: `results/aps_full_evaluation/v1/summary/preprocessing_summary.csv`
+
+Commit: `ed494a3b3c78ecd17f5436f6c9bcfae0050603fe`; source SHA-256: `3292b120f4dcd71cad5b4b82fd0176002774ba2b6df7b87c16f2efd63efaa028`.
+
+Selection: {"row_filter": "all rows", "source_data_rows_1based": [1, 2], "total_source_rows": 2, "selected_columns": ["condition", "n_train", "n_test", "n_features", "excluded_features", "training_missing_cells_in_retained_features", "test_missing_cells_in_retained_features", "checks"], "omitted_columns": ["feature_selection_seconds", "imputation_seconds", "scaling_seconds", "warning_count"], "omitted_row_count": 0, "numeric_values": "original CSV strings; no rounding or metric recomputation"}
+
+```csv
+condition,n_train,n_test,n_features,excluded_features,training_missing_cells_in_retained_features,test_missing_cells_in_retained_features,checks
+primary,60000,16000,169,cd_000,849339,228495,passed
+drop_high_missingness,60000,16000,161,ab_000;bm_000;bn_000;bo_000;bp_000;bq_000;br_000;cd_000;cr_000,481064,130303,passed
+```
+
+### E04.04 — Secondary minus primary: method means
+
+Source: `results/aps_full_evaluation/v1/summary/missingness_summary.csv`
+
+Commit: `ed494a3b3c78ecd17f5436f6c9bcfae0050603fe`; source SHA-256: `928c4b7cc522997bb073f1cb07f08f07464b7d428aa784b7203811429c5c76e0`.
+
+Selection: {"row_filter": "all rows", "source_data_rows_1based": [1, 2, 3], "total_source_rows": 3, "selected_columns": ["method", "n_pairs", "roc_auc_difference_mean", "roc_auc_difference_sd", "average_precision_difference_mean", "average_precision_difference_sd"], "omitted_columns": [], "omitted_row_count": 0, "numeric_values": "original CSV strings; no rounding or metric recomputation"}
+
+```csv
+method,n_pairs,roc_auc_difference_mean,roc_auc_difference_sd,average_precision_difference_mean,average_precision_difference_sd
+pyod_batch,1,-0.0008454826666666193,,-0.0023299661982849607,
+fixed_training_reference,1,-0.0008311466666663936,,-0.0022134166531214694,
+isolation_forest,5,-0.0005837141333332685,0.0005636192366100215,-0.016086724157259515,0.012436021405441517
+```
+
+### E04.05 — Secondary minus primary: all paired runs
+
+Source: `results/aps_full_evaluation/v1/summary/missingness_paired_differences.csv`
+
+Commit: `ed494a3b3c78ecd17f5436f6c9bcfae0050603fe`; source SHA-256: `a4caaf2d33929ed79820a88ce0b9a7ed954f66dc236f56bd80ba82d7f89e0376`.
+
+Selection: {"row_filter": "all rows", "source_data_rows_1based": [1, 2, 3, 4, 5, 6, 7], "total_source_rows": 7, "selected_columns": ["method", "model_seed", "roc_auc_primary", "roc_auc_secondary", "roc_auc_secondary_minus_primary", "average_precision_primary", "average_precision_secondary", "average_precision_secondary_minus_primary"], "omitted_columns": [], "omitted_row_count": 0, "numeric_values": "original CSV strings; no rounding or metric recomputation"}
+
+```csv
+method,model_seed,roc_auc_primary,roc_auc_secondary,roc_auc_secondary_minus_primary,average_precision_primary,average_precision_secondary,average_precision_secondary_minus_primary
+pyod_batch,,0.977690112,0.9768446293333334,-0.0008454826666666193,0.5317405564547864,0.5294105902565014,-0.0023299661982849607
+fixed_training_reference,,0.9778210133333332,0.9769898666666668,-0.0008311466666663936,0.5342305936020094,0.532017176948888,-0.0022134166531214694
+isolation_forest,42,0.984525824,0.984438784,-8.70400000000382e-05,0.5744530945799098,0.5714908692115428,-0.0029622253683669886
+isolation_forest,43,0.9853521919999999,0.9839073280000001,-0.0014448639999997681,0.5969090683582786,0.5632843464636194,-0.03362472189465926
+isolation_forest,44,0.9851374933333332,0.9842955946666666,-0.0008418986666666184,0.5973905139790204,0.574135836597842,-0.02325467738117848
+isolation_forest,45,0.9851634346666667,0.9849956693333333,-0.00016776533333340282,0.5880360659857925,0.5809291202707235,-0.00710694571506898
+isolation_forest,46,0.9851229866666666,0.9847459840000001,-0.00037700266666651494,0.572979352576433,0.5594943021494091,-0.01348505042702386
+```
+
+### E04.06 — Recorded APS split, parameters and label use
+
+Source: `results/aps_full_evaluation/v1/run_manifest.json`
+
+Commit: `ed494a3b3c78ecd17f5436f6c9bcfae0050603fe`; source SHA-256: `dadcea8b162c5b3e48e6ed9f6a2b2560a210b85631b67149216d4bc2f578239b`.
+
+Selection: {"json_pointers": ["/schema", "/plan_commit", "/planned_conditions", "/isolation_forest_seeds", "/isolation_forest_parameters", "/copod_parameters", "/label_use", "/row_reference", "/partitions"], "omissions": "All other JSON fields excluded."}
+
+```json
+{
+  "/schema": "aps_full_evaluation_v1",
+  "/plan_commit": "f005e7041ab47449e2f7fe24a60c70452d6ed247",
+  "/planned_conditions": [
+    "primary",
+    "drop_high_missingness"
+  ],
+  "/isolation_forest_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46
+  ],
+  "/isolation_forest_parameters": {
+    "n_estimators": 200,
+    "max_samples": 256,
+    "max_features": 1.0,
+    "bootstrap": false,
+    "contamination": "auto",
+    "n_jobs": 1,
+    "warm_start": false
+  },
+  "/copod_parameters": {
+    "contamination": 0.1,
+    "n_jobs": 1
+  },
+  "/label_use": "Descriptive counts, audit conflicts and test metrics only; never model fitting.",
+  "/row_reference": "Every supplied row in original order; indices zero-based after CSV header.",
+  "/partitions": {
+    "train": {
+      "rows": 60000,
+      "first_index": 0,
+      "last_index": 59999
+    },
+    "test": {
+      "rows": 16000,
+      "first_index": 0,
+      "last_index": 15999
+    }
+  }
+}
+```
+
+### E04.07 — primary: preprocessing configuration
+
+Source: `results/aps_full_evaluation/v1/primary/preprocessing/metadata.json`
+
+Commit: `ed494a3b3c78ecd17f5436f6c9bcfae0050603fe`; source SHA-256: `b7a74f9d7a8a5b10c700f61ae154804e2a76ce6b0f5aed3c7e53acceec1ee394`.
+
+Selection: {"json_pointers": ["/configuration", "/details/all_rows_retained", "/details/checks"], "omissions": "All other JSON fields excluded."}
+
+```json
+{
+  "/configuration": {
+    "run_manifest_sha256": "dadcea8b162c5b3e48e6ed9f6a2b2560a210b85631b67149216d4bc2f578239b",
+    "condition": "primary",
+    "missing_fraction_exclusion": null,
+    "imputer": {
+      "strategy": "median",
+      "add_indicator": false
+    },
+    "scaler": "StandardScaler fitted only on imputed training measurements"
+  },
+  "/details/all_rows_retained": true,
+  "/details/checks": "passed"
+}
+```
+
+### E04.08 — drop_high_missingness: preprocessing configuration
+
+Source: `results/aps_full_evaluation/v1/drop_high_missingness/preprocessing/metadata.json`
+
+Commit: `ed494a3b3c78ecd17f5436f6c9bcfae0050603fe`; source SHA-256: `6c587ba4a7e31df566f101e9ca7f7aee87f80842a8319ffb73c34832a88d4c2f`.
+
+Selection: {"json_pointers": ["/configuration", "/details/all_rows_retained", "/details/checks"], "omissions": "All other JSON fields excluded."}
+
+```json
+{
+  "/configuration": {
+    "run_manifest_sha256": "dadcea8b162c5b3e48e6ed9f6a2b2560a210b85631b67149216d4bc2f578239b",
+    "condition": "drop_high_missingness",
+    "missing_fraction_exclusion": "strictly_greater_than_0.50",
+    "imputer": {
+      "strategy": "median",
+      "add_indicator": false
+    },
+    "scaler": "StandardScaler fitted only on imputed training measurements"
+  },
+  "/details/all_rows_retained": true,
+  "/details/checks": "passed"
+}
+```
+
+### E04.09 — Prespecified APS protocol and scope
+
+Source: `notes/aps_full_evaluation_plan.md`
+
+Commit: `ed494a3b3c78ecd17f5436f6c9bcfae0050603fe`; source SHA-256: `a9e1d152c94caf7012a8a8cab732d91f0a9672fd560abba037ab020e66d7f3b7`.
+
+Selection: {"inclusive_source_line_ranges": [[9, 13], [27, 59], [63, 93]], "source_lines": 150, "omissions": "All source lines outside the listed ranges excluded."}
+
+```text
+9: I will extend the preliminary APS experiment to the complete supplied training and test files. I want to establish how well COPOD ranks APS-related failures, whether its scoring reference matters, and whether heavy missingness affects the findings.
+10: 
+11: The earlier pilot used 20,000 training rows and 8,000 test rows, with ROC AUC 0.9780 and average precision (AP) 0.5016. These were standard PyOD batch-scoring results. I will retain them as preliminary evidence, not replace them with the full-data results.
+12: 
+13: The pilot already used a subset of the same official test file. This extension is therefore not an evaluation on a completely untouched test population, nor a retrospective claim of preregistration. I will not tune the new settings to improve their full-test scores.
+
+27: ## 3. Data and labels
+28: 
+29: Source: [APS Failure at Scania Trucks, UCI](https://archive.ics.uci.edu/dataset/421/aps+failure+at+scania+trucks), DOI [10.24432/C51S51](https://doi.org/10.24432/C51S51).
+30: 
+31: | Supplied partition | Rows | Negative labels | Positive labels | Raw predictors |
+32: |---|---:|---:|---:|---:|
+33: | Training | 60,000 | 59,000 | 1,000 | 170 |
+34: | Test | 16,000 | 15,625 | 375 | 170 |
+35: 
+36: I will preserve the supplied split, original row order and all rows. There will be no resplitting, class balancing or removal of positive training examples. Labels map `neg` to 0 and `pos` to 1. Positive means APS-related failure; negative means failure unrelated to APS, not necessarily a healthy truck.
+37: 
+38: Labels will be kept separate from predictors and used for evaluation and descriptive counts. Detector fitting, feature selection, imputation and scaling will not use them. Test prevalence is 375/16,000 = 0.0234375, or 2.34375%.
+39: 
+40: Before evaluation, source-file hashes must match the committed audit. The audit found no identical complete raw measurement profiles within or across files. This does not establish independence between trucks or rule out matches created by preprocessing.
+41: 
+42: ## 4. Two fixed preprocessing conditions
+43: 
+44: ### Primary: all usable predictors
+45: 
+46: 1. Remove features with zero or one distinct observed training value. The audit identifies `cd_000`; 169 features are expected to remain.
+47: 2. Use `SimpleImputer(strategy="median", add_indicator=False)`, fitted on training predictors only. Apply those medians to both partitions.
+48: 3. Use `StandardScaler`, fitted on the imputed training predictors only. Apply the same transformation to the test predictors.
+49: 4. Record retained columns, exclusion reasons, missing-value counts, medians, and scaling parameters. Require finite prepared values and nonconstant training columns.
+50: 
+51: Scaling retains the general preprocessing approach of the pilot. It is not a claim that standardisation is intrinsically required for COPOD. There will be no additional log transform, clipping, missingness indicators or feature engineering in this experiment.
+52: 
+53: ### Secondary: exclude heavily missing predictors
+54: 
+55: Apply the same rules, additionally removing features whose missing fraction in the original training file is strictly greater than 0.50. Exactly 50% missing is retained if otherwise usable. Refit imputation and scaling on the retained training columns.
+56: 
+57: The threshold means that a feature has more missing than observed training values. It is a fixed sensitivity choice, not an optimised threshold. Test missingness does not determine column selection. Both conditions will be reported, even if the secondary condition performs worse.
+58: 
+59: All methods within a condition receive the same prepared arrays. Repeat the exact-profile audit after column selection and after imputation/scaling. Record any new within-file duplicates, cross-file matches and label conflicts. Retain the official split and all rows in the primary analysis; any additional overlap-exclusion experiment would require a separately documented analysis.
+
+63: ### A. Standard PyOD batch COPOD
+64: 
+65: Use the installed PyOD implementation, expected version 3.6.4, with `contamination=0.1` and `n_jobs=1`. Fit on training predictors, then call `decision_function` once on the entire 16,000-row test batch.
+66: 
+67: The inspected implementation combines stored training features with the supplied test features when computing empirical tails and skewness. I will describe this as batch/transductive scoring. Test labels do not enter the calculation. The contamination setting defines an unused classification threshold; the reported ranking metrics use raw scores.
+68: 
+69: ### B. Modified fixed training-reference COPOD
+70: 
+71: Reuse `TrainingReferenceCOPOD` from `scripts/evaluate_synthetic_copod.py`. Only training values determine the empirical tails and skewness signs. For each feature, use inclusive counts of training values less than or equal to, and greater than or equal to, the queried value. Divide by 60,000 and clip probabilities to the interval `[1/60000, 1]` before applying the existing negative-log and feature-summing formula.
+72: 
+73: This is the project's modified scorer, not an exact reproduction of the authors' implementation. It receives the same training and test measurements as A; its scoring reference remains fixed when test batches change.
+74: 
+75: ### C. Isolation Forest baseline
+76: 
+77: Use `sklearn.ensemble.IsolationForest` with these fixed parameters:
+78: 
+79: ```python
+80: n_estimators=200
+81: max_samples=256
+82: max_features=1.0
+83: bootstrap=False
+84: contamination="auto"
+85: n_jobs=1
+86: warm_start=False
+87: ```
+88: 
+89: Run random seeds 42, 43, 44, 45 and 46 in each preprocessing condition. Fit on all prepared training rows without labels. Use `-model.score_samples(X_test)` so larger values consistently indicate greater abnormality.
+90: 
+91: This is a bounded baseline comparison, not hyperparameter optimisation. Report every seed and the mean and sample SD of the five separate runs' metrics. Do not select the best seed or average the scores into an unplanned ensemble. Pair the same seeds when comparing preprocessing conditions. These are five random fits on the same data, not five independent datasets.
+92: 
+93: COPOD has no random fitting step in this setup: run A and B once per condition. Together, the two conditions contain four COPOD configurations and ten Isolation Forest fits.
+```
+
+### E05.01 — All seven settings and three methods
+
+Source: `results/synthetic_extension/v1/summary/performance_summary.csv`
+
+Commit: `ed494a3b3c78ecd17f5436f6c9bcfae0050603fe`; source SHA-256: `58600ce6df82c63f6815628e14bb3f1d596a486f60bd0d8ab1fef649f9d3e843`.
+
+Selection: {"row_filter": "all rows", "source_data_rows_1based": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21], "total_source_rows": 21, "selected_columns": ["condition", "family", "rho", "delta", "null_control", "method", "n_seeds", "roc_auc_random_reference", "average_precision_prevalence_reference", "roc_auc_mean", "roc_auc_sd", "roc_auc_min", "roc_auc_max", "average_precision_mean", "average_precision_sd", "average_precision_min", "average_precision_max"], "omitted_columns": [], "omitted_row_count": 0, "numeric_values": "original CSV strings; no rounding or metric recomputation"}
+
+```csv
+condition,family,rho,delta,null_control,method,n_seeds,roc_auc_random_reference,average_precision_prevalence_reference,roc_auc_mean,roc_auc_sd,roc_auc_min,roc_auc_max,average_precision_mean,average_precision_sd,average_precision_min,average_precision_max
+marginal_delta0,marginal_shift,0.80000000000000004,0,True,pyod_batch,10,0.5,0.050000000000000003,0.50250381578947367,0.019616050963181097,0.48489868421052629,0.54978947368421038,0.051916079851670759,0.0043926917434287463,0.046958333722196217,0.061931380867217931
+marginal_delta0,marginal_shift,0.80000000000000004,0,True,fixed_training_reference,10,0.5,0.050000000000000003,0.50148065789473684,0.017997902780106042,0.48452763157894735,0.54130657894736844,0.051186888501486727,0.0038236713634857353,0.046178228617738432,0.059708418500235838
+marginal_delta0,marginal_shift,0.80000000000000004,0,True,ledoit_wolf,10,0.5,0.050000000000000003,0.50230342105263159,0.018602940335326803,0.47871842105263157,0.53314736842105259,0.053303594685895218,0.0049409363447953849,0.047091627625786281,0.064869555987760563
+marginal_delta2,marginal_shift,0.80000000000000004,2,False,pyod_batch,10,0.5,0.050000000000000003,0.5911056578947369,0.017802257855480019,0.57108947368421059,0.63527236842105261,0.065452587021814168,0.0060121318478214246,0.059922477687805793,0.080617761110026248
+marginal_delta2,marginal_shift,0.80000000000000004,2,False,fixed_training_reference,10,0.5,0.050000000000000003,0.58790986842105264,0.01476532288919934,0.56837499999999996,0.62068552631578944,0.064402286701717298,0.0050206168111959883,0.058122570861268298,0.075666302558557261
+marginal_delta2,marginal_shift,0.80000000000000004,2,False,ledoit_wolf,10,0.5,0.050000000000000003,0.91909052631578958,0.010322584880640896,0.90225526315789484,0.9381276315789473,0.58342043859130088,0.034381179910739718,0.5301463370953462,0.62911741000939447
+marginal_delta4,marginal_shift,0.80000000000000004,4,False,pyod_batch,10,0.5,0.050000000000000003,0.7087161842105264,0.020651033147800642,0.67694605263157892,0.74635789473684211,0.09540995219514628,0.012293320089877458,0.079809950860373208,0.12060464172974943
+marginal_delta4,marginal_shift,0.80000000000000004,4,False,fixed_training_reference,10,0.5,0.050000000000000003,0.70624894736842114,0.017107281198996654,0.67261052631578955,0.73598552631578951,0.094587376585944044,0.010784708290421236,0.078039818958704849,0.11703956574358705
+marginal_delta4,marginal_shift,0.80000000000000004,4,False,ledoit_wolf,10,0.5,0.050000000000000003,0.99998368421052619,1.7611710897172317e-05,0.99993947368421054,1,0.99969665748546199,0.00031838084501809402,0.99890752915830816,1
+marginal_delta6,marginal_shift,0.80000000000000004,6,False,pyod_batch,10,0.5,0.050000000000000003,0.72063657894736832,0.01835276619290296,0.69136842105263163,0.74758421052631574,0.10082329517884765,0.011573391004655636,0.08360567600068125,0.11754971353404227
+marginal_delta6,marginal_shift,0.80000000000000004,6,False,fixed_training_reference,10,0.5,0.050000000000000003,0.71820368421052638,0.017091183935840012,0.68741184210526307,0.74724605263157884,0.10043046859942525,0.010279231745342515,0.08220923434162683,0.12044733155342556
+marginal_delta6,marginal_shift,0.80000000000000004,6,False,ledoit_wolf,10,0.5,0.050000000000000003,1,0,1,1,1,0,1,1
+dependence_rho0p0,dependence_violation,0,0,True,pyod_batch,10,0.5,0.050000000000000003,0.50908381578947381,0.027841005544684477,0.4744355263157895,0.55027763157894749,0.053593069966201404,0.0061506525933716326,0.046279419754508069,0.066030125795974004
+dependence_rho0p0,dependence_violation,0,0,True,fixed_training_reference,10,0.5,0.050000000000000003,0.5077469736842104,0.024179423297974297,0.47943947368421047,0.54690394736842096,0.052727862806830561,0.0054778727264425033,0.04763769047989605,0.065515607700069672
+dependence_rho0p0,dependence_violation,0,0,True,ledoit_wolf,10,0.5,0.050000000000000003,0.50724131578947362,0.022796332080175393,0.47704868421052632,0.53464473684210523,0.052083237303454585,0.0042504569404482563,0.047588514532334356,0.059976401015548395
+dependence_rho0p4,dependence_violation,0.40000000000000002,0,False,pyod_batch,10,0.5,0.050000000000000003,0.5221989473684211,0.019164727106889993,0.49584210526315792,0.54457105263157901,0.050132219803608088,0.0027594759423190331,0.04633146508372691,0.054580393825303566
+dependence_rho0p4,dependence_violation,0.40000000000000002,0,False,fixed_training_reference,10,0.5,0.050000000000000003,0.52317671052631576,0.022998527460071035,0.49471973684210524,0.5534315789473685,0.050006056884401781,0.0028975901795112368,0.046126481561390605,0.053869933286235766
+dependence_rho0p4,dependence_violation,0.40000000000000002,0,False,ledoit_wolf,10,0.5,0.050000000000000003,0.76278131578947372,0.022612129441776554,0.73186973684210521,0.7886749999999999,0.24473112572008118,0.02521530666708623,0.20822692046519112,0.28653716514915117
+dependence_rho0p8,dependence_violation,0.80000000000000004,0,False,pyod_batch,10,0.5,0.050000000000000003,0.55061407894736847,0.01984071473606917,0.50868421052631585,0.56876315789473686,0.050342201720494459,0.0020373125475410723,0.046167890869353363,0.052298227576290754
+dependence_rho0p8,dependence_violation,0.80000000000000004,0,False,fixed_training_reference,10,0.5,0.050000000000000003,0.55074565789473684,0.019909693925899318,0.51201447368421049,0.57268026315789478,0.05038160953953915,0.0020674059735372452,0.046494037677693667,0.052794907873320022
+dependence_rho0p8,dependence_violation,0.80000000000000004,0,False,ledoit_wolf,10,0.5,0.050000000000000003,0.99666671052631572,0.0017939316086026012,0.99329736842105265,0.99898552631578952,0.97628822417183014,0.0083281125627052595,0.96544219185043989,0.98763896412183949
+```
+
+### E05.02 — All ten principal relational pairs
+
+Source: `results/synthetic_extension/v1/summary/method_paired_differences.csv`
+
+Commit: `ed494a3b3c78ecd17f5436f6c9bcfae0050603fe`; source SHA-256: `c82c5de1872ab7f766ad8ff5dd1edfe4722895b638936281fcea966f4504665f`.
+
+Selection: {"row_filter": {"principal_relational_comparison": ["True"]}, "source_data_rows_1based": [131, 132, 133, 134, 135, 136, 137, 138, 139, 140], "total_source_rows": 140, "selected_columns": ["comparison", "condition", "family", "rho", "delta", "null_control", "data_seed", "left_method", "right_method", "principal_relational_comparison", "roc_auc_left", "roc_auc_right", "roc_auc_difference", "average_precision_left", "average_precision_right", "average_precision_difference"], "omitted_columns": [], "omitted_row_count": 130, "numeric_values": "original CSV strings; no rounding or metric recomputation"}
+
+```csv
+comparison,condition,family,rho,delta,null_control,data_seed,left_method,right_method,principal_relational_comparison,roc_auc_left,roc_auc_right,roc_auc_difference,average_precision_left,average_precision_right,average_precision_difference
+ledoit_wolf_minus_fixed,dependence_rho0p8,dependence_violation,0.80000000000000004,0,False,100,ledoit_wolf,fixed_training_reference,True,0.99898552631578952,0.57133289473684212,0.4276526315789474,0.98763896412183949,0.052706045008539357,0.93493291911330012
+ledoit_wolf_minus_fixed,dependence_rho0p8,dependence_violation,0.80000000000000004,0,False,101,ledoit_wolf,fixed_training_reference,True,0.99780657894736846,0.56410394736842107,0.4337026315789474,0.97872424197740071,0.051689654069023414,0.92703458790837734
+ledoit_wolf_minus_fixed,dependence_rho0p8,dependence_violation,0.80000000000000004,0,False,102,ledoit_wolf,fixed_training_reference,True,0.99701052631578946,0.56384342105263152,0.43316710526315794,0.97702820606894714,0.051607796707213896,0.9254204093617332
+ledoit_wolf_minus_fixed,dependence_rho0p8,dependence_violation,0.80000000000000004,0,False,103,ledoit_wolf,fixed_training_reference,True,0.99507763157894746,0.57268026315789478,0.42239736842105269,0.97082979067314701,0.052794907873320022,0.91803488279982703
+ledoit_wolf_minus_fixed,dependence_rho0p8,dependence_violation,0.80000000000000004,0,False,104,ledoit_wolf,fixed_training_reference,True,0.99565131578947363,0.53256710526315787,0.46308421052631576,0.96762519377913947,0.048522598459582886,0.91910259531955663
+ledoit_wolf_minus_fixed,dependence_rho0p8,dependence_violation,0.80000000000000004,0,False,105,ledoit_wolf,fixed_training_reference,True,0.99533289473684206,0.53070263157894737,0.46463026315789469,0.96744867283137526,0.048213201449229401,0.9192354713821459
+ledoit_wolf_minus_fixed,dependence_rho0p8,dependence_violation,0.80000000000000004,0,False,106,ledoit_wolf,fixed_training_reference,True,0.99752763157894742,0.55477368421052631,0.44275394736842111,0.98677391335147602,0.050812794514844689,0.93596111883663136
+ledoit_wolf_minus_fixed,dependence_rho0p8,dependence_violation,0.80000000000000004,0,False,107,ledoit_wolf,fixed_training_reference,True,0.99877763157894739,0.55802499999999999,0.4407526315789474,0.98513845744176876,0.051010259700353125,0.93412819774141564
+ledoit_wolf_minus_fixed,dependence_rho0p8,dependence_violation,0.80000000000000004,0,False,108,ledoit_wolf,fixed_training_reference,True,0.99329736842105265,0.51201447368421049,0.48128289473684216,0.96544219185043989,0.046494037677693667,0.91894815417274622
+ledoit_wolf_minus_fixed,dependence_rho0p8,dependence_violation,0.80000000000000004,0,False,109,ledoit_wolf,fixed_training_reference,True,0.99719999999999998,0.54741315789473688,0.4497868421052631,0.9762326096227687,0.049964799935591095,0.92626780968717759
+```
+
+### E05.03 — Both method contrasts across all settings
+
+Source: `results/synthetic_extension/v1/summary/method_paired_summary.csv`
+
+Commit: `ed494a3b3c78ecd17f5436f6c9bcfae0050603fe`; source SHA-256: `891cb7fe413fa6e7fd0133a09cf27eb945ebaf4ba2f56fa60bf66879af719c3a`.
+
+Selection: {"row_filter": "all rows", "source_data_rows_1based": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "total_source_rows": 14, "selected_columns": ["comparison", "condition", "family", "rho", "delta", "null_control", "left_method", "right_method", "principal_relational_comparison", "n_pairs", "roc_auc_difference_mean", "roc_auc_difference_sd", "roc_auc_difference_min", "roc_auc_difference_max", "roc_auc_positive_differences", "roc_auc_negative_differences", "roc_auc_zero_differences", "average_precision_difference_mean", "average_precision_difference_sd", "average_precision_difference_min", "average_precision_difference_max", "average_precision_positive_differences", "average_precision_negative_differences", "average_precision_zero_differences"], "omitted_columns": [], "omitted_row_count": 0, "numeric_values": "original CSV strings; no rounding or metric recomputation"}
+
+```csv
+comparison,condition,family,rho,delta,null_control,left_method,right_method,principal_relational_comparison,n_pairs,roc_auc_difference_mean,roc_auc_difference_sd,roc_auc_difference_min,roc_auc_difference_max,roc_auc_positive_differences,roc_auc_negative_differences,roc_auc_zero_differences,average_precision_difference_mean,average_precision_difference_sd,average_precision_difference_min,average_precision_difference_max,average_precision_positive_differences,average_precision_negative_differences,average_precision_zero_differences
+fixed_minus_batch,marginal_delta0,marginal_shift,0.80000000000000004,0,True,fixed_training_reference,pyod_batch,False,10,-0.0010231578947368313,0.008268850918133017,-0.012339473684210567,0.016584210526315757,4,6,0,-0.00072919135018403511,0.0018027664042549758,-0.0038996527033405698,0.0021189508635748311,4,6,0
+ledoit_wolf_minus_fixed,marginal_delta0,marginal_shift,0.80000000000000004,0,True,ledoit_wolf,fixed_training_reference,False,10,0.00082276315789472367,0.01853737370857142,-0.026172368421052639,0.030790789473684244,4,6,0,0.0021167061844084975,0.0030087692445504763,-0.0031116806338019609,0.0051611374875247251,8,2,0
+fixed_minus_batch,marginal_delta2,marginal_shift,0.80000000000000004,2,False,fixed_training_reference,pyod_batch,False,10,-0.0031957894736842187,0.0061494192998570217,-0.014586842105263176,0.0066539473684210648,2,8,0,-0.0010503003200968849,0.0019214684310958532,-0.0049514585514689874,0.0016083133973617131,2,8,0
+ledoit_wolf_minus_fixed,marginal_delta2,marginal_shift,0.80000000000000004,2,False,ledoit_wolf,fixed_training_reference,False,10,0.33118065789473683,0.016252492481740644,0.29287631578947371,0.34801973684210541,10,0,0,0.51901815188958356,0.032303579612874951,0.46630585355348464,0.56181190532623704,10,0,0
+fixed_minus_batch,marginal_delta4,marginal_shift,0.80000000000000004,4,False,fixed_training_reference,pyod_batch,False,10,-0.0024672368421052582,0.007873114821965066,-0.014834210526315728,0.011684210526315741,4,6,0,-0.00082257560920223768,0.0032010150313302017,-0.004749869644763316,0.003958542559279174,4,6,0
+ledoit_wolf_minus_fixed,marginal_delta4,marginal_shift,0.80000000000000004,4,False,ledoit_wolf,fixed_training_reference,False,10,0.29373473684210516,0.017096961573017568,0.26401447368421049,0.32736710526315782,10,0,0,0.90510928089951792,0.010633201692871574,0.88296043425641291,0.92154405526124483,10,0,0
+fixed_minus_batch,marginal_delta6,marginal_shift,0.80000000000000004,6,False,fixed_training_reference,pyod_batch,False,10,-0.0024328947368421395,0.0071567915762832356,-0.018425000000000025,0.0071855263157895033,4,6,0,-0.00039282657942237009,0.0051231031523634859,-0.0098655551661522983,0.0072310940341362151,6,4,0
+ledoit_wolf_minus_fixed,marginal_delta6,marginal_shift,0.80000000000000004,6,False,ledoit_wolf,fixed_training_reference,False,10,0.28179631578947373,0.017091183935840016,0.25275394736842116,0.31258815789473693,10,0,0,0.89956953140057472,0.01027923174534251,0.87955266844657443,0.91779076565837314,10,0,0
+fixed_minus_batch,dependence_rho0p0,dependence_violation,0,0,True,fixed_training_reference,pyod_batch,False,10,-0.0013368421052631751,0.011817280298374646,-0.024476315789473624,0.012607894736842096,5,5,0,-0.00086520715937084681,0.0029055209727468639,-0.005849129693848383,0.0046736910460440928,4,6,0
+ledoit_wolf_minus_fixed,dependence_rho0p0,dependence_violation,0,0,True,ledoit_wolf,fixed_training_reference,False,10,-0.0005056578947368551,0.013501318304959598,-0.01739210526315782,0.017356578947368417,6,4,0,-0.00064462550337597221,0.0037011051707213564,-0.0084901044710367288,0.0035018875192807664,6,4,0
+fixed_minus_batch,dependence_rho0p4,dependence_violation,0.40000000000000002,0,False,fixed_training_reference,pyod_batch,False,10,0.0009777631578947398,0.0094803047742490661,-0.015126315789473654,0.0149644736842105,6,4,0,-0.00012616291920631851,0.00099902529629451687,-0.0015613220454142526,0.0015705248874302996,5,5,0
+ledoit_wolf_minus_fixed,dependence_rho0p4,dependence_violation,0.40000000000000002,0,False,ledoit_wolf,fixed_training_reference,False,10,0.23960460526315788,0.0099855010358239696,0.22527631578947371,0.26129210526315783,10,0,0,0.19472506883567936,0.022764952844698514,0.16210043890380052,0.23273521794523289,10,0,0
+fixed_minus_batch,dependence_rho0p8,dependence_violation,0.80000000000000004,0,False,fixed_training_reference,pyod_batch,False,10,0.0001315789473684159,0.0050081017003264392,-0.0081894736842105242,0.0072105263157895561,7,3,0,3.9407819044691428e-05,0.00054983086248138228,-0.00077164993552814726,0.00084450447922722327,7,3,0
+ledoit_wolf_minus_fixed,dependence_rho0p8,dependence_violation,0.80000000000000004,0,False,ledoit_wolf,fixed_training_reference,True,10,0.445921052631579,0.018695833753908108,0.42239736842105269,0.48128289473684216,10,0,0,0.92590661463229096,0.0070944736115505043,0.91803488279982703,0.93596111883663136,10,0,0
+```
+
+### E05.04 — Completed seed-condition inventory
+
+Source: `results/synthetic_extension/v1/summary/verified_inventory.csv`
+
+Commit: `ed494a3b3c78ecd17f5436f6c9bcfae0050603fe`; source SHA-256: `bf8a7efa169e63049fb9ce6c3855400c09c7d02e6d80df0b70449d3f9c37910e`.
+
+Selection: {"row_filter": "all rows", "source_data_rows_1based": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70], "total_source_rows": 70, "selected_columns": ["data_seed", "condition", "family", "rho", "delta", "null_control", "n_methods", "n_test", "test_positives", "checks"], "omitted_columns": ["train_row_order_sha256", "test_row_order_sha256", "evaluation_metadata_sha256"], "omitted_row_count": 0, "numeric_values": "original CSV strings; no rounding or metric recomputation"}
+
+```csv
+data_seed,condition,family,rho,delta,null_control,n_methods,n_test,test_positives,checks
+100,marginal_delta0,marginal_shift,0.80000000000000004,0,True,3,4000,200,passed
+100,marginal_delta2,marginal_shift,0.80000000000000004,2,False,3,4000,200,passed
+100,marginal_delta4,marginal_shift,0.80000000000000004,4,False,3,4000,200,passed
+100,marginal_delta6,marginal_shift,0.80000000000000004,6,False,3,4000,200,passed
+100,dependence_rho0p0,dependence_violation,0,0,True,3,4000,200,passed
+100,dependence_rho0p4,dependence_violation,0.40000000000000002,0,False,3,4000,200,passed
+100,dependence_rho0p8,dependence_violation,0.80000000000000004,0,False,3,4000,200,passed
+101,marginal_delta0,marginal_shift,0.80000000000000004,0,True,3,4000,200,passed
+101,marginal_delta2,marginal_shift,0.80000000000000004,2,False,3,4000,200,passed
+101,marginal_delta4,marginal_shift,0.80000000000000004,4,False,3,4000,200,passed
+101,marginal_delta6,marginal_shift,0.80000000000000004,6,False,3,4000,200,passed
+101,dependence_rho0p0,dependence_violation,0,0,True,3,4000,200,passed
+101,dependence_rho0p4,dependence_violation,0.40000000000000002,0,False,3,4000,200,passed
+101,dependence_rho0p8,dependence_violation,0.80000000000000004,0,False,3,4000,200,passed
+102,marginal_delta0,marginal_shift,0.80000000000000004,0,True,3,4000,200,passed
+102,marginal_delta2,marginal_shift,0.80000000000000004,2,False,3,4000,200,passed
+102,marginal_delta4,marginal_shift,0.80000000000000004,4,False,3,4000,200,passed
+102,marginal_delta6,marginal_shift,0.80000000000000004,6,False,3,4000,200,passed
+102,dependence_rho0p0,dependence_violation,0,0,True,3,4000,200,passed
+102,dependence_rho0p4,dependence_violation,0.40000000000000002,0,False,3,4000,200,passed
+102,dependence_rho0p8,dependence_violation,0.80000000000000004,0,False,3,4000,200,passed
+103,marginal_delta0,marginal_shift,0.80000000000000004,0,True,3,4000,200,passed
+103,marginal_delta2,marginal_shift,0.80000000000000004,2,False,3,4000,200,passed
+103,marginal_delta4,marginal_shift,0.80000000000000004,4,False,3,4000,200,passed
+103,marginal_delta6,marginal_shift,0.80000000000000004,6,False,3,4000,200,passed
+103,dependence_rho0p0,dependence_violation,0,0,True,3,4000,200,passed
+103,dependence_rho0p4,dependence_violation,0.40000000000000002,0,False,3,4000,200,passed
+103,dependence_rho0p8,dependence_violation,0.80000000000000004,0,False,3,4000,200,passed
+104,marginal_delta0,marginal_shift,0.80000000000000004,0,True,3,4000,200,passed
+104,marginal_delta2,marginal_shift,0.80000000000000004,2,False,3,4000,200,passed
+104,marginal_delta4,marginal_shift,0.80000000000000004,4,False,3,4000,200,passed
+104,marginal_delta6,marginal_shift,0.80000000000000004,6,False,3,4000,200,passed
+104,dependence_rho0p0,dependence_violation,0,0,True,3,4000,200,passed
+104,dependence_rho0p4,dependence_violation,0.40000000000000002,0,False,3,4000,200,passed
+104,dependence_rho0p8,dependence_violation,0.80000000000000004,0,False,3,4000,200,passed
+105,marginal_delta0,marginal_shift,0.80000000000000004,0,True,3,4000,200,passed
+105,marginal_delta2,marginal_shift,0.80000000000000004,2,False,3,4000,200,passed
+105,marginal_delta4,marginal_shift,0.80000000000000004,4,False,3,4000,200,passed
+105,marginal_delta6,marginal_shift,0.80000000000000004,6,False,3,4000,200,passed
+105,dependence_rho0p0,dependence_violation,0,0,True,3,4000,200,passed
+105,dependence_rho0p4,dependence_violation,0.40000000000000002,0,False,3,4000,200,passed
+105,dependence_rho0p8,dependence_violation,0.80000000000000004,0,False,3,4000,200,passed
+106,marginal_delta0,marginal_shift,0.80000000000000004,0,True,3,4000,200,passed
+106,marginal_delta2,marginal_shift,0.80000000000000004,2,False,3,4000,200,passed
+106,marginal_delta4,marginal_shift,0.80000000000000004,4,False,3,4000,200,passed
+106,marginal_delta6,marginal_shift,0.80000000000000004,6,False,3,4000,200,passed
+106,dependence_rho0p0,dependence_violation,0,0,True,3,4000,200,passed
+106,dependence_rho0p4,dependence_violation,0.40000000000000002,0,False,3,4000,200,passed
+106,dependence_rho0p8,dependence_violation,0.80000000000000004,0,False,3,4000,200,passed
+107,marginal_delta0,marginal_shift,0.80000000000000004,0,True,3,4000,200,passed
+107,marginal_delta2,marginal_shift,0.80000000000000004,2,False,3,4000,200,passed
+107,marginal_delta4,marginal_shift,0.80000000000000004,4,False,3,4000,200,passed
+107,marginal_delta6,marginal_shift,0.80000000000000004,6,False,3,4000,200,passed
+107,dependence_rho0p0,dependence_violation,0,0,True,3,4000,200,passed
+107,dependence_rho0p4,dependence_violation,0.40000000000000002,0,False,3,4000,200,passed
+107,dependence_rho0p8,dependence_violation,0.80000000000000004,0,False,3,4000,200,passed
+108,marginal_delta0,marginal_shift,0.80000000000000004,0,True,3,4000,200,passed
+108,marginal_delta2,marginal_shift,0.80000000000000004,2,False,3,4000,200,passed
+108,marginal_delta4,marginal_shift,0.80000000000000004,4,False,3,4000,200,passed
+108,marginal_delta6,marginal_shift,0.80000000000000004,6,False,3,4000,200,passed
+108,dependence_rho0p0,dependence_violation,0,0,True,3,4000,200,passed
+108,dependence_rho0p4,dependence_violation,0.40000000000000002,0,False,3,4000,200,passed
+108,dependence_rho0p8,dependence_violation,0.80000000000000004,0,False,3,4000,200,passed
+109,marginal_delta0,marginal_shift,0.80000000000000004,0,True,3,4000,200,passed
+109,marginal_delta2,marginal_shift,0.80000000000000004,2,False,3,4000,200,passed
+109,marginal_delta4,marginal_shift,0.80000000000000004,4,False,3,4000,200,passed
+109,marginal_delta6,marginal_shift,0.80000000000000004,6,False,3,4000,200,passed
+109,dependence_rho0p0,dependence_violation,0,0,True,3,4000,200,passed
+109,dependence_rho0p4,dependence_violation,0.40000000000000002,0,False,3,4000,200,passed
+109,dependence_rho0p8,dependence_violation,0.80000000000000004,0,False,3,4000,200,passed
+```
+
+### E06.01 — Construction, pairing, evaluation and limits
+
+Source: `notes/synthetic_extension_plan.md`
+
+Commit: `ed494a3b3c78ecd17f5436f6c9bcfae0050603fe`; source SHA-256: `8f91155a425bc6714a4c8e47ada30e5a1a5128bdd7b38b0dea4b7609abebbcb9`.
+
+Selection: {"inclusive_source_line_ranges": [[13, 13], [53, 71], [79, 95], [99, 115], [138, 150], [168, 174]], "source_lines": 184, "omissions": "All source lines outside the listed ranges excluded."}
+
+```text
+13: This plan is informed by the completed pilot. It specifies new experiments in advance, but is not a claim that the entire project was preregistered before seeing any results. The artificial features have no assigned physical meaning. Their parameters are not estimated from APS or another real dataset.
+
+53: ### Marginal-shift family
+54: 
+55: Generate 9,500 normal rows and 500 independent positive-origin base rows with `rho=0.8`. For each positive row, select one feature uniformly from the 20 features and independently choose a sign with equal probability. Add the sign times the condition's shift magnitude to that feature only.
+56: 
+57: The intervention changes both individual feature distributions and the positive group's correlations. With shift magnitude `delta`, each positive feature has population mean 0 and variance `1 + delta^2/20`. Within-block positive correlation becomes `0.8 / (1 + delta^2/20)`. Between-block covariance remains zero. I will therefore describe this as a single-feature shift intervention, not an experiment that changes only marginals while preserving all dependence properties.
+58: 
+59: A generated positive need not be extremely unusual in every finite realization. The recorded label identifies its construction process, not guaranteed separability.
+60: 
+61: ### Dependence-violation family
+62: 
+63: Generate the 9,500 normal rows using the stated `rho`. Generate the 500 positive rows with independent standard-normal feature values. Both groups have standard-normal individual feature distributions in the population; only their joint structure differs when `rho` is positive. Finite samples will not have exactly identical marginal summaries.
+64: 
+65: Matching individual distributions does not force identical distributions of an aggregated detector score. I will not assume COPOD must achieve exactly chance performance in the non-null dependence settings.
+66: 
+67: ### Null controls and labels
+68: 
+69: At shift 0, both groups follow the same correlated Gaussian distribution. At dependence `rho=0`, both groups follow the same independent Gaussian distribution. The label-1 rows in these two conditions are designated comparison groups without a deliberately introduced anomaly signal.
+70: 
+71: Labels will be 0 for the normal-origin group and 1 for the positive-origin group, including the null controls. The 500 positive labels are not assigned by examining feature values or detector scores. Null ROC AUC should fluctuate around the random-ranking reference of 0.5; AP will be interpreted relative to the 5% prevalence reference. Finite-sample AP is not required to have expectation exactly 0.05, and no individual run must equal either reference exactly.
+
+79: Within each family and seed, create the base random draws once and reuse them across strength settings:
+80: 
+81: - Marginal conditions share normal rows, positive base rows, selected features, signs and permutation. Only shift magnitude changes.
+82: - Dependence conditions share normal factors/residuals, independent positive rows and permutation. Only the normal correlation parameter changes.
+83: - Labels, source-row identities and train/test membership are identical across levels within that family and seed.
+84: 
+85: This pairing helps isolate the intervention from unrelated changes in sampled rows. Rows shared across conditions are deliberate counterfactual versions, not extra independent samples. The two families have separate random streams; their null datasets must not be pooled or treated as the same paired dataset merely because seed numbers match. All streams must be created with their fixed identities even if a command requests only some conditions.
+86: 
+87: The predictor CSV will contain only `x01` through `x20`, followed by `label`. A separate annotation file will record zero-based CSV row position, original source-row identity, family, condition, label, selected feature and applied signed shift. Use -1 and 0 for feature and shift when no feature is selected in the dependence family or in normal rows. For marginal positive rows at shift 0, retain the selected feature and sign separately even though the applied shift is zero. No annotation field enters a detector.
+88: 
+89: ## 5. Shared training/test protocol
+90: 
+91: Use `train_test_split` on row indices with `test_size=0.4`, `stratify=labels` and integer `random_state=42`. Within each family and seed, split once and reuse the row membership across its conditions. This gives 6,000 training rows, including 300 designated positives, and 4,000 test rows, including 200 designated positives.
+92: 
+93: All three detectors receive exactly the same training and test features within a condition. Retain the 300 positive training rows; no method is fitted only on rows selected using known normal labels. Labels are used for stratification, construction checks and evaluation, not for fitting or selecting hyperparameters.
+94: 
+95: No imputation, scaling, clipping, feature selection or additional feature engineering will be applied. The normal/base features already have common population scales; the variance changes introduced by shifts are part of the intervention. This follows the pilot's no-preprocessing approach and differs from the real APS preprocessing pipeline.
+
+99: ### Standard PyOD batch COPOD
+100: 
+101: Use `COPOD(contamination=0.05, n_jobs=1)` with a fresh instance for each dataset. Fit using training features and score the entire 4,000-row test set in one call. The inspected implementation uses training plus test features to calculate its empirical tails and skewness. Test labels are not used. The contamination setting determines an unused threshold; metrics use raw scores.
+102: 
+103: Record the installed version and source hash. The current project version is PyOD 3.6.4; I will not silently upgrade the implementation between planned runs.
+104: 
+105: ### Modified fixed training-reference COPOD
+106: 
+107: Reuse `TrainingReferenceCOPOD` from `scripts/evaluate_synthetic_copod.py`, preserving its inclusive training-only tail counts, training skewness and lower probability bound `1/6000`. Score test features using the fixed training reference. This is a project modification, not the authors' unchanged implementation.
+108: 
+109: ### Ledoit-Wolf squared Mahalanobis distance
+110: 
+111: Use `sklearn.covariance.LedoitWolf(store_precision=True, assume_centered=False, block_size=1000)`. Fit all 6,000 training feature rows without labels, then use `mahalanobis(X_test)` as the anomaly score. This returns squared distances; larger means more unusual. The training mean, covariance and shrinkage coefficient are estimated rather than supplied from the generator. The API is specified in the [official LedoitWolf documentation](https://scikit-learn.org/stable/modules/generated/sklearn.covariance.LedoitWolf.html).
+112: 
+113: This score measures distance while accounting for learned feature relationships. The comparator is deliberately suitable for the Gaussian dependence structure in this study. It is not a claim of universal superiority or robustness to arbitrary anomalies. The positive training rows can affect its estimates. No true population covariance, construction annotations or test measurements are used to fit it, and no shrinkage value is tuned against labels.
+114: 
+115: The main detector comparison is Ledoit-Wolf versus fixed-reference COPOD, because both use training-only scoring references. Batch COPOD has different information access. All three are deterministic under these settings; repeated results come from new generated datasets, not repeated identical fits.
+
+138: ## 8. Metrics, summaries and comparisons
+139: 
+140: Evaluate ROC AUC and non-interpolated average precision on test rows only. Use `sklearn.metrics.roc_auc_score` and `average_precision_score`, keeping full precision for calculations. The references are ROC AUC 0.5 and AP prevalence 0.05. No thresholded accuracy, best-seed selection or outcome-dependent hyperparameter tuning is planned.
+141: 
+142: Report all 210 method-condition-seed results. For each of the 21 method-condition combinations, report the ten-seed mean and sample SD (`ddof=1`), plus individual seed values. These SDs describe variation under the specified simulator and split procedure; they are not confidence intervals or estimates of deployment uncertainty.
+143: 
+144: Prespecified paired contrasts are:
+145: 
+146: 1. **Scoring reference:** fixed-reference COPOD minus batch COPOD, within each condition and seed.
+147: 2. **Detector:** Ledoit-Wolf minus fixed-reference COPOD, within each condition and seed. The strong-dependence condition `dependence_rho0p8` is the principal comparison for the relational mechanism; all seven conditions remain reportable.
+148: 3. **Intervention strength:** for each method, marginal shifts 2, 4 and 6 minus shift 0 within the same family/seed; dependence correlations 0.4 and 0.8 minus correlation 0 within the same family/seed.
+149: 
+150: Calculate each difference before summarising its ten values. Do not subtract standard deviations or treat all correlated conditions as independent replicates. Do not pool the two families' controls. No significance tests, equivalence tests or additional bootstrap intervals are planned for this bounded exploratory extension.
+
+168: ## 10. Relation to the original proposal and limits
+169: 
+170: The proposal outlined a broader factorial study spanning skewed and heavy-tailed marginals, dimensions 5/20/100, positive proportions 1%/5%/10%, local anomalies and small anomaly clusters. This extension deliberately narrows the scope to two interpretable Gaussian mechanisms, their strength settings, two null controls and a covariance-aware comparator.
+171: 
+172: The narrowed design makes it possible to pair underlying draws, check construction against known population properties and attribute comparisons to explicit interventions. It does not fulfil or establish results for the proposal's other dimensions. Those extensions remain untested and must be identified as scope changes or future work in the final report, not presented as completed experiments.
+173: 
+174: Other limitations include fixed sample size and positive proportion, synthetic rather than real-world feature meanings, training sets containing generated positives, and a comparator selected for its suitability to Gaussian relationships. These results cannot show that one detector is best for all anomaly types, that COPOD can never detect dependence anomalies, or that the findings transfer directly to APS. The broader real-data evaluation and reproduction investigations provide separate evidence.
+```
+
+### E06.02 — Implemented random streams and construction
+
+Source: `scripts/generate_synthetic_extension.py`
+
+Commit: `ed494a3b3c78ecd17f5436f6c9bcfae0050603fe`; source SHA-256: `42471e6adeafff994963fe5fb56b0539a109bf8e6985b95a75813896aaa01ab3`.
+
+Selection: {"inclusive_source_line_ranges": [[24, 42], [73, 107], [135, 158]], "source_lines": 459, "omissions": "All source lines outside the listed ranges excluded."}
+
+```text
+24: PLAN_PATH = "notes/synthetic_extension_plan.md"
+25: PLAN_COMMIT = "39a2cb60318ecd73f9e017f03a94adae25a2678b"
+26: PLAN_SHA256 = "8f91155a425bc6714a4c8e47ada30e5a1a5128bdd7b38b0dea4b7609abebbcb9"
+27: PLANNED_SEEDS = tuple(range(100, 110))
+28: N_ROWS, N_FEATURES, N_POSITIVE, BLOCK_SIZE = 10000, 20, 500, 5
+29: N_NORMAL = N_ROWS - N_POSITIVE
+30: FEATURES = [f"x{j + 1:02d}" for j in range(N_FEATURES)]
+31: FAMILIES = ("marginal_shift", "dependence_violation")
+32: STREAM_NAMES = ("normal_latents", "positive_latents", "shift_feature",
+33:                 "shift_sign", "row_permutation")
+34: CONDITIONS = tuple(
+35:     {"condition": f"marginal_delta{delta}", "family": FAMILIES[0],
+36:      "rho": 0.8, "delta": float(delta), "null_control": delta == 0}
+37:     for delta in (0, 2, 4, 6)
+38: ) + tuple(
+39:     {"condition": f"dependence_rho{tag}", "family": FAMILIES[1],
+40:      "rho": rho, "delta": 0.0, "null_control": rho == 0}
+41:     for tag, rho in (("0p0", 0.0), ("0p4", 0.4), ("0p8", 0.8))
+42: )
+
+73: def block_values(shared, residual, rho):
+74:     # repeat, not tile: x01-x05 share the first factor, x06-x10 the next.
+75:     return (np.sqrt(rho) * np.repeat(shared, BLOCK_SIZE, axis=1)
+76:             + np.sqrt(1.0 - rho) * residual)
+77: 
+78: 
+79: def make_families(seed):
+80:     """Create fixed independent family streams and paired within-family draws."""
+81:     root_sequence = np.random.SeedSequence([seed, 20261029])
+82:     families = {}
+83:     for name, sequence in zip(FAMILIES, root_sequence.spawn(2)):
+84:         children = sequence.spawn(len(STREAM_NAMES))
+85:         rngs = [np.random.Generator(np.random.PCG64(child))
+86:                 for child in children]
+87:         # Factors must be consumed before residuals, even if factors are unused.
+88:         normal_s = rngs[0].standard_normal((N_NORMAL, N_FEATURES // BLOCK_SIZE))
+89:         normal_e = rngs[0].standard_normal((N_NORMAL, N_FEATURES))
+90:         positive_s = rngs[1].standard_normal((N_POSITIVE, N_FEATURES // BLOCK_SIZE))
+91:         positive_e = rngs[1].standard_normal((N_POSITIVE, N_FEATURES))
+92:         selected = np.full(N_ROWS, -1, dtype=np.int64)
+93:         signs = np.zeros(N_ROWS, dtype=np.int64)
+94:         if name == "marginal_shift":
+95:             selected[N_NORMAL:] = rngs[2].integers(0, N_FEATURES, N_POSITIVE)
+96:             signs[N_NORMAL:] = rngs[3].choice([-1, 1], N_POSITIVE)
+97:         order = rngs[4].permutation(N_ROWS)
+98:         source_labels = np.r_[np.zeros(N_NORMAL, dtype=np.int64),
+99:                               np.ones(N_POSITIVE, dtype=np.int64)]
+100:         labels = source_labels[order]
+101:         train, test = train_test_split(np.arange(N_ROWS), test_size=0.4,
+102:                                       stratify=labels, random_state=42)
+103:         require(len(train) == 6000 and len(test) == 4000, "Wrong split sizes.")
+104:         require(np.array_equal(np.sort(np.r_[train, test]), np.arange(N_ROWS)),
+105:                 "Split rows must cover every row exactly once.")
+106:         require(labels[train].sum() == 300 and labels[test].sum() == 200,
+107:                 "Wrong split class counts.")
+
+135: def make_case(spec, family):
+136:     normal = block_values(family["normal_factors"], family["normal_residuals"],
+137:                           spec["rho"])
+138:     if spec["family"] == "marginal_shift":
+139:         positive_base = block_values(family["positive_factors"],
+140:                                      family["positive_residuals"], 0.8)
+141:         positive = positive_base.copy()
+142:         if spec["delta"]:
+143:             positive[np.arange(N_POSITIVE), family["selected"][N_NORMAL:]] += (
+144:                 family["signs"][N_NORMAL:] * spec["delta"])
+145:     else:
+146:         positive_base = family["positive_residuals"]
+147:         positive = positive_base.copy()
+148:     order, labels = family["order"], family["labels"]
+149:     X = np.vstack([normal, positive])[order]
+150:     base = np.vstack([normal, positive_base])[order]
+151:     selected, signs = family["selected"][order], family["signs"][order]
+152:     shifts = signs * spec["delta"] if spec["delta"] else np.zeros(N_ROWS)
+153:     annotations = pd.DataFrame({
+154:         "row_index": np.arange(N_ROWS), "source_row_id": order,
+155:         "family": spec["family"], "condition": spec["condition"], "label": labels,
+156:         "selected_feature_index": selected, "shift_sign": signs,
+157:         "applied_shift": shifts,
+158:     })
+```
+
+### E06.03 — Implemented fitting and test metrics
+
+Source: `scripts/evaluate_synthetic_extension.py`
+
+Commit: `ed494a3b3c78ecd17f5436f6c9bcfae0050603fe`; source SHA-256: `f263b6e7d4712573d1802f647dc5daeff719d0211f3160fbfbfa8c61606b5d44`.
+
+Selection: {"inclusive_source_line_ranges": [[431, 451], [465, 477]], "source_lines": 670, "omissions": "All source lines outside the listed ranges excluded."}
+
+```text
+431: def fit_case(case, seed):
+432:     X, y, train, test = case["X"], case["y"], case["train_rows"], case["test_rows"]
+433:     X_train, X_test, y_test = X[train], X[test], y[test]
+434:     spec = case["spec"]
+435:     standard, t_standard = timed(lambda: COPOD(**COPOD_PARAMETERS).fit(X_train))
+436:     fixed, t_fixed = timed(lambda: TrainingReferenceCOPOD().fit(X_train))
+437:     fixed_train = fixed.decision_function(X_train)
+438:     require(np.isfinite(fixed_train).all() and np.isfinite(standard.decision_scores_).all(),
+439:             "Non-finite training scores.")
+440:     np.testing.assert_allclose(fixed_train, standard.decision_scores_, rtol=1e-10, atol=1e-10)
+441:     agreement = float(np.max(np.abs(fixed_train-standard.decision_scores_)))
+442:     train_flags = contribution_flags(standard, 6000)  # Save before test call overwrites arrays.
+443:     score_batch, s_standard = timed(lambda: standard.decision_function(X_test))
+444:     batch_flags = contribution_flags(standard, 10000)
+445:     np.testing.assert_array_equal(standard.O.sum(axis=1)[-4000:], score_batch)
+446:     score_fixed, s_fixed = timed(lambda: fixed.decision_function(X_test))
+447:     fixed_batch = batch_check(fixed.decision_function, X_test, score_fixed, rtol=0)
+448:     features, touched_rows = fixed_diagnostics(fixed, X_train, X_test, score_fixed)
+449: 
+450:     lw, t_lw = timed(lambda: LedoitWolf(**LW_PARAMETERS).fit(X_train))
+451:     score_lw, s_lw = timed(lambda: lw.mahalanobis(X_test))
+
+465:     score_table = pd.DataFrame({"test_position": np.arange(4000), "row_index": test,
+466:                                "source_row_id": case["annotations"].source_row_id.to_numpy()[test],
+467:                                "label": y_test, METHODS[0]: score_batch,
+468:                                METHODS[1]: score_fixed, METHODS[2]: score_lw})
+469:     metric_rows = []
+470:     for method, fit_time, score_time in zip(METHODS, (t_standard, t_fixed, t_lw),
+471:                                           (s_standard, s_fixed, s_lw)):
+472:         metric_rows.append({"data_seed": seed, **spec, "method": method,
+473:                             "n_train": 6000, "n_test": 4000, "n_features": 20,
+474:                             "train_positives": int(y[train].sum()), "test_positives": int(y_test.sum()),
+475:                             "test_prevalence": float(y_test.mean()),
+476:                             **performance(y_test, score_table[method].to_numpy()),
+477:                             "fit_seconds": fit_time, "score_seconds": score_time})
+```
+
+### E06.04 — Generation specification (planned inventory)
+
+Source: `results/synthetic_extension/v1/generation_manifest.json`
+
+Commit: `ed494a3b3c78ecd17f5436f6c9bcfae0050603fe`; source SHA-256: `29e9d3477573c9b10fc7639fc45edfb1af907b8741fc54b544fd94fd18d12dd6`.
+
+Selection: {"json_pointers": ["/conditions", "/planned_seeds", "/n_rows", "/n_features", "/n_positive", "/block_size", "/factor_rule", "/label_meaning", "/null_label_limit", "/rng", "/family_order", "/within_family_stream_order", "/latent_draw_order", "/split", "/preprocessing", "/population_targets", "/completion_scope", "/plan_commit", "/plan_sha256"], "omissions": "All other JSON fields excluded."}
+
+```json
+{
+  "/conditions": [
+    {
+      "condition": "marginal_delta0",
+      "delta": 0.0,
+      "family": "marginal_shift",
+      "null_control": true,
+      "rho": 0.8
+    },
+    {
+      "condition": "marginal_delta2",
+      "delta": 2.0,
+      "family": "marginal_shift",
+      "null_control": false,
+      "rho": 0.8
+    },
+    {
+      "condition": "marginal_delta4",
+      "delta": 4.0,
+      "family": "marginal_shift",
+      "null_control": false,
+      "rho": 0.8
+    },
+    {
+      "condition": "marginal_delta6",
+      "delta": 6.0,
+      "family": "marginal_shift",
+      "null_control": false,
+      "rho": 0.8
+    },
+    {
+      "condition": "dependence_rho0p0",
+      "delta": 0.0,
+      "family": "dependence_violation",
+      "null_control": true,
+      "rho": 0.0
+    },
+    {
+      "condition": "dependence_rho0p4",
+      "delta": 0.0,
+      "family": "dependence_violation",
+      "null_control": false,
+      "rho": 0.4
+    },
+    {
+      "condition": "dependence_rho0p8",
+      "delta": 0.0,
+      "family": "dependence_violation",
+      "null_control": false,
+      "rho": 0.8
+    }
+  ],
+  "/planned_seeds": [
+    100,
+    101,
+    102,
+    103,
+    104,
+    105,
+    106,
+    107,
+    108,
+    109
+  ],
+  "/n_rows": 10000,
+  "/n_features": 20,
+  "/n_positive": 500,
+  "/block_size": 5,
+  "/factor_rule": "sqrt(rho)*repeat(S,5,axis=1) + sqrt(1-rho)*E",
+  "/label_meaning": {
+    "0": "normal-origin process",
+    "1": "positive-origin process"
+  },
+  "/null_label_limit": "Null groups have identical population distributions; labels are not distinguishable anomalies.",
+  "/rng": "Generator(PCG64(SeedSequence([data_seed, 20261029]) child))",
+  "/family_order": [
+    "marginal_shift",
+    "dependence_violation"
+  ],
+  "/within_family_stream_order": [
+    "normal_latents",
+    "positive_latents",
+    "shift_feature",
+    "shift_sign",
+    "row_permutation"
+  ],
+  "/latent_draw_order": "(group_rows,4) factors, then (group_rows,20) residuals",
+  "/split": {
+    "random_state": 42,
+    "stratify": "label",
+    "test_positives": 200,
+    "test_rows": 4000,
+    "test_size": 0.4,
+    "train_positives": 300,
+    "train_rows": 6000
+  },
+  "/preprocessing": "none",
+  "/population_targets": "Descriptive, not thresholds for rejecting/redrawing seeds.",
+  "/completion_scope": "This manifest describes planned settings; seed_metadata.json records each completed seed.",
+  "/plan_commit": "39a2cb60318ecd73f9e017f03a94adae25a2678b",
+  "/plan_sha256": "8f91155a425bc6714a4c8e47ada30e5a1a5128bdd7b38b0dea4b7609abebbcb9"
+}
+```
+
+### E06.05 — Recorded synthetic scoring specification
+
+Source: `results/synthetic_extension/v1/evaluation_manifest.json`
+
+Commit: `ed494a3b3c78ecd17f5436f6c9bcfae0050603fe`; source SHA-256: `e4cf254c389c4846c6157205d57863dc3a80b36caa491a535db8227af1e77af3`.
+
+Selection: {"json_pointers": ["/methods", "/planned_data_seeds", "/scoring_references", "/copod_parameters", "/fixed_reference_probability_floor", "/ledoit_wolf_parameters", "/labels_in_fit", "/training_rows", "/training_positives_retained", "/split", "/metrics", "/metrics_use", "/preprocessing", "/performance_acceptance_thresholds", "/runtime", "/timing_policy"], "omissions": "All other JSON fields excluded."}
+
+```json
+{
+  "/methods": [
+    "pyod_batch",
+    "fixed_training_reference",
+    "ledoit_wolf"
+  ],
+  "/planned_data_seeds": [
+    100,
+    101,
+    102,
+    103,
+    104,
+    105,
+    106,
+    107,
+    108,
+    109
+  ],
+  "/scoring_references": {
+    "fixed_training_reference": "training only",
+    "ledoit_wolf": "training only; squared Mahalanobis distances",
+    "pyod_batch": "training plus entire test batch in one call"
+  },
+  "/copod_parameters": {
+    "contamination": 0.05,
+    "n_jobs": 1
+  },
+  "/fixed_reference_probability_floor": 0.00016666666666666666,
+  "/ledoit_wolf_parameters": {
+    "assume_centered": false,
+    "block_size": 1000,
+    "store_precision": true
+  },
+  "/labels_in_fit": false,
+  "/training_rows": 6000,
+  "/training_positives_retained": 300,
+  "/split": {
+    "random_state": 42,
+    "stratify": "label",
+    "test_positives": 200,
+    "test_rows": 4000,
+    "test_size": 0.4,
+    "train_positives": 300,
+    "train_rows": 6000
+  },
+  "/metrics": [
+    "roc_auc",
+    "average_precision"
+  ],
+  "/metrics_use": "test rows only, raw scores",
+  "/preprocessing": "none",
+  "/performance_acceptance_thresholds": null,
+  "/runtime": {
+    "packages": {
+      "numba": "0.67.0",
+      "numpy": "2.5.2",
+      "pandas": "3.0.5",
+      "pyod": "3.6.4",
+      "scikit-learn": "1.9.0",
+      "scipy": "1.18.0",
+      "statsmodels": "0.14.6"
+    },
+    "platform": "Linux-6.8.0-1064-azure-x86_64-with-glibc2.39",
+    "python": "3.12.1"
+  },
+  "/timing_policy": "One fit and one whole-test score call; diagnostic checks excluded. No speed claim."
+}
+```
+
+### E06.06 — marginal_delta0: representative construction provenance
+
+Source: `results/synthetic_extension/v1/seed100/marginal_delta0/metadata.json`
+
+Commit: `ed494a3b3c78ecd17f5436f6c9bcfae0050603fe`; source SHA-256: `e84504d0dcc511fe4ece7cc3afec3c617f062947dea0368a036022a19a1323f7`.
+
+Selection: {"json_pointers": ["/schema", "/seed", "/specification", "/annotation_join", "/selected_feature_convention", "/stream_provenance/entropy", "/stream_provenance/family_spawn_key", "/stream_provenance/stream_spawn_keys"], "omissions": "All other JSON fields excluded."}
+
+```json
+{
+  "/schema": "synthetic_extension_dataset_v1",
+  "/seed": 100,
+  "/specification": {
+    "condition": "marginal_delta0",
+    "delta": 0.0,
+    "family": "marginal_shift",
+    "null_control": true,
+    "rho": 0.8
+  },
+  "/annotation_join": "row_index is zero-based CSV row position; source_row_id is stable within family/seed",
+  "/selected_feature_convention": "0=x01,...,19=x20; -1=none; marginal delta0 keeps selected feature and +/-1 sign",
+  "/stream_provenance/entropy": [
+    100,
+    20261029
+  ],
+  "/stream_provenance/family_spawn_key": [
+    0
+  ],
+  "/stream_provenance/stream_spawn_keys": {
+    "normal_latents": [
+      0,
+      0
+    ],
+    "positive_latents": [
+      0,
+      1
+    ],
+    "row_permutation": [
+      0,
+      4
+    ],
+    "shift_feature": [
+      0,
+      2
+    ],
+    "shift_sign": [
+      0,
+      3
+    ]
+  }
+}
+```
+
+### E06.07 — dependence_rho0p0: representative construction provenance
+
+Source: `results/synthetic_extension/v1/seed100/dependence_rho0p0/metadata.json`
+
+Commit: `ed494a3b3c78ecd17f5436f6c9bcfae0050603fe`; source SHA-256: `588e8ec93aaba3f187eb9ddf5ca32e6a7ef978b64667be428e4c9461ee1fc674`.
+
+Selection: {"json_pointers": ["/schema", "/seed", "/specification", "/annotation_join", "/selected_feature_convention", "/stream_provenance/entropy", "/stream_provenance/family_spawn_key", "/stream_provenance/stream_spawn_keys"], "omissions": "All other JSON fields excluded."}
+
+```json
+{
+  "/schema": "synthetic_extension_dataset_v1",
+  "/seed": 100,
+  "/specification": {
+    "condition": "dependence_rho0p0",
+    "delta": 0.0,
+    "family": "dependence_violation",
+    "null_control": true,
+    "rho": 0.0
+  },
+  "/annotation_join": "row_index is zero-based CSV row position; source_row_id is stable within family/seed",
+  "/selected_feature_convention": "0=x01,...,19=x20; -1=none; marginal delta0 keeps selected feature and +/-1 sign",
+  "/stream_provenance/entropy": [
+    100,
+    20261029
+  ],
+  "/stream_provenance/family_spawn_key": [
+    1
+  ],
+  "/stream_provenance/stream_spawn_keys": {
+    "normal_latents": [
+      1,
+      0
+    ],
+    "positive_latents": [
+      1,
+      1
+    ],
+    "row_permutation": [
+      1,
+      4
+    ],
+    "shift_feature": [
+      1,
+      2
+    ],
+    "shift_sign": [
+      1,
+      3
+    ]
+  }
+}
+```

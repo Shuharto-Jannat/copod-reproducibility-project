@@ -1,0 +1,50 @@
+{
+  "schema": "llm_judge_preparation_v1",
+  "experiment_baseline_commit": "ed494a3b3c78ecd17f5436f6c9bcfae0050603fe",
+  "protocol_commit": "3721a7dde5543c53666efa3177eaad270312e65e",
+  "protocol_path": "notes/llm_judge_evaluation_plan.md",
+  "protocol_sha256": "dfa2f9b59ba1de23ae62f18d7e184380b4d835ccbd583a6da33b762e66b8b59f",
+  "preparation_script_sha256": "b2f7217f2228e58cb22703fb21ad0b3c412d42f9e5b96b795c920674e5215df2",
+  "checks": [
+    "30-dataset benchmark inventory and aggregate ROC means",
+    "four ARFF datasets, three arms, true-label column differences",
+    "three MAT datasets, seeds 0-9, full and original-rounded means",
+    "14 APS results, model seeds, saved means and sample SD",
+    "70 synthetic realizations, 21 summaries, paired arithmetic and seed inventory",
+    "identical prompt prefix; only claim order reversed",
+    "judge-input allowlist; diagnostic roles excluded",
+    "human verdict/reason fields intentionally blank at creation"
+  ],
+  "source_file_count": 38,
+  "evidence_item_count": 38,
+  "claim_count": 10,
+  "planned_session_count": 2,
+  "preparation_performs_judging": false,
+  "preparation_fits_models": false,
+  "arithmetic_check_scope": "selected committed summary consistency; not independent rerunning of all prior validations",
+  "prompt_bytes": {
+    "A": 111551,
+    "B": 111551
+  },
+  "immutable_output_sha256": {
+    "inputs/claims.csv": "f4ea2efd2b09ceab8e5831a71d469fa6d6d555bd35d229335a21d1dc643b76eb",
+    "inputs/evidence_packet.md": "6ccd524f91b0fece48a19eee9776699a9f073b496211b95fee4deb0d2428e6a8",
+    "inputs/judgment_entry_schema.json": "f7d215ef1a86c5583e185f7da115224194550957a33ecfcb93c23f3a76fc9cc7",
+    "inputs/source_manifest.json": "52cb7cf3f8930d84bede24d5a3775318106b64c35a2a795d6babe2dfc8ca2356",
+    "inputs/session_A_prompt.txt": "500b11ae14f4399345af700d5aab3eb54b4d08e24c886c9a53d3bba6885c0d09",
+    "inputs/session_B_prompt.txt": "540dd0f5d5ee78b8e63e907a3cb5a68f1e4d305099c570f4d46c1b55fbffdf13",
+    "review/diagnostic_roles.json": "25a12168e21041d204c09fad1a2efe72e2ecba594f41fc81c791497b74099fa6",
+    "PREPARATION_README.md": "ec6c30de2522d5cddca12280f94f602278d41436aca38b3c09c3e64c02383f39"
+  },
+  "editable_template_initial_sha256": {
+    "review/initial_author_reference.csv": "b1135e755dc4f292f136c135b2b40125437a51ddd0faebc8c87281126a9c37f0",
+    "review/judge_configuration.json": "c96dd5fc18c88f17a58928c1441a82f3172569c6f53319840b9f53dae4239309"
+  },
+  "editable_template_policy": "create only if absent; preserve existing reviews; never treat preserved content as verified",
+  "remaining_before_requests": [
+    "review packet",
+    "complete initial author reference",
+    "record model/settings",
+    "commit frozen inputs and review/configuration"
+  ]
+}

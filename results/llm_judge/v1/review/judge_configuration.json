@@ -1,0 +1,27 @@
+{
+  "status": "unconfigured_no_judge_requests_made_by_this_script",
+  "provider": "",
+  "visible_model_label": "",
+  "api_model_version_if_exposed": "",
+  "interface": "",
+  "selection_reason": "",
+  "same_or_different_from_drafting_model": "",
+  "temperature_if_exposed": "",
+  "seed_if_exposed": "",
+  "other_visible_settings": "",
+  "browsing_tools_setting": "",
+  "cross_chat_memory_setting": "",
+  "fresh_session_method": "",
+  "isolation_limitations": "",
+  "recorded_by": "",
+  "recorded_at_with_timezone": "",
+  "instructions": "Fill before any judge request; unavailable settings must say 'not exposed'. Use the same observable model/settings in two fresh sessions. Record each session's actual timestamp and metadata separately when it occurs.",
+  "input_sha256": {
+    "inputs/claims.csv": "f4ea2efd2b09ceab8e5831a71d469fa6d6d555bd35d229335a21d1dc643b76eb",
+    "inputs/evidence_packet.md": "6ccd524f91b0fece48a19eee9776699a9f073b496211b95fee4deb0d2428e6a8",
+    "inputs/judgment_entry_schema.json": "f7d215ef1a86c5583e185f7da115224194550957a33ecfcb93c23f3a76fc9cc7",
+    "inputs/source_manifest.json": "52cb7cf3f8930d84bede24d5a3775318106b64c35a2a795d6babe2dfc8ca2356",
+    "inputs/session_A_prompt.txt": "500b11ae14f4399345af700d5aab3eb54b4d08e24c886c9a53d3bba6885c0d09",
+    "inputs/session_B_prompt.txt": "540dd0f5d5ee78b8e63e907a3cb5a68f1e4d305099c570f4d46c1b55fbffdf13"
+  }
+}
