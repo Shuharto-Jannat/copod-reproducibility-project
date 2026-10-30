@@ -1,20 +1,20 @@
 {
-  "status": "unconfigured_no_judge_requests_made_by_this_script",
-  "provider": "",
-  "visible_model_label": "",
-  "api_model_version_if_exposed": "",
-  "interface": "",
-  "selection_reason": "",
-  "same_or_different_from_drafting_model": "",
-  "temperature_if_exposed": "",
-  "seed_if_exposed": "",
-  "other_visible_settings": "",
-  "browsing_tools_setting": "",
-  "cross_chat_memory_setting": "",
-  "fresh_session_method": "",
-  "isolation_limitations": "",
-  "recorded_by": "",
-  "recorded_at_with_timezone": "",
+  "status": "configured_from_observed_setup_pending_git_checkpoint_no_judge_requests",
+  "provider": "OpenAI",
+  "visible_model_label": "GPT-5.6 Sol (selected model-menu entry)",
+  "api_model_version_if_exposed": "not exposed",
+  "interface": "ChatGPT web at chatgpt.com, Chat mode (not Work mode)",
+  "selection_reason": "Selected before judge outputs, using the model available in the author's account. The selected Sol label differs from Astra in the current drafting chat. No model was tried or selected on the basis of its verdicts.",
+  "same_or_different_from_drafting_model": "Different visible labels: selected judge menu GPT-5.6 Sol, with composer pill 5.6 Pro; current drafting chat GPT-6 Astra Ultra. The exact backend versions and model identities throughout earlier drafting are not exposed. This remains a shared-provider, AI-assisted audit, not independent validation.",
+  "temperature_if_exposed": "not exposed",
+  "seed_if_exposed": "not exposed",
+  "other_visible_settings": "Composer pill: 5.6 Pro. Reference my writing style: OFF. Base style and tone: Default. The screenshots do not establish a separate numeric reasoning-effort setting or an API mapping for the Pro label.",
+  "browsing_tools_setting": "No search/tool mode visibly selected in the empty Chat-mode screenshot. Both frozen prompts instruct the judge not to browse or run experiments. A global tool-disable control has not been inspected or verified; do not describe tools as technically disabled. Record any observable tool use as a protocol deviation.",
+  "cross_chat_memory_setting": "Enable memory: OFF in the supplied settings screenshot. Shuharto confirmed it was turned off before opening the new chat. Keep it OFF for both sessions.",
+  "fresh_session_method": "For each session, start a separate empty Chat-mode conversation outside any project after disabling memory. Keep the same visible model and settings. Submit only the complete corresponding frozen session_A_prompt.txt or session_B_prompt.txt. Do not provide project history, the draft review, author reference, diagnostic-role manifest, full protocol, other session response, or feedback. Do not submit either prompt until this configuration is committed.",
+  "isolation_limitations": "The screenshot and author confirmation document visible settings, not complete backend isolation. Custom instructions, connected-source access and hidden provider context have not been independently inspected. Browsing/tools are prohibited by the prompt but are not confirmed technically disabled. Different visible model labels do not guarantee independent model training or reasoning. The supplied evidence and AI-assisted reference may share drafting biases. Record actual sessions and any departures from this setup without overwriting this pre-session record.",
+  "recorded_by": "Codex assistant, using Shuharto Jannat's setup screenshots and explicit memory-setting confirmation",
+  "recorded_at_with_timezone": "2026-10-30T13:06:35+11:00",
   "instructions": "Fill before any judge request; unavailable settings must say 'not exposed'. Use the same observable model/settings in two fresh sessions. Record each session's actual timestamp and metadata separately when it occurs.",
   "input_sha256": {
     "inputs/claims.csv": "f4ea2efd2b09ceab8e5831a71d469fa6d6d555bd35d229335a21d1dc643b76eb",
@@ -23,5 +23,32 @@
     "inputs/source_manifest.json": "52cb7cf3f8930d84bede24d5a3775318106b64c35a2a795d6babe2dfc8ca2356",
     "inputs/session_A_prompt.txt": "500b11ae14f4399345af700d5aab3eb54b4d08e24c886c9a53d3bba6885c0d09",
     "inputs/session_B_prompt.txt": "540dd0f5d5ee78b8e63e907a3cb5a68f1e4d305099c570f4d46c1b55fbffdf13"
-  }
+  },
+  "record_timestamp_meaning": "Configuration preparation time in Australia/Sydney; not an invented human-review time or judge-session timestamp.",
+  "preparation_checkpoint": "ed7d4a7 (author-confirmed preparation commit pushed before this configuration update)",
+  "planned_sessions": [
+    "A",
+    "B"
+  ],
+  "planned_judge_sessions_completed": 0,
+  "author_reference_status": "Author-approved AI-assisted draft assessments. The author approved the ten-claim draft set; separate claim-by-claim author source checking and personal reasons were not documented. Do not label this an unaided or independently source-verified human reference.",
+  "author_reference_reporting": "Any comparison must be described as agreement with the author-approved AI-assisted reference, with the undocumented source-checking limitation. It is not judge accuracy or independent human validation. Later source adjudication must be recorded separately.",
+  "setup_evidence_storage": "Screenshots were supplied in the project conversation; they are not included in the public repository. The filenames and SHA-256 hashes below identify the observations used for this configuration.",
+  "setup_evidence": [
+    {
+      "filename": "image(20261030-015024).png",
+      "sha256": "53c4579eaf95de009cd07ac0bb7933b849a9043c792585d978cd441d26990400",
+      "observation": "Current drafting conversation visibly labelled GPT-6 Astra Ultra."
+    },
+    {
+      "filename": "image(20261030-020124).png",
+      "sha256": "5c700de5cd2e6374ec5ad7047fb03cbe7f2c912afc2a6a5f52312dd928be29e8",
+      "observation": "Fresh empty Chat-mode page; GPT-5.6 Sol menu entry checked; composer pill 5.6 Pro."
+    },
+    {
+      "filename": "image(20261030-020304).png",
+      "sha256": "8b348c0b3c2e86886115f9119148f7e975f9805b3e66a8365aa13232c0402666",
+      "observation": "Enable memory OFF; Reference my writing style OFF; Base style and tone Default."
+    }
+  ]
 }
