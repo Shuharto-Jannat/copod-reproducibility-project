@@ -1,0 +1,239 @@
+{
+  "judgments": [
+    {
+      "claim_id": "C01",
+      "verdict": "SUPPORTED",
+      "evidence": [
+        {
+          "evidence_id": "E01.01",
+          "locator": "CSV data row 1; Metric=Mean ROC-AUC; columns Paper, Reproduced",
+          "finding": "Paper mean ROC AUC is 0.8247000000000002; reproduced mean is 0.813238."
+        },
+        {
+          "evidence_id": "E01.02",
+          "locator": "CSV data rows 1-30; columns Format, Data, Paper_ROC, Reproduced_ROC",
+          "finding": "The comparison contains 30 benchmark datasets, comprising 14 MAT and 16 ARFF datasets."
+        }
+      ],
+      "rationale": "The reproduced mean ROC AUC of 0.813238 is lower than the recorded published mean of 0.8247, a difference of approximately 0.011462. The comparison covers all 30 listed benchmark datasets.",
+      "required_change": "none",
+      "missing_evidence": "none"
+    },
+    {
+      "claim_id": "C02",
+      "verdict": "SUPPORTED",
+      "evidence": [
+        {
+          "evidence_id": "E02.01",
+          "locator": "CSV data rows 1-4; columns dataset, issues",
+          "finding": "The four affected ARFF datasets are HeartDisease, KDDCup99, Lymphography and Pima."
+        },
+        {
+          "evidence_id": "E02.03",
+          "locator": "CSV data rows 1-4; comparison=column_correction_with_true_labels; columns dataset, average_precision_difference_mean",
+          "finding": "Mean AP changes are HeartDisease +0.04770400867954043, KDDCup99 -0.10548138753058396, Lymphography 0.0 and Pima -0.0038877505551904333."
+        },
+        {
+          "evidence_id": "E02.02",
+          "locator": "CSV rows for each dataset; conditions legacy_columns_true_labels and corrected_columns_true_labels; column average_precision_mean",
+          "finding": "With true labels fixed, corrected feature selection increases mean AP only for HeartDisease; Lymphography is unchanged and the other two datasets decrease."
+        }
+      ],
+      "rationale": "The comparison holds true labels fixed while changing predictor columns. Mean AP increases for only one of the four datasets, remains unchanged for one and decreases for two. Therefore, correcting feature selection does not universally increase mean AP.",
+      "required_change": "none",
+      "missing_evidence": "none"
+    },
+    {
+      "claim_id": "C03",
+      "verdict": "SUPPORTED",
+      "evidence": [
+        {
+          "evidence_id": "E03.01",
+          "locator": "CSV data rows 1-2; dataset=wine; columns historical_comparison_status, diagnostic_rounded_mean_minus_paper",
+          "finding": "Both metrics match historical averages within 1e-12; ROC AUC and AP differences from recorded paper values are -0.05813 and -0.1758."
+        },
+        {
+          "evidence_id": "E03.05",
+          "locator": "CSV data rows 1-2; dataset=wbc; columns historical_comparison_status, diagnostic_rounded_mean_minus_paper",
+          "finding": "Both metrics match historical averages within 1e-12; ROC AUC and AP differences from recorded paper values are -0.01567 and -0.08741."
+        },
+        {
+          "evidence_id": "E03.09",
+          "locator": "CSV data rows 1-2; dataset=satimage-2; columns historical_comparison_status, diagnostic_rounded_mean_minus_paper",
+          "finding": "Both metrics match historical averages within 1e-12; ROC AUC and AP differences from recorded paper values are -0.00677 and -0.07747."
+        },
+        {
+          "evidence_id": "E03.04",
+          "locator": "JSON pointer /interpretation_limits",
+          "finding": "Score stability and metric variability alone do not identify the cause of a published gap; paper numbers were not independently reverified."
+        },
+        {
+          "evidence_id": "E03.08",
+          "locator": "JSON pointer /interpretation_limits",
+          "finding": "The WBC diagnostic explicitly limits causal interpretation of the published gap."
+        },
+        {
+          "evidence_id": "E03.12",
+          "locator": "JSON pointer /interpretation_limits",
+          "finding": "The Satimage-2 diagnostic explicitly limits causal interpretation of the published gap."
+        }
+      ],
+      "rationale": "All three diagnostics recover the saved historical project averages using the specified per-trial rounding procedure. All retain differences from recorded paper values. The metadata explicitly states that score stability and metric variability do not establish the causes of those differences.",
+      "required_change": "none",
+      "missing_evidence": "none"
+    },
+    {
+      "claim_id": "C04",
+      "verdict": "SUPPORTED",
+      "evidence": [
+        {
+          "evidence_id": "E04.02",
+          "locator": "CSV data rows 1-3; condition=primary; columns method, n_runs, average_precision_mean",
+          "finding": "Isolation Forest mean AP across five seeds is 0.585953619095887; batch COPOD AP is 0.5317405564547864; fixed-reference COPOD AP is 0.5342305936020094."
+        },
+        {
+          "evidence_id": "E04.06",
+          "locator": "JSON pointers /isolation_forest_seeds and /partitions/test",
+          "finding": "The planned Isolation Forest seeds are 42-46 and the supplied test partition contains 16,000 rows."
+        }
+      ],
+      "rationale": "On the primary APS condition, Isolation Forest's five-seed mean AP of approximately 0.5860 exceeds both batch COPOD's 0.5317 and fixed-reference COPOD's 0.5342. The comparison uses the same supplied test partition.",
+      "required_change": "none",
+      "missing_evidence": "none"
+    },
+    {
+      "claim_id": "C05",
+      "verdict": "SUPPORTED",
+      "evidence": [
+        {
+          "evidence_id": "E04.03",
+          "locator": "CSV data rows 1-2; columns condition, n_features, excluded_features",
+          "finding": "Primary retains 169 features; drop_high_missingness retains 161, excluding eight additional features."
+        },
+        {
+          "evidence_id": "E04.04",
+          "locator": "CSV data rows 1-3; columns method, average_precision_difference_mean",
+          "finding": "Secondary-minus-primary AP differences are -0.0023299661982849607 for batch COPOD, -0.0022134166531214694 for fixed-reference COPOD and -0.016086724157259515 for Isolation Forest."
+        },
+        {
+          "evidence_id": "E04.02",
+          "locator": "CSV data rows 1-6; columns condition, method, average_precision_mean",
+          "finding": "Each method's recorded mean AP is lower under drop_high_missingness than under primary."
+        }
+      ],
+      "rationale": "Removing eight additional features reduces the observed AP for both deterministic COPOD configurations and the five-seed Isolation Forest mean. These are observed changes on one supplied APS split, not evidence of a universally harmful missingness threshold.",
+      "required_change": "none",
+      "missing_evidence": "none"
+    },
+    {
+      "claim_id": "C06",
+      "verdict": "SUPPORTED",
+      "evidence": [
+        {
+          "evidence_id": "E05.01",
+          "locator": "CSV data rows 1-12; family=marginal_shift; columns condition, method, n_seeds, average_precision_mean",
+          "finding": "Batch COPOD mean AP at shifts 0, 2, 4 and 6 is 0.05191608, 0.06545259, 0.09540995 and 0.10082330. Fixed-reference COPOD mean AP is 0.05118689, 0.06440229, 0.09458738 and 0.10043047. Each setting has ten seeds."
+        },
+        {
+          "evidence_id": "E06.01",
+          "locator": "Source lines 53-59 and 79-85",
+          "finding": "The marginal-shift family varies the single-feature shift magnitude using paired underlying draws within each family and seed."
+        }
+      ],
+      "rationale": "Both COPOD procedures show monotonically increasing ten-seed mean AP across the four tested shift magnitudes. The claim concerns condition means rather than requiring every individual realization to improve.",
+      "required_change": "none",
+      "missing_evidence": "none"
+    },
+    {
+      "claim_id": "C07",
+      "verdict": "SUPPORTED",
+      "evidence": [
+        {
+          "evidence_id": "E05.02",
+          "locator": "CSV data rows 131-140; comparison=ledoit_wolf_minus_fixed; condition=dependence_rho0p8; columns data_seed, roc_auc_difference, average_precision_difference",
+          "finding": "For every seed 100-109, Ledoit-Wolf minus fixed-reference COPOD is positive for both metrics. ROC AUC differences range from 0.42239736842105269 to 0.48128289473684216; AP differences range from 0.91803488279982703 to 0.93596111883663136."
+        },
+        {
+          "evidence_id": "E05.03",
+          "locator": "CSV data row 14; comparison=ledoit_wolf_minus_fixed; condition=dependence_rho0p8; columns n_pairs, roc_auc_positive_differences, average_precision_positive_differences",
+          "finding": "There are ten paired comparisons, with ten positive ROC AUC differences and ten positive AP differences."
+        }
+      ],
+      "rationale": "The complete paired results show Ledoit-Wolf outperforming fixed-reference COPOD on both ROC AUC and AP in all ten planned data seeds at dependence correlation 0.8. No seed contradicts the assertion.",
+      "required_change": "none",
+      "missing_evidence": "none"
+    },
+    {
+      "claim_id": "C08",
+      "verdict": "SUPPORTED",
+      "evidence": [
+        {
+          "evidence_id": "E06.01",
+          "locator": "Source lines 53-69",
+          "finding": "At marginal shift 0, both groups follow the same correlated Gaussian distribution. At dependence correlation 0, both groups follow the same independent Gaussian distribution."
+        },
+        {
+          "evidence_id": "E06.02",
+          "locator": "Source lines 34-42, 73-76 and 135-150",
+          "finding": "The generator implements the two null settings and uses the corresponding identical-distribution construction for normal-origin and positive-origin groups."
+        },
+        {
+          "evidence_id": "E06.04",
+          "locator": "JSON pointers /conditions and /null_label_limit",
+          "finding": "The null controls are marginal_delta0 and dependence_rho0p0; their population distributions are identical across label groups."
+        }
+      ],
+      "rationale": "The specified and implemented construction gives both label groups identical population distributions within each null control. This does not imply identical finite-sample measurements or that the two separate null datasets are identical to each other.",
+      "required_change": "none",
+      "missing_evidence": "none"
+    },
+    {
+      "claim_id": "C09",
+      "verdict": "CONTRADICTED",
+      "evidence": [
+        {
+          "evidence_id": "E05.01",
+          "locator": "CSV data row 21; condition=dependence_rho0p8; method=fixed_training_reference; columns n_seeds, average_precision_mean",
+          "finding": "Fixed-reference COPOD has ten-seed mean AP 0.05038160953953915, not approximately 0.5000."
+        },
+        {
+          "evidence_id": "E05.01",
+          "locator": "CSV data row 21; condition=dependence_rho0p8; method=fixed_training_reference; columns roc_auc_mean, average_precision_prevalence_reference",
+          "finding": "Mean ROC AUC is 0.55074565789473684 and the AP prevalence reference is 0.05."
+        }
+      ],
+      "rationale": "The claimed AP of approximately 0.5000 is nearly ten times the recorded value of 0.05038. This is a material decimal-place error, not permissible rounding. The observed AP is close to the 5% prevalence reference, while ROC AUC is a separate ranking metric.",
+      "required_change": "Replace approximately 0.5000 with approximately 0.0504 for ten-seed mean AP.",
+      "missing_evidence": "none"
+    },
+    {
+      "claim_id": "C10",
+      "verdict": "INSUFFICIENT_EVIDENCE",
+      "evidence": [
+        {
+          "evidence_id": "E05.01",
+          "locator": "CSV data rows 1-21; columns family, condition, method, roc_auc_mean, average_precision_mean",
+          "finding": "The reported detector comparisons cover seven settings from two synthetic Gaussian families, not future Scania APS observations."
+        },
+        {
+          "evidence_id": "E06.01",
+          "locator": "Source lines 168-174",
+          "finding": "The extension excludes broader proposed anomaly mechanisms and explicitly states that the synthetic results cannot establish universal detector superiority or direct transfer to APS."
+        },
+        {
+          "evidence_id": "E04.02",
+          "locator": "CSV data rows 1-6; columns condition, method, roc_auc_mean, average_precision_mean",
+          "finding": "The real APS evaluation compares batch COPOD, fixed-reference COPOD and Isolation Forest; Ledoit-Wolf is not included."
+        },
+        {
+          "evidence_id": "E06.01",
+          "locator": "Source lines 109-115",
+          "finding": "Ledoit-Wolf was deliberately selected for suitability to the Gaussian dependence structure, without a claim of universal superiority."
+        }
+      ],
+      "rationale": "Ledoit-Wolf performs strongly in the tested Gaussian synthetic settings, but the packet contains no Ledoit-Wolf evaluation on real APS observations and no future-observation validation. The synthetic evidence cannot establish which detector will perform best on future Scania APS data.",
+      "required_change": "Restrict the conclusion to the tested synthetic Gaussian settings and metrics. Remove the claim of established superiority for future Scania APS observations.",
+      "missing_evidence": "A comparable Ledoit-Wolf evaluation against relevant alternatives on representative, independent future APS data, with a defined performance criterion and appropriate uncertainty assessment."
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "check_type": "Compare supplied judge-input attachment with pre-session frozen prompt",
+  "frozen_bytes": 111551,
+  "submitted_bytes": 113159,
+  "frozen_sha256": "500b11ae14f4399345af700d5aab3eb54b4d08e24c886c9a53d3bba6885c0d09",
+  "submitted_sha256": "2ce1010e99334d387716e705e838057c276f8fbdf66dfb8961c4d3750a23ce64",
+  "byte_identical": false,
+  "only_difference": "All 1608 LF line endings in the frozen prompt are CRLF in the supplied attachment; no other byte changes.",
+  "lf_count_in_frozen": 1608,
+  "submitted_crlf_count": 1608,
+  "equal_after_crlf_to_lf_normalisation": true,
+  "normalised_submitted_sha256": "500b11ae14f4399345af700d5aab3eb54b4d08e24c886c9a53d3bba6885c0d09",
+  "scope": "Complete instructions, evidence and ordered claims match after line-ending normalisation. This does not establish identical tokenization or deterministic model behavior.",
+  "original_submitted_file_preserved": true,
+  "source_attachment_filename": "Pasted text(20261030-023832)(1).txt",
+  "visible_request_attachment_name": "Pasted text(20261030-023832).txt",
+  "checked_at_with_timezone": "2026-10-30T14:03:56+11:00"
+}
