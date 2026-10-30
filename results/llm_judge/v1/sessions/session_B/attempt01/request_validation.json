@@ -1,0 +1,18 @@
+{
+  "check_type": "Compare supplied judge-input attachment with pre-session frozen prompt",
+  "frozen_bytes": 111551,
+  "submitted_bytes": 113159,
+  "frozen_sha256": "540dd0f5d5ee78b8e63e907a3cb5a68f1e4d305099c570f4d46c1b55fbffdf13",
+  "submitted_sha256": "37d5eb21f175bfcdc0a1814147446ca693bc88bdde9f74775454096faa3b5ecb",
+  "byte_identical": false,
+  "only_difference": "All 1608 LF line endings in the frozen prompt are CRLF in the supplied attachment; no other byte changes.",
+  "lf_count_in_frozen": 1608,
+  "submitted_crlf_count": 1608,
+  "equal_after_crlf_to_lf_normalisation": true,
+  "normalised_submitted_sha256": "540dd0f5d5ee78b8e63e907a3cb5a68f1e4d305099c570f4d46c1b55fbffdf13",
+  "scope": "Complete instructions, evidence and reverse-ordered claims match after line-ending normalisation. This does not establish identical tokenization or deterministic model behavior.",
+  "original_submitted_file_preserved": true,
+  "source_attachment_filename": "Pasted text(20261030-033011)(1).txt",
+  "submission_provenance": "The author supplied this attachment in response to the request for the prompt actually submitted to Session B. No provider API payload or complete chat export was supplied.",
+  "checked_at_with_timezone": "2026-10-30T14:41:27+11:00"
+}

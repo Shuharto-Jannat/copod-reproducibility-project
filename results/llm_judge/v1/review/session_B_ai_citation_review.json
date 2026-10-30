@@ -1,0 +1,384 @@
+{
+  "review_type": "AI-assisted post-response citation and source review; not human adjudication or a new judge session",
+  "reviewed_by": "Codex assistant, including separate read-only assistant-agent checks of C01-C05 and C06-C10; primary assistant additionally inspected the keyed C09 row and construction/pairing/limitation excerpts.",
+  "reviewed_at_with_timezone": "2026-10-30T14:38:39+11:00",
+  "raw_response_sha256": "fe57f80906f891a53ac2c35235187b6b6c1f4f8a8f7b66bd7705cb9e79b9191c",
+  "evidence_packet_sha256": "6ccd524f91b0fece48a19eee9776699a9f073b496211b95fee4deb0d2428e6a8",
+  "raw_response_modified": false,
+  "session": "B",
+  "attempt": 1,
+  "counts": {
+    "citation_entries": 31,
+    "excerpt_ids_resolve": 31,
+    "entries_with_inaccurate_locator_found": 0,
+    "entries_with_no_locator_error_found": 31,
+    "entries_with_stated_finding_supported": 31,
+    "claims_with_citation_defect_found": 0
+  },
+  "count_scope": "Descriptive source checks of this one supplied response against the frozen packet, not general judge reliability or accuracy.",
+  "locator_convention": "Keyed CSV selections, original-source JSON pointers and original source line ranges are accepted when they resolve unambiguously to the supplied evidence. JSON pointer keys flattened for presentation do not create a locator defect.",
+  "source_provenance_checks": "The two assistant-agent reviews checked cited source blobs using git show at baseline ed494a3b3c78ecd17f5436f6c9bcfae0050603fe and reported matching frozen source hashes. These are AI-assisted checks, not author adjudication.",
+  "claims": [
+    {
+      "claim_id": "C10",
+      "judge_verdict_preserved": "INSUFFICIENT_EVIDENCE",
+      "source_review_note": "Synthetic performance does not establish best-detector status for future APS; the scope restriction and missing comparative evidence are correctly identified.",
+      "required_change_review": "Correct restriction to tested settings and missing APS comparative evidence.",
+      "citation_checks": [
+        {
+          "entry_number": 1,
+          "original_evidence_id": "E05.03",
+          "original_locator": "comparison=ledoit_wolf_minus_fixed, condition=dependence_rho0p8",
+          "excerpt_id_resolves": true,
+          "stated_finding_supported": true,
+          "locator_assessment": "no_error_found",
+          "source_check_note": "The keyed relational comparison has ten positive differences; ROC and AP mean differences round correctly to six decimals."
+        },
+        {
+          "entry_number": 2,
+          "original_evidence_id": "E06.01",
+          "original_locator": "source lines 170-174",
+          "excerpt_id_resolves": true,
+          "stated_finding_supported": true,
+          "locator_assessment": "no_error_found",
+          "source_check_note": "Original lines 170-174 explicitly limit Gaussian scope and transfer to APS."
+        },
+        {
+          "entry_number": 3,
+          "original_evidence_id": "E04.02",
+          "original_locator": "condition=primary, method=isolation_forest; condition=primary, method=pyod_batch; condition=primary, method=fixed_training_reference",
+          "excerpt_id_resolves": true,
+          "stated_finding_supported": true,
+          "locator_assessment": "no_error_found",
+          "source_check_note": "Primary method keys resolve; the complete six-row APS table contains only Isolation Forest and two COPOD methods, with no Ledoit-Wolf evaluation."
+        }
+      ]
+    },
+    {
+      "claim_id": "C09",
+      "judge_verdict_preserved": "CONTRADICTED",
+      "source_review_note": "The deliberate claim has a material decimal error; the response correctly rejects 0.5000 and gives approximately 0.0504.",
+      "required_change_review": "Correct numerical replacement: approximately 0.0504.",
+      "citation_checks": [
+        {
+          "entry_number": 1,
+          "original_evidence_id": "E05.01",
+          "original_locator": "condition=dependence_rho0p8, method=fixed_training_reference, column=average_precision_mean",
+          "excerpt_id_resolves": true,
+          "stated_finding_supported": true,
+          "locator_assessment": "no_error_found",
+          "source_check_note": "Condition and method keys uniquely select original source row 20 with AP 0.05038160953953915. No incorrect row-number assertion is made."
+        },
+        {
+          "entry_number": 2,
+          "original_evidence_id": "E05.01",
+          "original_locator": "condition=dependence_rho0p8, method=fixed_training_reference, columns=n_seeds, average_precision_prevalence_reference",
+          "excerpt_id_resolves": true,
+          "stated_finding_supported": true,
+          "locator_assessment": "no_error_found",
+          "source_check_note": "The same keyed row has ten seeds and prevalence reference 0.05."
+        }
+      ]
+    },
+    {
+      "claim_id": "C08",
+      "judge_verdict_preserved": "SUPPORTED",
+      "source_review_note": "The response correctly distinguishes equal population distributions by construction from exact finite-sample equality.",
+      "required_change_review": "No correction needed for the stated claim scope.",
+      "citation_checks": [
+        {
+          "entry_number": 1,
+          "original_evidence_id": "E06.01",
+          "original_locator": "source lines 55-57, 63-71",
+          "excerpt_id_resolves": true,
+          "stated_finding_supported": true,
+          "locator_assessment": "no_error_found",
+          "source_check_note": "The cited original lines describe both null mechanisms; line 69 states identical population distributions within each null."
+        },
+        {
+          "entry_number": 2,
+          "original_evidence_id": "E06.02",
+          "original_locator": "source lines 135-149",
+          "excerpt_id_resolves": true,
+          "stated_finding_supported": true,
+          "locator_assessment": "no_error_found",
+          "source_check_note": "Lines 135-149 show the zero-shift positive base and independent positive residuals; standard-normal initialization is present in lines 90-91 of the same excerpt."
+        },
+        {
+          "entry_number": 3,
+          "original_evidence_id": "E06.04",
+          "original_locator": "/conditions, /null_label_limit",
+          "excerpt_id_resolves": true,
+          "stated_finding_supported": true,
+          "locator_assessment": "no_error_found",
+          "source_check_note": "The original pointers identify both null controls and identical population distributions within each."
+        }
+      ]
+    },
+    {
+      "claim_id": "C07",
+      "judge_verdict_preserved": "SUPPORTED",
+      "source_review_note": "All ten planned seeds have positive Ledoit-Wolf-minus-fixed differences for both metrics in the specified setting.",
+      "required_change_review": "No correction needed for the stated claim scope.",
+      "citation_checks": [
+        {
+          "entry_number": 1,
+          "original_evidence_id": "E05.02",
+          "original_locator": "comparison=ledoit_wolf_minus_fixed, condition=dependence_rho0p8, data_seed=100 through 109, columns=roc_auc_difference, average_precision_difference",
+          "excerpt_id_resolves": true,
+          "stated_finding_supported": true,
+          "locator_assessment": "no_error_found",
+          "source_check_note": "Comparison, condition, seed and column keys resolve to original source rows 131-140; all ten differences in each metric are positive and both ranges match."
+        },
+        {
+          "entry_number": 2,
+          "original_evidence_id": "E05.03",
+          "original_locator": "comparison=ledoit_wolf_minus_fixed, condition=dependence_rho0p8, columns=n_pairs, roc_auc_positive_differences, average_precision_positive_differences",
+          "excerpt_id_resolves": true,
+          "stated_finding_supported": true,
+          "locator_assessment": "no_error_found",
+          "source_check_note": "The keyed summary row contains ten pairs and ten positive differences for each metric."
+        },
+        {
+          "entry_number": 3,
+          "original_evidence_id": "E06.04",
+          "original_locator": "/planned_seeds",
+          "excerpt_id_resolves": true,
+          "stated_finding_supported": true,
+          "locator_assessment": "no_error_found",
+          "source_check_note": "The original planned_seeds pointer contains 100 through 109."
+        }
+      ]
+    },
+    {
+      "claim_id": "C06",
+      "judge_verdict_preserved": "SUPPORTED",
+      "source_review_note": "The four ten-seed AP means increase for both COPOD methods; the rationale correctly notes that the intervention also affects correlation and does not claim all individual seeds increase.",
+      "required_change_review": "No correction needed for the stated claim scope.",
+      "citation_checks": [
+        {
+          "entry_number": 1,
+          "original_evidence_id": "E05.01",
+          "original_locator": "family=marginal_shift, method=pyod_batch, delta=0,2,4,6, column=average_precision_mean",
+          "excerpt_id_resolves": true,
+          "stated_finding_supported": true,
+          "locator_assessment": "no_error_found",
+          "source_check_note": "The four keyed marginal_shift pyod_batch rows and AP strings match and increase with delta."
+        },
+        {
+          "entry_number": 2,
+          "original_evidence_id": "E05.01",
+          "original_locator": "family=marginal_shift, method=fixed_training_reference, delta=0,2,4,6, column=average_precision_mean",
+          "excerpt_id_resolves": true,
+          "stated_finding_supported": true,
+          "locator_assessment": "no_error_found",
+          "source_check_note": "The four keyed fixed_training_reference rows and AP strings match and increase with delta."
+        },
+        {
+          "entry_number": 3,
+          "original_evidence_id": "E06.01",
+          "original_locator": "source lines 53-57, 79-85",
+          "excerpt_id_resolves": true,
+          "stated_finding_supported": true,
+          "locator_assessment": "no_error_found",
+          "source_check_note": "Original lines 53-57 describe both the shift and correlation effects; lines 79-85 describe within-family/seed pairing."
+        }
+      ]
+    },
+    {
+      "claim_id": "C05",
+      "judge_verdict_preserved": "SUPPORTED",
+      "source_review_note": "All three observed secondary-minus-primary mean AP differences are negative; the response does not generalize to other splits.",
+      "required_change_review": "No correction needed for the stated claim scope.",
+      "citation_checks": [
+        {
+          "entry_number": 1,
+          "original_evidence_id": "E04.03",
+          "original_locator": "condition=primary and condition=drop_high_missingness, columns=n_features, excluded_features",
+          "excerpt_id_resolves": true,
+          "stated_finding_supported": true,
+          "locator_assessment": "no_error_found",
+          "source_check_note": "Primary and secondary feature counts 169 and 161 match; exclusions are one versus nine features."
+        },
+        {
+          "entry_number": 2,
+          "original_evidence_id": "E04.04",
+          "original_locator": "all three method rows, column=average_precision_difference_mean",
+          "excerpt_id_resolves": true,
+          "stated_finding_supported": true,
+          "locator_assessment": "no_error_found",
+          "source_check_note": "All three negative secondary-minus-primary AP differences match."
+        },
+        {
+          "entry_number": 3,
+          "original_evidence_id": "E04.02",
+          "original_locator": "all six condition-method rows, columns=n_runs, average_precision_mean",
+          "excerpt_id_resolves": true,
+          "stated_finding_supported": true,
+          "locator_assessment": "no_error_found",
+          "source_check_note": "All six condition-method rows exist; one deterministic COPOD run and five Isolation Forest seeds per condition are documented."
+        }
+      ]
+    },
+    {
+      "claim_id": "C04",
+      "judge_verdict_preserved": "SUPPORTED",
+      "source_review_note": "The five-seed Isolation Forest primary mean AP exceeds both COPOD AP values on the same supplied test partition; no significance or deployment claim is added.",
+      "required_change_review": "No correction needed for the stated claim scope.",
+      "citation_checks": [
+        {
+          "entry_number": 1,
+          "original_evidence_id": "E04.02",
+          "original_locator": "condition=primary, method=isolation_forest, columns=n_runs, average_precision_mean",
+          "excerpt_id_resolves": true,
+          "stated_finding_supported": true,
+          "locator_assessment": "no_error_found",
+          "source_check_note": "Primary Isolation Forest n_runs=5 and AP mean match."
+        },
+        {
+          "entry_number": 2,
+          "original_evidence_id": "E04.02",
+          "original_locator": "condition=primary, method=pyod_batch and method=fixed_training_reference, column=average_precision_mean",
+          "excerpt_id_resolves": true,
+          "stated_finding_supported": true,
+          "locator_assessment": "no_error_found",
+          "source_check_note": "Both primary COPOD method keys and AP values match."
+        },
+        {
+          "entry_number": 3,
+          "original_evidence_id": "E04.06",
+          "original_locator": "/isolation_forest_seeds, /partitions",
+          "excerpt_id_resolves": true,
+          "stated_finding_supported": true,
+          "locator_assessment": "no_error_found",
+          "source_check_note": "Original source pointers resolve: Isolation Forest seeds 42-46 and supplied 16000-row test partition. Packet displays selected pointers as keys."
+        }
+      ]
+    },
+    {
+      "claim_id": "C03",
+      "judge_verdict_preserved": "SUPPORTED",
+      "source_review_note": "Saved project means are recovered under the per-trial rounding convention; recorded paper gaps remain and their causes are not established.",
+      "required_change_review": "No correction needed for the stated claim scope.",
+      "citation_checks": [
+        {
+          "entry_number": 1,
+          "original_evidence_id": "E03.01",
+          "original_locator": "dataset=wine, metric=roc_auc and average_precision, columns=historical_comparison_status, diagnostic_rounded_mean_minus_paper",
+          "excerpt_id_resolves": true,
+          "stated_finding_supported": true,
+          "locator_assessment": "no_error_found",
+          "source_check_note": "Both Wine means recover within 1e-12; both recorded paper gaps match."
+        },
+        {
+          "entry_number": 2,
+          "original_evidence_id": "E03.05",
+          "original_locator": "dataset=wbc, metric=roc_auc and average_precision, columns=historical_comparison_status, diagnostic_rounded_mean_minus_paper",
+          "excerpt_id_resolves": true,
+          "stated_finding_supported": true,
+          "locator_assessment": "no_error_found",
+          "source_check_note": "Both WBC means recover within 1e-12; both recorded paper gaps match."
+        },
+        {
+          "entry_number": 3,
+          "original_evidence_id": "E03.09",
+          "original_locator": "dataset=satimage-2, metric=roc_auc and average_precision, columns=historical_comparison_status, diagnostic_rounded_mean_minus_paper",
+          "excerpt_id_resolves": true,
+          "stated_finding_supported": true,
+          "locator_assessment": "no_error_found",
+          "source_check_note": "Both Satimage-2 means recover within 1e-12; both recorded paper gaps match."
+        },
+        {
+          "entry_number": 4,
+          "original_evidence_id": "E03.04",
+          "original_locator": "/interpretation_limits",
+          "excerpt_id_resolves": true,
+          "stated_finding_supported": true,
+          "locator_assessment": "no_error_found",
+          "source_check_note": "The original JSON pointer resolves and disclaims identification of the paper-gap cause from score stability and metric variation."
+        },
+        {
+          "entry_number": 5,
+          "original_evidence_id": "E03.08",
+          "original_locator": "/interpretation_limits",
+          "excerpt_id_resolves": true,
+          "stated_finding_supported": true,
+          "locator_assessment": "no_error_found",
+          "source_check_note": "The pointer resolves and states that paper values were not newly independently verified."
+        },
+        {
+          "entry_number": 6,
+          "original_evidence_id": "E03.12",
+          "original_locator": "/interpretation_limits",
+          "excerpt_id_resolves": true,
+          "stated_finding_supported": true,
+          "locator_assessment": "no_error_found",
+          "source_check_note": "The pointer resolves and limits the diagnostic to the original ten splits without establishing the cause of the paper gap."
+        }
+      ]
+    },
+    {
+      "claim_id": "C02",
+      "judge_verdict_preserved": "SUPPORTED",
+      "source_review_note": "AP increased only for HeartDisease, decreased for KDDCup99 and Pima, and was unchanged for Lymphography, with true labels held fixed.",
+      "required_change_review": "No correction needed for the stated claim scope.",
+      "citation_checks": [
+        {
+          "entry_number": 1,
+          "original_evidence_id": "E02.01",
+          "original_locator": "dataset=HeartDisease, KDDCup99, Lymphography, Pima, columns=status, issues",
+          "excerpt_id_resolves": true,
+          "stated_finding_supported": true,
+          "locator_assessment": "no_error_found",
+          "source_check_note": "All four keyed dataset rows have ISSUE status and mapping problems."
+        },
+        {
+          "entry_number": 2,
+          "original_evidence_id": "E02.03",
+          "original_locator": "comparison=column_correction_with_true_labels, all four datasets, column=average_precision_difference_mean",
+          "excerpt_id_resolves": true,
+          "stated_finding_supported": true,
+          "locator_assessment": "no_error_found",
+          "source_check_note": "The true-label column-correction comparison and all four signed AP differences match."
+        },
+        {
+          "entry_number": 3,
+          "original_evidence_id": "E02.02",
+          "original_locator": "condition=legacy_columns_true_labels and corrected_columns_true_labels, all four datasets, column=average_precision_mean",
+          "excerpt_id_resolves": true,
+          "stated_finding_supported": true,
+          "locator_assessment": "no_error_found",
+          "source_check_note": "Both true-label arms and their AP means are present for all four datasets."
+        }
+      ]
+    },
+    {
+      "claim_id": "C01",
+      "judge_verdict_preserved": "SUPPORTED",
+      "source_review_note": "Aggregate means, inventory and difference agree with the supplied packet; the rationale limits the comparison to recorded paper values.",
+      "required_change_review": "No correction needed for the stated claim scope.",
+      "citation_checks": [
+        {
+          "entry_number": 1,
+          "original_evidence_id": "E01.01",
+          "original_locator": "Metric=Mean ROC-AUC, columns=Paper, Reproduced",
+          "excerpt_id_resolves": true,
+          "stated_finding_supported": true,
+          "locator_assessment": "no_error_found",
+          "source_check_note": "Mean ROC-AUC row and Paper/Reproduced columns resolve; both values match."
+        },
+        {
+          "entry_number": 2,
+          "original_evidence_id": "E01.02",
+          "original_locator": "CSV data rows 1-30, columns=Format, Data, Paper_ROC, Reproduced_ROC",
+          "excerpt_id_resolves": true,
+          "stated_finding_supported": true,
+          "locator_assessment": "no_error_found",
+          "source_check_note": "All 30 source rows and the four named columns are present; recorded paper and reproduced ROC values exist for each dataset."
+        }
+      ]
+    }
+  ],
+  "author_adjudication_status": "Not recorded. Do not attribute assistant source checks to the author.",
+  "next_action_for_response": "Keep the original response unchanged. Complete the submitted-request comparison and provenance record; do not request regeneration."
+}
