@@ -1,0 +1,5 @@
+session,claim_group,citation_entries,excerpt_ids_resolve,findings_supported_in_ai_review,entries_with_no_locator_error_found,locator_defects,claims_with_locator_defect,review_scope
+A,substantive,23,23,23,23,0,0,Recorded AI-assisted source checks; not human adjudication or a new semantic check by this script.
+B,substantive,26,26,26,26,0,0,Recorded AI-assisted source checks; not human adjudication or a new semantic check by this script.
+A,diagnostic,6,6,6,4,2,1,Recorded AI-assisted source checks; not human adjudication or a new semantic check by this script.
+B,diagnostic,5,5,5,5,0,0,Recorded AI-assisted source checks; not human adjudication or a new semantic check by this script.

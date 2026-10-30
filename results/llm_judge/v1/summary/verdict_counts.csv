@@ -1,0 +1,17 @@
+session,claim_group,verdict,count,planned_claims,available_judgments,unavailable_judgments
+A,substantive,SUPPORTED,8,8,8,0
+A,substantive,PARTIALLY_SUPPORTED,0,8,8,0
+A,substantive,CONTRADICTED,0,8,8,0
+A,substantive,INSUFFICIENT_EVIDENCE,0,8,8,0
+B,substantive,SUPPORTED,8,8,8,0
+B,substantive,PARTIALLY_SUPPORTED,0,8,8,0
+B,substantive,CONTRADICTED,0,8,8,0
+B,substantive,INSUFFICIENT_EVIDENCE,0,8,8,0
+A,diagnostic,SUPPORTED,0,2,2,0
+A,diagnostic,PARTIALLY_SUPPORTED,0,2,2,0
+A,diagnostic,CONTRADICTED,1,2,2,0
+A,diagnostic,INSUFFICIENT_EVIDENCE,1,2,2,0
+B,diagnostic,SUPPORTED,0,2,2,0
+B,diagnostic,PARTIALLY_SUPPORTED,0,2,2,0
+B,diagnostic,CONTRADICTED,1,2,2,0
+B,diagnostic,INSUFFICIENT_EVIDENCE,1,2,2,0

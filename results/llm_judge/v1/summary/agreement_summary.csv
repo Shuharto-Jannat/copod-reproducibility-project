@@ -1,0 +1,5 @@
+comparison,claim_group,planned_pairs,available_pairs,same_category,different_category,unavailable_pairs,interpretation
+session_A_vs_session_B,substantive,8,8,8,0,0,Observed category agreement across two outputs from the same configured model; no isolated causal order effect or general reliability established.
+session_A_vs_session_B,diagnostic,2,2,2,0,0,Observed category agreement across two outputs from the same configured model; no isolated causal order effect or general reliability established.
+session_A_vs_author_approved_ai_assisted_reference,substantive,8,8,8,0,0,Agreement with blanket author-approved AI drafts; not independent human validation or general judge accuracy.
+session_B_vs_author_approved_ai_assisted_reference,substantive,8,8,8,0,0,Agreement with blanket author-approved AI drafts; not independent human validation or general judge accuracy.
