@@ -70,7 +70,7 @@ python -m pip install -r environment/requirements.txt
 python -m pip check
 ```
 
-At this documentation checkpoint, these instructions reflect the recorded environment; a clean-install check has not yet been completed. The final report distinguishes saved-result verification from a full end-to-end rerun.
+On 2 November 2026, installation into a fresh Python 3.12.1 virtual environment in the existing Codespace passed, with all 25 pinned packages installed and no broken requirements. The saved LLM-summary check verified all ten existing files. Synthetic seed 100 was regenerated and evaluated across seven conditions and three methods: all 21 ROC AUC and AP pairs matched the original values exactly (maximum absolute difference 0.0). See the [verification record](environment/reproducibility_check_2026-11-02.json). This checks one seed in a fresh virtual environment, not a fresh checkout or a full rerun of every experiment. The report describes the earlier report-preparation checkpoint; this is a later supplementary check.
 
 ## Regenerate a small synthetic example
 

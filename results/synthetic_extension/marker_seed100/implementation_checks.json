@@ -1,0 +1,17 @@
+{
+  "copod_inclusive_tails_ties_and_skew": "passed",
+  "evaluation_manifest_sha256": "be4d5dbc538354eefa3ddd2ac8444c444944db3d86afb2980af3c3ea1826c648",
+  "ledoit_wolf_centering_shrinkage_squared_distance": "passed",
+  "ledoit_wolf_fixture_expected_scores": [
+    0,
+    0.6,
+    1.2,
+    1.8
+  ],
+  "ledoit_wolf_fixture_expected_shrinkage": 0.4444444444444444,
+  "schema": "synthetic_extension_evaluation_v1",
+  "status": "passed",
+  "tied_auc_and_noninterpolated_ap": "passed",
+  "timing_note": "Small fixtures run before dataset timing; timings are descriptive only.",
+  "warnings": []
+}
