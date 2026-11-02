@@ -1,0 +1,185 @@
+{
+  "schema": "copod_report_evidence_manifest_v1",
+  "prepared_date": "2026-11-02",
+  "date_timezone": "Australia/Sydney",
+  "purpose": "Identify the final report and the preserved research evidence from which it was prepared; distinguish subsequent documentation and practical verification.",
+  "repository": {
+    "url": "https://github.com/Shuharto-Jannat/copod-reproducibility-project",
+    "research_baseline_commit": "3ab30e58465f688a9a5c92d249fc9903c25f5aea",
+    "report_publication_commit": "e8c9b8cab4fbd32a6d3c7f1733251fb8c2606c5b",
+    "readme_publication_commit": "a5a7e3fb942daec883300a005d4e8b97ccdf3b63",
+    "practical_check_publication_commit": "03d32aa3f99071a9083d9d2cd6407c3e5ec89244"
+  },
+  "reviewed_source_archive": {
+    "supplied_filename": "report_source_bundle(3).zip",
+    "git_archive_comment": "3ab30e58465f688a9a5c92d249fc9903c25f5aea",
+    "size_bytes": 43305852,
+    "sha256": "e6731c36f2c72ef5ea304394d1316107aeded53475ed192d813d70adb5bb410f",
+    "scope": "Tracked files at the research baseline; omits Git history, upstream submodule contents and Git-ignored raw external/generated data. The archive is an editorial input, not asserted to be a committed repository file."
+  },
+  "upstream_submodule": {
+    "path": "original_code/COPOD",
+    "url": "https://github.com/winstonll/COPOD.git",
+    "commit": "3ca17400016386546d2c199886e81bdcc859b36b"
+  },
+  "final_report": {
+    "path": "report/COPOD_Final_Report.pdf",
+    "size_bytes": 418825,
+    "sha256": "1d271b93164a2457acac0d013ed6829da249f008d75f6e7745612b17f8cc9b0e",
+    "page_count": 14,
+    "main_body_pages": 10,
+    "reference_pages": 1,
+    "appendix_pages": 3,
+    "caption_correction": "Removed a duplicated word in the Table 5 caption; numerical results and other extracted text were unchanged.",
+    "editable_final_report_source_available": false
+  },
+  "hash_scope": "baseline_files is a curated index of unchanged research files, not a complete repository checksum inventory. The listed manifests and summaries provide further experiment-specific provenance. The final report has its own hash because it was added after the baseline.",
+  "baseline_files": [
+    {
+      "path": "environment/requirements.txt",
+      "size_bytes": 409,
+      "sha256": "39da59fa49e71d18ed91e6d8d2322b8f92cc491a144d2ba319d74e596e636d76"
+    },
+    {
+      "path": "scripts/reproduce_benchmark.py",
+      "size_bytes": 6992,
+      "sha256": "ddaccd05fcb1c27623cadd445a6828fbea085cc4170123c1e655ab737dc4d798"
+    },
+    {
+      "path": "scripts/reproduce_benchmark_arff.py",
+      "size_bytes": 11237,
+      "sha256": "31ac9f2d2cec76e96ad0dc31bd46b65e2da7180ff62bd91c37f5ca183dfe2ed9"
+    },
+    {
+      "path": "results/comparison/copod_published_vs_reproduced.csv",
+      "size_bytes": 4125,
+      "sha256": "f132188f0ef6a7f9afee5db2aa9d477fe621c9be4040b6221243494a957d8a3f"
+    },
+    {
+      "path": "results/comparison/copod_comparison_summary.csv",
+      "size_bytes": 357,
+      "sha256": "2307a5b4d2452a1f708c021945158451a3889a0c3cd8a5c793d4a84dc6793563"
+    },
+    {
+      "path": "results/loader_corrections/v1/summary/summary_metadata.json",
+      "size_bytes": 26672,
+      "sha256": "7d0e4c28c8fa47b92c8f7a7fb4cc9b25f8a381a8c4936ca6fe8dec4f0bf8c5e6"
+    },
+    {
+      "path": "results/audits/mat_reproduction_gaps/v1/wine/summary/summary_metadata.json",
+      "size_bytes": 9123,
+      "sha256": "2efc64719d11a648e390e3acce17bb4ecc5e4edba94467116a6f6b77f8da9729"
+    },
+    {
+      "path": "results/audits/mat_reproduction_gaps/v1/wbc/summary/summary_metadata.json",
+      "size_bytes": 9083,
+      "sha256": "9b10a3a76b63f6a3f7134a20785ff052b47853ff65c1c286ddd9bdf85173c527"
+    },
+    {
+      "path": "results/audits/mat_reproduction_gaps/v1/satimage-2/summary/summary_metadata.json",
+      "size_bytes": 9378,
+      "sha256": "8de4781c7db19c3c56434551890b200939b81095567640a3ffe4fbce1cb30858"
+    },
+    {
+      "path": "notes/new_data_feasibility.md",
+      "size_bytes": 27736,
+      "sha256": "f1f4605e4e1719f71b558f5d8f48698301e400a68181de997c60fbdb5dd0e55d"
+    },
+    {
+      "path": "results/aps_full_evaluation/v1/run_manifest.json",
+      "size_bytes": 3562,
+      "sha256": "dadcea8b162c5b3e48e6ed9f6a2b2560a210b85631b67149216d4bc2f578239b"
+    },
+    {
+      "path": "results/aps_full_evaluation/v1/summary/summary_metadata.json",
+      "size_bytes": 12702,
+      "sha256": "13e2f4c9bd7dcb818ffa834ec002cf7902193b5f2fced7222056673fb00a11ec"
+    },
+    {
+      "path": "results/synthetic/five_seed_summary.csv",
+      "size_bytes": 569,
+      "sha256": "e7ac16e127817cf3f5175967bd8b7acc101017f3f2ce53797f9fefa11e041e2d"
+    },
+    {
+      "path": "results/synthetic_extension/v1/generation_manifest.json",
+      "size_bytes": 3322,
+      "sha256": "29e9d3477573c9b10fc7639fc45edfb1af907b8741fc54b544fd94fd18d12dd6"
+    },
+    {
+      "path": "results/synthetic_extension/v1/evaluation_manifest.json",
+      "size_bytes": 4778,
+      "sha256": "e4cf254c389c4846c6157205d57863dc3a80b36caa491a535db8227af1e77af3"
+    },
+    {
+      "path": "results/synthetic_extension/v1/summary/summary_metadata.json",
+      "size_bytes": 163665,
+      "sha256": "81e2c6b5b531d484ce4aab2faf66d00776efe5f8e851e0090e8777972f4dea01"
+    },
+    {
+      "path": "results/llm_judge/v1/inputs/preparation_manifest.json",
+      "size_bytes": 2756,
+      "sha256": "427392d6051a4375d4d0e6f2cf8324ce318503a4e56fda239bc2be03f2545c8f"
+    },
+    {
+      "path": "results/llm_judge/v1/summary/summary_metadata.json",
+      "size_bytes": 8167,
+      "sha256": "3bfc2a161447e640403f951f8015677d59eac94d92f274cfa29aac04a9e2def4"
+    },
+    {
+      "path": "results/llm_judge/v1/review/final_author_adjudication.json",
+      "size_bytes": 17599,
+      "sha256": "2cb41bf7a1f574dc18b8b50cf7b04446e413b293e81e493be114d5b7df210965"
+    },
+    {
+      "path": "notes/llm_judge_findings.md",
+      "size_bytes": 12220,
+      "sha256": "8a07f04f599f88ab0f449bc4650389396c9ceb0c5dfc7afbd809981105c60ace"
+    }
+  ],
+  "subsequent_documentation": {
+    "paths": [
+      "docs/reproducibility.md",
+      "docs/data_sources.md",
+      "report/evidence_manifest.json"
+    ],
+    "relationship_to_baseline": "Prepared after the research checkpoint to accompany the final report. These files were not present in the reviewed source archive."
+  },
+  "subsequent_practical_check": {
+    "record_path": "environment/reproducibility_check_2026-11-02.json",
+    "performed_date": "2026-11-02",
+    "date_timezone": "Australia/Sydney",
+    "evidence_basis": "Author-executed GitHub Codespaces commands and supplied terminal outputs, followed by the recording script; the committed machine-readable record was retrieved and checked through the public GitHub API.",
+    "scope": "Fresh Python 3.12.1 virtual environment in an existing checkout; pinned dependency installation and pip check; saved LLM summary verification; seed-100 generation and evaluation under marker_seed100; metric comparison with frozen v1 seed 100.",
+    "observed_results": {
+      "pinned_packages_installed": 25,
+      "pip_check": "No broken requirements found.",
+      "llm_judgments_verified": 20,
+      "existing_llm_summary_files_verified": 10,
+      "new_llm_summary_files_created": 0,
+      "synthetic_conditions": 7,
+      "method_condition_pairs": 21,
+      "recorded_model_warnings": 0,
+      "compared_metric_values": 42,
+      "comparison_absolute_tolerance": 1e-12,
+      "maximum_absolute_difference": {
+        "roc_auc": 0.0,
+        "average_precision": 0.0
+      }
+    },
+    "limits": [
+      "Not a fresh Git clone test.",
+      "Not a new full benchmark, full APS, or ten-seed synthetic rerun.",
+      "Not a cross-platform verification.",
+      "Does not establish equality of timings or every byte of regenerated outputs."
+    ],
+    "record_sha256": "b2f54f78e0b9f421e66c89580ef79ebdf46e6ce305482793f13bba6453b7d7e9",
+    "record_size_bytes": 19674,
+    "recorded_at": "2026-11-02T10:36:11+11:00"
+  },
+  "verification_notes": [
+    "All baseline file hashes were calculated from the supplied archive extraction.",
+    "Source archive and final PDF hashes were calculated directly from local file bytes.",
+    "Guide and practical-check records supplement historical evidence rather than rewriting it.",
+    "No exact publication commit for these new documentation files is asserted before the user commits them."
+  ]
+}

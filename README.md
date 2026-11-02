@@ -4,6 +4,8 @@
 
 Shuharto Jannat · COMP8240 · Macquarie University
 
+[Data acquisition](docs/data_sources.md) · [Reproducibility guide](docs/reproducibility.md) · [Report evidence manifest](report/evidence_manifest.json)
+
 This project investigates which COPOD results can be reproduced, how data loading and scoring protocols affect the results, and where the method succeeds or fails on new data. It is based on:
 
 Li, Z., Zhao, Y., Botta, N., Ionescu, C., and Hu, X. (2020). **COPOD: Copula-Based Outlier Detection.** IEEE International Conference on Data Mining (ICDM). The [authors' released code](https://github.com/winstonll/COPOD) is retained as a Git submodule.
@@ -77,11 +79,11 @@ On 2 November 2026, installation into a fresh Python 3.12.1 virtual environment 
 After setup, the following runs all seven conditions for data seed 100 and evaluates three methods per condition. No external dataset download is needed. A separate run name preserves the submitted `v1` evidence.
 
 ```bash
-python scripts/generate_synthetic_extension.py --seeds 100 --run-name marker_seed100
-python scripts/evaluate_synthetic_extension.py --seeds 100 --run-name marker_seed100
+python scripts/generate_synthetic_extension.py --seeds 100 --run-name marker_seed100_repeat
+python scripts/evaluate_synthetic_extension.py --seeds 100 --run-name marker_seed100_repeat
 ```
 
-Raw datasets and annotations are written beneath `data_new/synthetic_extension/marker_seed100/seed100/`. Validation records, scores and metrics are written beneath `results/synthetic_extension/marker_seed100/`. This is a one-seed demonstration, not the report's full ten-seed analysis.
+Raw datasets and annotations are written beneath `data_new/synthetic_extension/marker_seed100_repeat/seed100/`. Validation records, scores and metrics are written beneath `results/synthetic_extension/marker_seed100_repeat/`. This is a one-seed demonstration, not the report's full ten-seed analysis.
 
 To regenerate the full extension under another separate run name:
 
@@ -97,7 +99,7 @@ The ten-seed summariser requires all ten seeds. Runtime and numerical agreement 
 ## Data, provenance and limitations
 
 - Original benchmark data are accessed through the authors' submodule. Downloaded external datasets and generated raw synthetic CSVs use `data_new/`, which is Git-ignored. The project preserves generators, validation records, manifests and evaluation evidence; raw data are not all bundled with the repository.
-- Third-party datasets retain their source terms. Do not assume that public access grants unrestricted redistribution. Acquisition paths and methodological limitations are recorded in the findings and experiment scripts; see also the report's ethics section.
+- Third-party datasets retain their source terms. Do not assume that public access grants unrestricted redistribution. The [data-acquisition guide](docs/data_sources.md) gives the expected paths, official sources and licensing notes; see also the report's ethics section.
 - The five exploratory pilots are documented by their scripts and rounded findings notes. They do not have the full score bundles preserved for the later APS and synthetic experiments.
 - The legacy benchmark drivers execute at top level and write CSVs into the current directory. Their current three-decimal CSV export also differs from the precision of the preserved historical averages. They are not advertised as byte-exact replay commands; use an isolated checkout for further benchmark work.
 - Saved `v1` results, prompts and audit files are historical evidence. Keep new runs separate. The AI-assisted reference, two judge responses and guided author review are explicitly documented; none is presented as an independent human gold standard.
